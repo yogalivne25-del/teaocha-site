@@ -17,7 +17,7 @@
   --coral:#EA6C4D; --coral-dark:#C4502F; --coral-soft:#FBE3DC;
   --charcoal:#24201D; --charcoal-2:#332D29;
   --cream:#FAF6F0; --white:#FFFFFF;
-  --teal:#14B8A6; --teal-dark:#0F766E;
+  --teal:#14B8A6; --teal-dark:#0F766E; --teal-soft:#D5F3EF;
   --ink-2:#4A433D; --ink-3:#5C544C; --muted-dark:#D8D0C6; --line:#E5DDD2;
   --pad: clamp(16px, 6vw, 96px);
   --sec: clamp(64px, 9vw, 120px);
@@ -25,9 +25,10 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Heebo,'Segoe UI',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:Rubik,sans-serif;margin:0;line-height:1.08}
+h1,h2,h3{font-family:Rubik,sans-serif;margin:0;line-height:1.08;text-wrap:balance}
 p{margin:0}
 a{color:var(--coral-dark)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
 .wrap{max-width:1248px;margin:0 auto;padding:0 var(--pad)}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:16px 32px;border-radius:999px;font-weight:700;font-size:clamp(16px,1.6vw,20px);text-decoration:none;transition:transform .15s ease, background .15s ease}
 .btn:hover{transform:translateY(-1px)}
@@ -35,16 +36,24 @@ a{color:var(--coral-dark)}
 .btn-coral:hover{background:#9E3E22;color:#fff}
 .btn-dark{background:var(--charcoal);color:var(--cream)}
 .btn-dark:hover{background:#000;color:var(--cream)}
-.btn-teal{background:var(--teal);color:var(--charcoal)}
 .link{color:var(--charcoal);font-weight:500;font-size:18px;padding:12px 8px;text-decoration:underline;text-underline-offset:4px}
+.assure{font-size:15px;color:var(--ink-3)}
 .tag{display:inline-block;font-size:clamp(14px,1.4vw,17px);font-weight:700;color:var(--coral-dark);background:var(--coral-soft);padding:8px 18px;border-radius:999px}
+.eyebrow{font-size:15px;font-weight:700;letter-spacing:.04em;color:var(--coral-dark)}
 .h2{font-weight:700;font-size:clamp(32px,4.4vw,56px);letter-spacing:-1px}
 .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .accent{color:var(--coral)}
+.section{padding:var(--sec) 0}
+.section > .wrap{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
+.white{background:var(--white)}
+
+/* promo strip */
+.promo-bar{background:var(--charcoal);color:var(--cream);text-align:center;font-size:15px;padding:10px 16px}
+.promo-bar a{color:var(--teal);font-weight:700}
 
 /* header */
-header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent}
+header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdrop-filter:blur(8px)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:16px}
 .logo{font-family:Rubik,sans-serif;font-weight:800;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.5px;color:var(--charcoal);text-decoration:none;white-space:nowrap}
 .logo small{font-weight:500;font-size:.72em}
@@ -55,22 +64,43 @@ header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdro
 
 /* hero */
 .hero{padding:clamp(56px,8vw,96px) 0 var(--sec)}
-.hero .wrap{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
-.hero h1{font-weight:800;font-size:clamp(44px,7.4vw,96px);letter-spacing:-2px;line-height:1.02;max-width:1150px}
-.hero p{font-size:clamp(18px,2vw,24px);color:var(--ink-2);max-width:800px}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hero .wrap.no-img{grid-template-columns:minmax(0,1fr)}
+.hero-txt{display:flex;flex-direction:column;gap:28px;align-items:flex-start;min-width:0}
+.hero h1{font-weight:800;font-size:clamp(42px,6.6vw,88px);letter-spacing:-2px;line-height:1.04}
+.hero p{font-size:clamp(18px,2vw,23px);color:var(--ink-2);max-width:760px}
 .ctas{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+.hero-img{width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:32px;display:block}
 
-/* for */
+/* audiences */
 .dark{background:var(--charcoal);color:var(--cream);padding:var(--sec) 0}
 .dark .wrap{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
 .card-dark{background:var(--charcoal-2);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:14px}
-.card-dark .num{font-family:Rubik,sans-serif;font-size:clamp(36px,3.5vw,48px);font-weight:800;color:var(--teal)}
-.card-dark h3{font-size:clamp(24px,2.3vw,30px);font-weight:700}
+.card-dark img{width:100%;max-width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;display:block}
+.card-dark h3{font-size:clamp(24px,2.3vw,30px);font-weight:700;color:var(--teal)}
 .card-dark p{font-size:clamp(17px,1.5vw,19px);color:var(--muted-dark)}
 
+/* problem */
+.problem{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.problem .lead{display:flex;flex-direction:column;gap:20px}
+.problem .lead p{font-size:clamp(18px,1.8vw,22px);color:var(--ink-2)}
+.problem ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.problem li{background:var(--white);border-radius:18px;padding:20px 24px;font-size:clamp(17px,1.6vw,20px);display:flex;gap:14px;align-items:baseline}
+.problem li::before{content:"";flex-shrink:0;width:10px;height:10px;border-radius:50%;background:var(--coral);transform:translateY(-2px)}
+
+/* reframe */
+.reframe{background:var(--coral-soft);padding:clamp(72px,10vw,128px) 0}
+.reframe blockquote{margin:0;font-family:Rubik,sans-serif;font-weight:700;font-size:clamp(30px,4.4vw,58px);line-height:1.15;letter-spacing:-1px;max-width:1050px;text-wrap:balance}
+.reframe blockquote span{color:var(--coral-dark)}
+
+/* solution */
+.intro{display:flex;flex-direction:column;gap:16px;max-width:900px}
+.intro p{font-size:clamp(18px,1.8vw,22px);color:var(--ink-2)}
+.step{background:var(--cream);border-radius:24px;padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:10px}
+.step h3{font-size:clamp(22px,2vw,26px)}
+.step p{font-size:clamp(16px,1.4vw,18px);color:var(--ink-2)}
+
 /* shift */
-.section{padding:var(--sec) 0}
-.section .wrap{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
 .shift{background:var(--white);border-radius:24px;padding:clamp(28px,3.2vw,44px);display:flex;flex-direction:column;gap:16px}
 .shift .lbl{font-size:16px;font-weight:700;color:var(--ink-3)}
 .shift div:not(.lbl){font-size:clamp(18px,1.7vw,21px);color:var(--ink-2)}
@@ -78,58 +108,84 @@ header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdro
 .shift.on .lbl{color:var(--coral-dark)}
 .shift.on div:not(.lbl){color:var(--charcoal);font-weight:500}
 
-/* funnel */
-.white{background:var(--white)}
-.intro{display:flex;flex-direction:column;gap:16px;max-width:900px}
-.intro p{font-size:clamp(18px,1.8vw,22px);color:var(--ink-2)}
-.step{background:var(--cream);border-radius:24px;padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:10px}
-.step .num{font-family:Rubik,sans-serif;font-size:20px;font-weight:800;color:var(--coral-dark)}
-.step h3{font-size:clamp(22px,2vw,26px)}
-.step p{font-size:clamp(16px,1.4vw,18px);color:var(--ink-2)}
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(32px,5vw,72px);align-items:start}
+.about.no-img{grid-template-columns:minmax(0,1fr)}
+.about-photo{width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:28px;display:block}
+.about-txt{display:flex;flex-direction:column;gap:20px;min-width:0;max-width:760px}
+.about-txt .story{display:flex;flex-direction:column;gap:14px;font-size:clamp(17px,1.6vw,20px);color:var(--ink-2)}
+.about-txt .story p:first-child{font-family:Rubik,sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,28px);line-height:1.3;color:var(--charcoal)}
+.bio{border-top:1px solid var(--line);padding-top:20px;display:flex;flex-direction:column;gap:10px}
+.bio .name{font-family:Rubik,sans-serif;font-weight:800;font-size:24px}
+.bio .role{font-size:16px;font-weight:700;color:var(--coral-dark)}
+.bio p{font-size:clamp(16px,1.5vw,18px);color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px}
+.stat{background:var(--cream);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:4px}
+.stat b{font-family:Rubik,sans-serif;font-size:clamp(28px,3vw,40px);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+.stat span{font-size:15px;color:var(--ink-3);line-height:1.4}
 
 /* how */
 .phase{background:var(--white);border-top:4px solid var(--coral);border-radius:0 0 20px 20px;padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:12px}
 .phase .lbl{font-size:16px;font-weight:700;color:var(--coral-dark)}
 .phase h3{font-size:clamp(22px,2.2vw,28px)}
 .phase p{font-size:clamp(16px,1.4vw,18px);color:var(--ink-2)}
-
 .consult{background:var(--coral-soft);border-radius:24px;padding:clamp(28px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:32px}
 .consult .txt{display:flex;flex-direction:column;gap:12px;max-width:760px}
 .consult h3{font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.5px;line-height:1.15}
 .consult p{font-size:clamp(17px,1.6vw,20px);color:var(--charcoal)}
 .consult .fine{font-size:clamp(15px,1.4vw,17px);color:var(--ink-2)}
 .consult .btn{flex-shrink:0}
-@media (max-width:720px){.consult{flex-direction:column;align-items:flex-start}}
+
+/* promo block */
+.promo{background:var(--teal-soft);border:2px solid var(--teal);border-radius:28px;padding:clamp(28px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:32px;margin-bottom:clamp(48px,6vw,96px)}
+.promo .txt{display:flex;flex-direction:column;gap:12px;max-width:780px}
+.promo .until{font-size:15px;font-weight:700;color:var(--teal-dark);letter-spacing:.04em}
+.promo h2{font-size:clamp(28px,3.4vw,44px);font-weight:800;letter-spacing:-.5px;line-height:1.12}
+.promo p{font-size:clamp(17px,1.6vw,20px);color:var(--charcoal)}
+.promo .btn{flex-shrink:0}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:12px;max-width:900px}
+.faq details{background:var(--cream);border-radius:18px;padding:0 28px}
+.faq summary{cursor:pointer;list-style:none;font-family:Rubik,sans-serif;font-weight:700;font-size:clamp(18px,1.8vw,22px);padding:22px 0;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:28px;font-weight:500;color:var(--coral-dark);flex-shrink:0;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq details p{font-size:clamp(16px,1.5vw,18px);color:var(--ink-2);padding-bottom:22px}
 
 /* bands */
 .band{border-radius:32px;padding:clamp(40px,6vw,88px);display:flex;justify-content:space-between;align-items:center;gap:32px}
 .band h2{font-weight:800;letter-spacing:-1px}
+.band .txt{display:flex;flex-direction:column;gap:14px}
+.band .cta{display:flex;flex-direction:column;gap:10px;align-items:center;flex-shrink:0}
 .community{background:var(--charcoal);color:var(--cream);margin-bottom:clamp(48px,6vw,96px)}
 .community .lbl{font-size:16px;font-weight:700;color:var(--teal)}
 .community h2{font-size:clamp(30px,3.8vw,48px);line-height:1.1}
 .community p{font-size:clamp(17px,1.6vw,20px);color:var(--muted-dark);max-width:640px}
-.soon{display:inline-flex;align-items:center;min-height:48px;padding:16px 32px;border-radius:999px;border:2px solid var(--teal);color:var(--teal);font-weight:700;font-size:clamp(16px,1.6vw,20px);white-space:nowrap}
+.soon{display:inline-flex;align-items:center;min-height:48px;padding:16px 32px;border-radius:999px;border:2px solid var(--teal);color:var(--teal);font-weight:700;font-size:clamp(16px,1.6vw,20px);white-space:nowrap;flex-shrink:0}
 .final{background:var(--coral);margin-bottom:var(--sec)}
 .final h2{font-size:clamp(34px,4.6vw,60px);line-height:1.05;color:var(--charcoal)}
 .final p{font-size:clamp(18px,1.8vw,22px);color:var(--charcoal)}
-.band .txt{display:flex;flex-direction:column;gap:14px}
-.band .btn,.band .soon{flex-shrink:0}
+.final .assure{color:var(--charcoal)}
 
 footer{border-top:1px solid var(--line);padding:32px 0;font-size:16px;color:var(--ink-3)}
 footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
 footer nav{display:flex;flex-wrap:wrap;gap:24px}
 footer a{color:var(--ink-3)}
 
-/* floating whatsapp on mobile */
 .fab{display:none}
 
 @media (max-width:900px){
-  .grid3{grid-template-columns:1fr}
+  .grid3,.stats{grid-template-columns:1fr}
   .nav ul{display:none}
+  .hero .wrap,.problem,.about{grid-template-columns:minmax(0,1fr)}
+  .hero-img{aspect-ratio:16/10}
+  .about-photo{max-width:360px}
 }
 @media (max-width:720px){
   .grid2{grid-template-columns:1fr}
-  .band{flex-direction:column;align-items:flex-start}
+  .band,.consult,.promo{flex-direction:column;align-items:flex-start}
+  .band .cta{align-items:flex-start}
   .hero h1{letter-spacing:-1px}
   .fab{display:flex;position:fixed;bottom:16px;left:16px;right:16px;z-index:20;box-shadow:0 8px 24px rgba(36,32,29,.25)}
   body{padding-bottom:88px}
@@ -139,14 +195,17 @@ footer a{color:var(--ink-3)}
 </head>
 <body>
 
+<div class="promo-bar" data-until="2026-11-01T00:00:00+02:00">עד 1 בנובמבר: מי שקובע שיחת ייעוץ מקבל במתנה הדרכת בלאק פריידיי · <a href="#promo">לפרטים</a></div>
+
 <header>
   <div class="wrap nav">
     <a class="logo" href="#top">תאוצה<span class="accent">.</span> <small>סטודיו</small></a>
     <ul>
       <li><a href="#for">למי זה</a></li>
       <li><a href="#funnel">משפך מלא</a></li>
+      <li><a href="#about">מי אנחנו</a></li>
       <li><a href="#how">איך עובדים</a></li>
-      <li><a href="#community">הקהילה</a></li>
+      <li><a href="#faq">שאלות</a></li>
     </ul>
     <a class="btn btn-dark js-contact" href="#contact">לשיחת ייעוץ</a>
   </div>
@@ -154,14 +213,18 @@ footer a{color:var(--ink-3)}
 
 <main id="top">
   <section class="hero">
-    <div class="wrap">
-      <span class="tag">סוכנות שיווק לאקדמיות, קורסים ותוכניות העשרה</span>
-      <h1>העסק שלך מוכן לשלב הבא.<br><span class="accent">תאוצה היא המקפצה.</span></h1>
-      <p>אנחנו מלווים אקדמיות, בעלי קורסים ותוכניות העשרה בדרך מהמעגל הקרוב אל הקהל הרחב. אסטרטגיה מדויקת, ביצוע ברמה הגבוהה ביותר, ושותף שנעים לעבוד איתו.</p>
-      <div class="ctas">
-        <a class="btn btn-coral js-contact" href="#contact">לשיחת ייעוץ</a>
-        <a class="link" href="#how">איך אנחנו עובדים ←</a>
+    <div class="wrap js-imgwrap">
+      <div class="hero-txt">
+        <span class="tag">סוכנות שיווק לאקדמיות, קורסים ותוכניות העשרה</span>
+        <h1>העסק שלך מוכן לשלב הבא.<br><span class="accent">תאוצה היא המקפצה.</span></h1>
+        <p>אנחנו מלווים אקדמיות, בעלי קורסים ותוכניות העשרה בדרך מהמעגל הקרוב אל הקהל הרחב. אסטרטגיה מדויקת, ביצוע ברמה הגבוהה ביותר, ושותף שנעים לעבוד איתו.</p>
+        <div class="ctas">
+          <a class="btn btn-coral js-contact" href="#contact">לשיחת ייעוץ</a>
+          <a class="link" href="#how">איך אנחנו עובדים ←</a>
+        </div>
+        <div class="assure">שיחה ממוקדת, בלי שום התחייבות</div>
       </div>
+      <img class="hero-img js-optional" src="images/hero.jpg" alt="">
     </div>
   </section>
 
@@ -169,9 +232,46 @@ footer a{color:var(--ink-3)}
     <div class="wrap">
       <h2 class="h2">נבנה עבור מי שמלמד ברמה גבוהה</h2>
       <div class="grid3">
-        <div class="card-dark"><div class="num">01</div><h3>אקדמיות</h3><p>מסלולים, סגל ובוגרים מרוצים. הגיע הזמן שהמוניטין שלכם יגיע רחוק יותר, מחזור אחר מחזור.</p></div>
-        <div class="card-dark"><div class="num">02</div><h3>בעלי קורסים</h3><p>תוכן מוכח ותלמידים שממליצים. אנחנו דואגים שהקהל הנכון יגלה אותו, באופן קבוע.</p></div>
-        <div class="card-dark"><div class="num">03</div><h3>תוכניות העשרה</h3><p>תוכנית שראויה לקהל רחב. אנחנו מעניקים לה את הבמה שמגיעה לה.</p></div>
+        <div class="card-dark"><img class="js-optional" src="images/academy.jpg" alt=""><h3>אקדמיות</h3><p>מסלולים, סגל ובוגרים מרוצים. הגיע הזמן שהמוניטין שלכם יגיע רחוק יותר, מחזור אחר מחזור.</p></div>
+        <div class="card-dark"><img class="js-optional" src="images/courses.jpg" alt=""><h3>בעלי קורסים</h3><p>תוכן מוכח ותלמידים שממליצים. אנחנו דואגים שהקהל הנכון יגלה אותו, באופן קבוע.</p></div>
+        <div class="card-dark"><img class="js-optional" src="images/enrichment.jpg" alt=""><h3>תוכניות העשרה</h3><p>תוכנית שראויה לקהל רחב. אנחנו מעניקים לה את הבמה שמגיעה לה.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="problem">
+        <div class="lead">
+          <h2 class="h2">מכיר את זה?</h2>
+          <p>התוכן שלך מצוין. מי שלמד אצלך יוצא מרוצה וממליץ. ובכל זאת, משהו עוצר את הצמיחה.</p>
+        </div>
+        <ul>
+          <li>כל מחזור חדש מתחיל כמעט מאפס, ושוב מחפשים נרשמים</li>
+          <li>השיווק נעשה בין לבין, בזמן שנשאר אחרי ההוראה</li>
+          <li>ניסית קמפיינים, אבל התוצאות לא היו יציבות</li>
+          <li>אתה יודע שהתוכן שלך ראוי לקהל גדול הרבה יותר</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="reframe">
+    <div class="wrap">
+      <blockquote>הבעיה אף פעם לא הייתה התוכן.<br><span>הבעיה היא שהאנשים שצריכים אותו עוד לא יודעים שהוא קיים.</span></blockquote>
+    </div>
+  </section>
+
+  <section id="funnel" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <h2 class="h2">משפך מלא, מקצה לקצה.</h2>
+        <p>מערכת שיווק שלמה, מותאמת לך, שמובילה אדם שעוד לא שמע עליך עד להרשמה.</p>
+      </div>
+      <div class="grid3">
+        <div class="step"><h3>מסר מדויק</h3><p>מגדירים מה מייחד אותך, ומנסחים את זה בשפה שהקהל שלך מחכה לשמוע.</p></div>
+        <div class="step"><h3>מערכת שעובדת בשבילך</h3><p>בונים ומפעילים את כל מה שנדרש, כדי שפניות חדשות יגיעו בכל שבוע.</p></div>
+        <div class="step"><h3>צמיחה מדידה</h3><p>כל החלטה נשענת על נתונים. מה שעובד מקבל תאוצה.</p></div>
       </div>
     </div>
   </section>
@@ -186,16 +286,30 @@ footer a{color:var(--ink-3)}
     </div>
   </section>
 
-  <section id="funnel" class="section white">
+  <section id="about" class="section white">
     <div class="wrap">
-      <div class="intro">
-        <h2 class="h2">משפך מלא, מקצה לקצה.</h2>
-        <p>מערכת שיווק שלמה, מותאמת לך, שמובילה אדם שעוד לא שמע עליך עד להרשמה.</p>
-      </div>
-      <div class="grid3">
-        <div class="step"><div class="num">01</div><h3>מסר מדויק</h3><p>מגדירים מה מייחד אותך, ומנסחים את זה בשפה שהקהל שלך מחכה לשמוע.</p></div>
-        <div class="step"><div class="num">02</div><h3>מערכת שעובדת בשבילך</h3><p>בונים ומפעילים את כל מה שנדרש, כדי שפניות חדשות יגיעו בכל שבוע.</p></div>
-        <div class="step"><div class="num">03</div><h3>צמיחה מדידה</h3><p>כל החלטה נשענת על נתונים. מה שעובד מקבל תאוצה.</p></div>
+      <div class="eyebrow">מי מאחורי תאוצה</div>
+      <div class="about js-imgwrap">
+        <img class="about-photo js-optional" src="images/yuval.jpg" alt="יובל לב, מייסד תאוצה סטודיו">
+        <div class="about-txt">
+          <div class="story">
+            <p>לאורך השנים גיליתי שני דברים על עצמי: אני יודע לשווק, ואני אוהב ללמד.</p>
+            <p>בכל פעם שעמדתי מול קהל וראיתי אנשים מבינים פתאום איך לחבר את מה שהם יודעים לאנשים שצריכים את זה, ידעתי שאני במקום הנכון.</p>
+            <p>אז הבנתי שהאנשים שאני הכי רוצה לעבוד איתם הם אנשים כמוני. מורים, מרצים, מובילי תוכניות ויוצרים, שיש להם ידע מועיל, מעשיר ומשנה חיים.</p>
+            <p>תאוצה נולדה כדי להיות עמוד התווך השיווקי של העסקים האלה. כדי שתתמקדו במה שאתם עושים הכי טוב, והבשורה שלכם תגיע להרבה מאוד אנשים שצריכים בדיוק את מה שבאתם לתת.</p>
+          </div>
+          <div class="bio">
+            <div class="name">יובל לב</div>
+            <div class="role">מייסד תאוצה סטודיו</div>
+            <p>מעל עשור בשיווק ובמכירות. לפני שיצאתי לעצמאות ניהלתי את מחלקת השיווק של חברה הנסחרת בנאסד"ק, והייתי שותף לתוצאת מכירות של 100 מיליון דולר בשנת 2025.</p>
+            <p>היום אני מרצה לשיווק באקדמיה בחו"ל, ומלמד אונליין מאות עסקים איך לחבר את הלקוחות לפתרון שהם באו לתת.</p>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>10+</b><span>שנים בשיווק ובמכירות</span></div>
+            <div class="stat"><b dir="ltr">$100M</b><span>תוצאת מכירות, 2025</span></div>
+            <div class="stat"><b>מאות</b><span>עסקים שלמדו ממני אונליין</span></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -220,6 +334,30 @@ footer a{color:var(--ink-3)}
   </section>
 
   <div class="wrap">
+    <section id="promo" class="promo" data-until="2026-11-01T00:00:00+02:00">
+      <div class="txt">
+        <div class="until">עד 1 בנובמבר בלבד</div>
+        <h2>הדרכת בלאק פריידיי, במתנה</h2>
+        <p>מי שקובע שיחת ייעוץ עד 1.11 מקבל הדרכה בשווי ₪690: איך לשמור על העסק בחודש הכי עמוס במכירות בשנה, ואיך להפוך אותו ליתרון שלך.</p>
+      </div>
+      <a class="btn btn-dark js-contact" href="#contact">לשיחת ייעוץ</a>
+    </section>
+  </div>
+
+  <section id="faq" class="section white">
+    <div class="wrap">
+      <h2 class="h2">שאלות שעולות לפני שמתחילים</h2>
+      <div class="faq">
+        <details><summary>כבר עבדנו עם משווק או סוכנות. מה שונה כאן?</summary><p>תאוצה מתמחה רק באקדמיות, בקורסים ובתוכניות העשרה. אנחנו מכירים את מחזורי ההרשמה, את הקהל ואת השפה, ובונים מערכת שלמה ולא רק קמפיין.</p></details>
+        <details><summary>מה קורה בשיחת הייעוץ?</summary><p>שיחה ממוקדת על העסק שלך: איפה הוא נמצא היום, לאן אתה רוצה להגיע ומה עוצר אותך. לא נציע לך שום דבר במהלך השיחה.</p></details>
+        <details><summary>כמה זה עולה?</summary><p>כל עסק מקבל הצעה שמותאמת לו. נדבר על זה רק אחרי שנבין יחד מה נכון עבורך.</p></details>
+        <details><summary>כמה זמן לוקח עד שרואים תוצאות?</summary><p>זה תלוי בנקודת הפתיחה. בשיחת הייעוץ נבנה יחד לוח זמנים מציאותי לעסק שלך.</p></details>
+        <details><summary>זה מתאים גם למי שעוד לא בנה קורס?</summary><p>בהחלט. בשיחת הייעוץ נעזור לך להבין מה הצעד הראשון ומה נכון לבנות קודם.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" style="padding-top:var(--sec)">
     <section id="community" class="band community">
       <div class="txt">
         <div class="lbl">קהילת מאצ'ו מאצ'ו</div>
@@ -234,7 +372,10 @@ footer a{color:var(--ink-3)}
         <h2>העסק שלך מוכן לשלב הבא?</h2>
         <p>שיחה אחת, ותדע בדיוק לאן ממשיכים.</p>
       </div>
-      <a class="btn btn-dark js-contact" href="#contact">לשיחת ייעוץ</a>
+      <div class="cta">
+        <a class="btn btn-dark js-contact" href="#contact">לשיחת ייעוץ</a>
+        <div class="assure">בלי שום התחייבות</div>
+      </div>
     </section>
   </div>
 </main>
@@ -266,6 +407,16 @@ var WA_TEXT  = "שלום, הגעתי מהאתר של תאוצה ואשמח לת�
   if (EMAIL) {
     document.querySelectorAll(".js-mail").forEach(function(a){ a.href = "mailto:" + EMAIL; });
   }
+  // הסתרת המבצע אוטומטית אחרי התאריך
+  var now = Date.now();
+  document.querySelectorAll("[data-until]").forEach(function(el){
+    if (now >= Date.parse(el.getAttribute("data-until"))) el.remove();
+  });
+  // תמונות שעוד לא הועלו – מוסתרות, והפריסה מתיישרת
+  document.querySelectorAll("img.js-optional").forEach(function(img){
+    function hide(){ var w = img.closest(".js-imgwrap"); if (w) w.classList.add("no-img"); img.remove(); }
+    if (img.complete && img.naturalWidth === 0) hide(); else img.addEventListener("error", hide);
+  });
 })();
 </script>
 </body>
