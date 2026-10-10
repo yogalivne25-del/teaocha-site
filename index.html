@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>תאוצה סטודיו – סוכנות שיווק לאקדמיות, קורסים ותוכניות העשרה</title>
+<meta name="description" content="תאוצה בונה לאקדמיות, לבעלי קורסים ולתוכניות העשרה משפך שיווק מלא – מהמודעה הראשונה ועד התלמיד הרשום.">
+<meta property="og:title" content="תאוצה סטודיו">
+<meta property="og:description" content="יש לך משהו שווה ללמד. בוא נדאג שכולם ידעו.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://teaocha.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Heebo:wght@400;500;700&display=swap">
+<style>
+:root{
+  --coral:#EA6C4D; --coral-dark:#C4502F; --coral-soft:#FBE3DC;
+  --charcoal:#24201D; --charcoal-2:#332D29;
+  --cream:#FAF6F0; --white:#FFFFFF;
+  --teal:#14B8A6; --teal-dark:#0F766E;
+  --ink-2:#4A433D; --ink-3:#5C544C; --muted-dark:#D8D0C6; --line:#E5DDD2;
+  --pad: clamp(16px, 6vw, 96px);
+  --sec: clamp(64px, 9vw, 120px);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Heebo,'Segoe UI',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Rubik,sans-serif;margin:0;line-height:1.08}
+p{margin:0}
+a{color:var(--coral-dark)}
+.wrap{max-width:1248px;margin:0 auto;padding:0 var(--pad)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:16px 32px;border-radius:999px;font-weight:700;font-size:clamp(16px,1.6vw,20px);text-decoration:none;transition:transform .15s ease, background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-coral{background:var(--coral-dark);color:#fff}
+.btn-coral:hover{background:#9E3E22;color:#fff}
+.btn-dark{background:var(--charcoal);color:var(--cream)}
+.btn-dark:hover{background:#000;color:var(--cream)}
+.btn-teal{background:var(--teal);color:var(--charcoal)}
+.link{color:var(--charcoal);font-weight:500;font-size:18px;padding:12px 8px;text-decoration:underline;text-underline-offset:4px}
+.tag{display:inline-block;font-size:clamp(14px,1.4vw,17px);font-weight:700;color:var(--coral-dark);background:var(--coral-soft);padding:8px 18px;border-radius:999px}
+.h2{font-weight:700;font-size:clamp(32px,4.4vw,56px);letter-spacing:-1px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.accent{color:var(--coral)}
+
+/* header */
+header{position:sticky;top:0;z-index:10;background:rgba(250,246,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid transparent}
+.nav{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:16px}
+.logo{font-family:Rubik,sans-serif;font-weight:800;font-size:clamp(22px,2.2vw,28px);letter-spacing:-.5px;color:var(--charcoal);text-decoration:none;white-space:nowrap}
+.logo small{font-weight:500;font-size:.72em}
+.nav ul{display:flex;gap:32px;list-style:none;margin:0;padding:0;font-weight:500;font-size:17px}
+.nav ul a{color:var(--charcoal);text-decoration:none}
+.nav ul a:hover{color:var(--coral-dark)}
+.nav .btn{padding:12px 22px;font-size:16px}
+
+/* hero */
+.hero{padding:clamp(56px,8vw,96px) 0 var(--sec)}
+.hero .wrap{display:flex;flex-direction:column;gap:28px;align-items:flex-start}
+.hero h1{font-weight:800;font-size:clamp(44px,7.4vw,96px);letter-spacing:-2px;line-height:1.02;max-width:1150px}
+.hero p{font-size:clamp(18px,2vw,24px);color:var(--ink-2);max-width:800px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center}
+
+/* for */
+.dark{background:var(--charcoal);color:var(--cream);padding:var(--sec) 0}
+.dark .wrap{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
+.card-dark{background:var(--charcoal-2);border-radius:24px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;gap:14px}
+.card-dark .num{font-family:Rubik,sans-serif;font-size:clamp(36px,3.5vw,48px);font-weight:800;color:var(--teal)}
+.card-dark h3{font-size:clamp(24px,2.3vw,30px);font-weight:700}
+.card-dark p{font-size:clamp(17px,1.5vw,19px);color:var(--muted-dark)}
+
+/* shift */
+.section{padding:var(--sec) 0}
+.section .wrap{display:flex;flex-direction:column;gap:clamp(32px,4vw,56px)}
+.shift{background:var(--white);border-radius:24px;padding:clamp(28px,3.2vw,44px);display:flex;flex-direction:column;gap:16px}
+.shift .lbl{font-size:16px;font-weight:700;color:var(--ink-3)}
+.shift div:not(.lbl){font-size:clamp(18px,1.7vw,21px);color:var(--ink-2)}
+.shift.on{border:2px solid var(--coral)}
+.shift.on .lbl{color:var(--coral-dark)}
+.shift.on div:not(.lbl){color:var(--charcoal);font-weight:500}
+
+/* funnel */
+.white{background:var(--white)}
+.intro{display:flex;flex-direction:column;gap:16px;max-width:900px}
+.intro p{font-size:clamp(18px,1.8vw,22px);color:var(--ink-2)}
+.step{background:var(--cream);border-radius:24px;padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:10px}
+.step .num{font-family:Rubik,sans-serif;font-size:20px;font-weight:800;color:var(--coral-dark)}
+.step h3{font-size:clamp(22px,2vw,26px)}
+.step p{font-size:clamp(16px,1.4vw,18px);color:var(--ink-2)}
+
+/* how */
+.phase{background:var(--white);border-top:4px solid var(--coral);border-radius:0 0 20px 20px;padding:clamp(26px,2.6vw,36px);display:flex;flex-direction:column;gap:12px}
+.phase .lbl{font-size:16px;font-weight:700;color:var(--coral-dark)}
+.phase h3{font-size:clamp(22px,2.2vw,28px)}
+.phase p{font-size:clamp(16px,1.4vw,18px);color:var(--ink-2)}
+
+.consult{background:var(--coral-soft);border-radius:24px;padding:clamp(28px,4vw,56px);display:flex;justify-content:space-between;align-items:center;gap:32px}
+.consult .txt{display:flex;flex-direction:column;gap:12px;max-width:760px}
+.consult h3{font-size:clamp(26px,3vw,38px);font-weight:800;letter-spacing:-.5px;line-height:1.15}
+.consult p{font-size:clamp(17px,1.6vw,20px);color:var(--charcoal)}
+.consult .fine{font-size:clamp(15px,1.4vw,17px);color:var(--ink-2)}
+.consult .btn{flex-shrink:0}
+@media (max-width:720px){.consult{flex-direction:column;align-items:flex-start}}
+
+/* bands */
+.band{border-radius:32px;padding:clamp(40px,6vw,88px);display:flex;justify-content:space-between;align-items:center;gap:32px}
+.band h2{font-weight:800;letter-spacing:-1px}
+.community{background:var(--charcoal);color:var(--cream);margin-bottom:clamp(48px,6vw,96px)}
+.community .lbl{font-size:16px;font-weight:700;color:var(--teal)}
+.community h2{font-size:clamp(30px,3.8vw,48px);line-height:1.1}
+.community p{font-size:clamp(17px,1.6vw,20px);color:var(--muted-dark);max-width:640px}
+.soon{display:inline-flex;align-items:center;min-height:48px;padding:16px 32px;border-radius:999px;border:2px solid var(--teal);color:var(--teal);font-weight:700;font-size:clamp(16px,1.6vw,20px);white-space:nowrap}
+.final{background:var(--coral);margin-bottom:var(--sec)}
+.final h2{font-size:clamp(34px,4.6vw,60px);line-height:1.05;color:var(--charcoal)}
+.final p{font-size:clamp(18px,1.8vw,22px);color:var(--charcoal)}
+.band .txt{display:flex;flex-direction:column;gap:14px}
+.band .btn,.band .soon{flex-shrink:0}
+
+footer{border-top:1px solid var(--line);padding:32px 0;font-size:16px;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+footer nav{display:flex;flex-wrap:wrap;gap:24px}
+footer a{color:var(--ink-3)}
+
+/* floating whatsapp on mobile */
+.fab{display:none}
+
+@media (max-width:900px){
+  .grid3{grid-template-columns:1fr}
+  .nav ul{display:none}
+}
+@media (max-width:720px){
+  .grid2{grid-template-columns:1fr}
+  .band{flex-direction:column;align-items:flex-start}
+  .hero h1{letter-spacing:-1px}
+  .fab{display:flex;position:fixed;bottom:16px;left:16px;right:16px;z-index:20;box-shadow:0 8px 24px rgba(36,32,29,.25)}
+  body{padding-bottom:88px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top">תאוצה<span class="accent">.</span> <small>סטודיו</small></a>
+    <ul>
+      <li><a href="#for">למי זה</a></li>
+      <li><a href="#funnel">משפך מלא</a></li>
+      <li><a href="#how">איך עובדים</a></li>
+      <li><a href="#community">הקהילה</a></li>
+    </ul>
+    <a class="btn btn-dark js-contact" href="#contact">לייעוץ חינם</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <span class="tag">סוכנות שיווק לאקדמיות, קורסים ותוכניות העשרה</span>
+      <h1>יש לך משהו שווה ללמד.<br><span class="accent">בוא נדאג שכולם ידעו.</span></h1>
+      <p>תאוצה בונה לך משפך שיווק מלא, מהמודעה הראשונה ועד התלמיד הרשום. כדי שתצא מהמעגל הקרוב ותיפתח לקהל הרחב.</p>
+      <div class="ctas">
+        <a class="btn btn-coral js-contact" href="#contact">לייעוץ חינם</a>
+        <a class="link" href="#funnel">מה זה משפך מלא ←</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="for" class="dark">
+    <div class="wrap">
+      <h2 class="h2">בנינו את תאוצה בשביל מי שמלמד</h2>
+      <div class="grid3">
+        <div class="card-dark"><div class="num">01</div><h3>אקדמיות</h3><p>יש לך מסלולים, מרצים ותלמידים מרוצים. עכשיו צריך שעוד אנשים ימצאו אתכם, מחזור אחרי מחזור.</p></div>
+        <div class="card-dark"><div class="num">02</div><h3>בעלי קורסים</h3><p>הקורס מוכן והתוכן טוב. החלק שמביא אליו תלמידים כל חודש – זה עלינו.</p></div>
+        <div class="card-dark"><div class="num">03</div><h3>תוכניות העשרה</h3><p>התוכנית שלך יכולה להגיע להרבה יותר אנשים. בוא נבנה לה את הדרך החוצה.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2 class="h2">מהמעגל הקרוב – לקהל הרחב</h2>
+      <div class="grid2">
+        <div class="shift"><div class="lbl">היום</div><div>תלמידים מגיעים מהמלצות</div><div>ההרשמה מגיעה בגלים</div><div>רק מי שכבר מכיר אותך יודע שאתה קיים</div></div>
+        <div class="shift on"><div class="lbl">עם תאוצה</div><div>קהל חדש מגיע אליך כל שבוע</div><div>הרשמות קבועות, שאפשר לתכנן לפיהן</div><div>השם שלך מוכר הרבה מעבר למעגל הקרוב</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funnel" class="section white">
+    <div class="wrap">
+      <div class="intro">
+        <h2 class="h2">משפך מלא. מקצה לקצה.</h2>
+        <p>לא עוד מודעה בודדת. מערכת שלמה שלוקחת אדם שלא שמע עליך – והופכת אותו לתלמיד.</p>
+      </div>
+      <div class="grid3">
+        <div class="step"><div class="num">01</div><h3>אסטרטגיה ומסר</h3><p>למי מדברים, מה מבטיחים, ולמה שיבחרו דווקא בך.</p></div>
+        <div class="step"><div class="num">02</div><h3>עמוד נחיתה</h3><p>עמוד שמסביר, משכנע ומביא להרשמה.</p></div>
+        <div class="step"><div class="num">03</div><h3>קמפיין ממומן</h3><p>מודעות שמגיעות לקהל חדש, בדיוק לאנשים שמחפשים מה שאתה מלמד.</p></div>
+        <div class="step"><div class="num">04</div><h3>אירוע כניסה</h3><p>סדנה או וובינר שנותנים טעימה, ובונים אמון לפני הקנייה.</p></div>
+        <div class="step"><div class="num">05</div><h3>מיילים ווואטסאפ</h3><p>רצף שמחמם את הנרשמים ומוביל אותם להחלטה.</p></div>
+        <div class="step"><div class="num">06</div><h3>מדידה ושיפור</h3><p>רואים מה עובד, מחזקים אותו, ומאיצים.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="wrap">
+      <h2 class="h2">איך עובדים איתנו</h2>
+      <div class="grid3">
+        <div class="phase"><div class="lbl">שלב 1</div><h3>שיחת ייעוץ ללא עלות</h3><p>מכירים את מה שאתה מלמד, את הקהל, ולאן אתה רוצה להגיע.</p></div>
+        <div class="phase"><div class="lbl">שלב 2</div><h3>בונים את המשפך</h3><p>מסר, עמוד, מודעות, אירוע ורצף. הכל מוכן ומחובר.</p></div>
+        <div class="phase"><div class="lbl">שלב 3</div><h3>משיקים ומאיצים</h3><p>עולים לאוויר, מודדים, משפרים. והעסק תופס תאוצה.</p></div>
+      </div>
+      <div class="consult">
+        <div class="txt">
+          <h3>רוצה לעשות קורס אבל לא יודע מאיפה להתחיל?</h3>
+          <p>דבר איתנו, ללא עלות. נעזור לך להבין מה הצעד הבא, ונחסוך לך זמן וכאב ראש.</p>
+          <p class="fine">בשיחה לא נציע לך שום דבר. אם בסופה נרגיש שיש חיבור, נציע פגישה נוספת שבה נדבר על איך נוכל לעזור.</p>
+        </div>
+        <a class="btn btn-coral js-contact" href="#contact">לשיחת ייעוץ חינם</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section id="community" class="band community">
+      <div class="txt">
+        <div class="lbl">קהילת מאצ'ו מאצ'ו</div>
+        <h2>מאיצים את העסק קדימה. ביחד.</h2>
+        <p>מקום לאנשים שמלמדים ורוצים לגדול. בוא להכיר.</p>
+      </div>
+      <span class="soon">נפתחת בקרוב</span>
+    </section>
+
+    <section id="contact" class="band final">
+      <div class="txt">
+        <h2>מוכן לפתוח את העסק לקהל הרחב?</h2>
+        <p>שיחה אחת, ונדע בדיוק מה הצעד הבא.</p>
+      </div>
+      <a class="btn btn-dark js-contact" href="#contact">לייעוץ חינם</a>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© תאוצה סטודיו · יובל לב</div>
+    <nav aria-label="יצירת קשר">
+      <a class="js-contact" href="#contact">וואטסאפ</a>
+      <a class="js-mail" href="#contact">מייל</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+    </nav>
+  </div>
+</footer>
+
+<a class="btn btn-coral fab js-contact" href="#contact">לייעוץ חינם</a>
+
+<script>
+/* ===== הגדרות – כאן מחליפים פרטים ===== */
+var WHATSAPP = "";   // מספר בפורמט בינלאומי בלי + ובלי מקפים, למשל 972501234567
+var EMAIL    = "";   // למשל hello@teaocha.com
+var WA_TEXT  = "היי, הגעתי מהאתר של תאוצה ואשמח לשיחת ייעוץ";
+/* ====================================== */
+(function(){
+  if (WHATSAPP) {
+    var wa = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(WA_TEXT);
+    document.querySelectorAll(".js-contact").forEach(function(a){ a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
+  }
+  if (EMAIL) {
+    document.querySelectorAll(".js-mail").forEach(function(a){ a.href = "mailto:" + EMAIL; });
+  }
+})();
+</script>
+</body>
+</html>
