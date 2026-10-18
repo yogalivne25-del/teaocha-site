@@ -20,7 +20,7 @@
     call: {
       eyebrow: "שיחת היכרות",
       title: "בוא נדבר על הצעד הבא.",
-      sub: "משאירים פרטים – וחוזרים אליך תוך יום עסקים לשיחה קצרה. בלי התחייבות.",
+      sub: "משאירים פרטים – וחוזרים אליך תוך יום עסקים לשיחה של 20 דקות. בלי עלות ובלי התחייבות.",
       submit: "תחזרו אליי",
       doneTitle: "קיבלנו! נדבר בקרוב.",
       doneText: "נחזור אליך תוך יום עסקים כדי לתאם שיחת היכרות."
@@ -39,7 +39,7 @@
     exit: {
       theme: "exit",
       eyebrow: "רגע לפני שאתה הולך",
-      title: "15 דקות שיכולות למלא לך את הכיתה.",
+      title: "20 דקות שיכולות למלא לך את הכיתה.",
       sub: "שיחת היכרות קצרה, בלי עלות ובלי התחייבות: נבין איפה העסק שלך עומד, ותצא עם כיוון ברור לצעד הבא.",
       submit: "אני רוצה את השיחה",
       doneTitle: "סגרנו! נדבר בקרוב.",
@@ -252,9 +252,28 @@
       };
 
       submitBtn.disabled = true; formError.classList.remove("is-visible");
-      var send = CFG.LEAD_ENDPOINT
-        ? fetch(CFG.LEAD_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(lead) })
-        : Promise.resolve();
+      var jobs = [];
+      /* ליד למייל (FormSubmit) */
+      if (CFG.LEAD_EMAIL) {
+        jobs.push(fetch("https://formsubmit.co/ajax/" + CFG.LEAD_EMAIL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify({
+            _subject: "ליד חדש מתאוצה – " + lead.interest + " – " + lead.name,
+            _template: "table", _captcha: "false",
+            "שם": lead.name, "טלפון": lead.phone, "אימייל": lead.email || "—",
+            "מה מלמד/ת": lead.business || "—", "מתעניין/ת ב": lead.interest,
+            "הסכמה לדיוור": lead.marketing_consent, "כפתור / טריגר": lead.button,
+            "עמוד": lead.page, "UTM": lead.utm || "—", "הגיע/ה מ": lead.referrer || "—",
+            "זמן": new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" })
+          })
+        }).then(function (r) { if (!r.ok) throw new Error("mail " + r.status); }));
+      }
+      /* ליד ל-Google Sheet (אופציונלי) */
+      if (CFG.LEAD_ENDPOINT) {
+        jobs.push(fetch(CFG.LEAD_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(lead) }));
+      }
+      var send = Promise.all(jobs);
 
       send.then(function () {
         track("Lead", { content_name: current });

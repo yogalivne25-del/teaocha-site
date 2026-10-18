@@ -3,7 +3,11 @@
    משנים רק את הערכים כאן. שדה ריק = הפיצ'ר כבוי.
    ========================================================= */
 window.TAUTZA_CONFIG = {
-  // לאן נשלחים הלידים מהפופ-אפ (כתובת Web App של Google Apps Script – ראו tools/google-sheet-leads.gs)
+  // לאן נשלחים הלידים: מייל (דרך FormSubmit). בליד הראשון מגיע מייל אישור – לוחצים "Activate" פעם אחת.
+  // אחרי האישור FormSubmit שולחים כתובת מוסווה (מחרוזת אקראית) – אפשר להחליף בה את המייל כאן כדי שלא יופיע בקוד.
+  LEAD_EMAIL: "lev.yuval@outlook.com",
+
+  // אופציונלי: גם ל-Google Sheet (כתובת Web App של Google Apps Script – ראו tools/google-sheet-leads.gs)
   LEAD_ENDPOINT: "",
 
   // מספר וואטסאפ בפורמט בינלאומי בלי + ובלי מקפים, למשל "972501234567"
