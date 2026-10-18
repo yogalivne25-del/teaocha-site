@@ -49,9 +49,26 @@ img{max-width:100%}
   [style*="font-size: 52px; font-weight: 800; letter-spacing: 3px"]{font-size:38px!important}
 }
 </style>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#24201D">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:site_name" content="תאוצה סטודיו">
+<meta property="og:title" content="יש לך משהו שווה ללמד. בוא נמלא לך את הכיתה.">
+<meta property="og:description" content="תאוצה סטודיו – סוכנות שיווק לאקדמיות, קורסים ותוכניות העשרה. מקהל קטן – לקהילה משלך.">
+<meta property="og:url" content="https://teaocha.com/">
+<meta property="og:image" content="https://teaocha.com/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/site.css">
+<script src="assets/config.js"></script>
+<script src="assets/site.js" defer></script>
 </head>
 <body>
-<div dir="rtl" class="page" style=" box-sizing: border-box; background: #FAF6F0; color: #24201D; font-family: Heebo, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
+<div dir="rtl" class="page" id="main" style=" box-sizing: border-box; background: #FAF6F0; color: #24201D; font-family: Heebo, 'Segoe UI', sans-serif; display: flex; flex-direction: column">
 
 <header style="display: flex; justify-content: space-between; align-items: center; padding: 28px 96px">
 <div style="font-family: Rubik, sans-serif; font-weight: 800; font-size: 28px; letter-spacing: -0.5px">תאוצה<span style="color: #EA6C4D">.</span> <span style="font-weight: 500; font-size: 20px">סטודיו</span></div>
@@ -60,7 +77,7 @@ img{max-width:100%}
 <a href="#funnel" style="color: #24201D; text-decoration: none">מה אנחנו בונים</a>
 <a href="#how" style="color: #24201D; text-decoration: none">איך עובדים</a>
 <a href="#community" style="color: #24201D; text-decoration: none">הקהילה</a>
-<a href="#" style="background: #24201D; color: #FAF6F0; text-decoration: none; padding: 14px 26px; border-radius: 999px; font-weight: 700">לשיחת היכרות</a>
+<a href="#lead" data-lead="call" style="background: #24201D; color: #FAF6F0; text-decoration: none; padding: 14px 26px; border-radius: 999px; font-weight: 700">לשיחת היכרות</a>
 </nav>
 </header>
 
@@ -70,7 +87,7 @@ img{max-width:100%}
 <h1 style="margin: 0; font-family: Rubik, sans-serif; font-weight: 800; font-size: 78px; line-height: 1.04; letter-spacing: -2px">יש לך משהו שווה ללמד.<br><span style="color: #EA6C4D">בוא נמלא לך את הכיתה.</span></h1>
 <p style="margin: 0; font-size: 22px; line-height: 1.6; color: #4A433D">תאוצה בונה לך את כל הדרך, מהמודעה הראשונה ועד הכיתה המלאה. כדי שתצא מהמעגל הקרוב ותיפתח לקהל הרחב.</p>
 <div style="display: flex; gap: 16px; align-items: center">
-<a href="#" style="background: #C4502F; color: #FFFFFF; text-decoration: none; padding: 22px 40px; border-radius: 999px; font-size: 20px; font-weight: 700">לשיחת היכרות</a>
+<a href="#lead" data-lead="call" style="background: #C4502F; color: #FFFFFF; text-decoration: none; padding: 22px 40px; border-radius: 999px; font-size: 20px; font-weight: 700">לשיחת היכרות</a>
 <a href="#funnel" style="color: #24201D; font-size: 18px; font-weight: 500; padding: 22px 12px">מה אנחנו בונים ←</a>
 </div>
 </div>
@@ -78,7 +95,7 @@ img{max-width:100%}
 <img src="images/hero.jpg" alt="מרצה מול כיתה מלאה בסדנה" style="position: absolute; top: 0; left: 0; width: 420px; height: 540px; object-fit: cover; border-radius: 28px; box-shadow: 0 24px 48px rgba(36,32,29,0.18)">
 <div style="position: absolute; top: 48px; right: 8px; background: #FFFFFF; border-radius: 999px; padding: 14px 22px; display: flex; gap: 10px; align-items: center; font-size: 17px; font-weight: 700; box-shadow: 0 12px 32px rgba(36,32,29,0.12)"><div style="width: 12px; height: 12px; border-radius: 999px; background: #14B8A6"></div><div>תלמיד חדש נרשם</div></div>
 <div style="position: absolute; bottom: 0; right: 0; width: 420px; box-sizing: border-box; background: #24201D; border-radius: 28px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 24px 48px rgba(36,32,29,0.22)">
-<div style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 700"><div style="display: flex; gap: 8px; align-items: center; color: #14B8A6"><div style="width: 10px; height: 10px; border-radius: 999px; background: #14B8A6"></div><div>שידור חי</div></div><div style="color: #D8D0C6">[שם הסדנה שלך]</div></div>
+<div style="display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 700"><div style="display: flex; gap: 8px; align-items: center; color: #14B8A6"><div style="width: 10px; height: 10px; border-radius: 999px; background: #14B8A6"></div><div>שידור חי</div></div><div style="color: #D8D0C6">סדנת זום</div></div>
 <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
 <div style="height: 64px; border-radius: 10px; background: #4A3F38; border: 2px solid #14B8A6; display: flex; align-items: flex-end; justify-content: center; overflow: hidden"><svg width="52" height="44" viewBox="0 0 40 34" aria-hidden="true"><circle cx="20" cy="12" r="7" fill="#C9B8A8"></circle><path d="M5 34c1-8 7-12 15-12s14 4 15 12z" fill="#C9B8A8"></path></svg></div>
 <div style="height: 64px; border-radius: 10px; background: #3E4A48; display: flex; align-items: flex-end; justify-content: center; overflow: hidden"><svg width="52" height="44" viewBox="0 0 40 34" aria-hidden="true"><circle cx="20" cy="12" r="7" fill="#9FD6CE"></circle><path d="M5 34c1-8 7-12 15-12s14 4 15 12z" fill="#9FD6CE"></path></svg></div>
@@ -228,28 +245,6 @@ img{max-width:100%}
 </div>
 </section>
 
-<section id="testimonials" style="background: #FFFFFF; padding: 120px 96px; margin-bottom: 96px; display: flex; flex-direction: column; gap: 48px">
-<div style="display: flex; flex-direction: column; gap: 14px">
-<div style="font-size: 16px; font-weight: 700; color: #C4502F">[מקום לעדויות – יתווסף בהמשך]</div>
-<h2 style="margin: 0; font-family: Rubik, sans-serif; font-weight: 700; font-size: 56px; letter-spacing: -1px">מה אומרים מי שעבדו איתנו</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px">
-<div style="border: 2px dashed #B8A999; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; box-sizing: border-box">
-<div style="font-family: Rubik, sans-serif; font-size: 64px; font-weight: 800; line-height: 0.6; color: #EA6C4D">״</div>
-<div style="font-size: 19px; line-height: 1.6; color: #5C544C; flex-grow: 1">[ציטוט קצר מהלקוח – תוצאה במילים שלו]</div>
-<div style="display: flex; gap: 14px; align-items: center"><div style="width: 56px; height: 56px; border-radius: 999px; background: #EADFD3"></div><div style="font-size: 16px; color: #5C544C">[שם · אקדמיה / קורס]</div></div>
-</div>
-<div style="border: 2px dashed #B8A999; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; box-sizing: border-box">
-<div style="font-family: Rubik, sans-serif; font-size: 64px; font-weight: 800; line-height: 0.6; color: #EA6C4D">״</div>
-<div style="font-size: 19px; line-height: 1.6; color: #5C544C; flex-grow: 1">[ציטוט קצר מהלקוח – תוצאה במילים שלו]</div>
-<div style="display: flex; gap: 14px; align-items: center"><div style="width: 56px; height: 56px; border-radius: 999px; background: #EADFD3"></div><div style="font-size: 16px; color: #5C544C">[שם · אקדמיה / קורס]</div></div>
-</div>
-<div style="border: 2px dashed #B8A999; border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 20px; min-height: 300px; box-sizing: border-box; background: #FAF6F0; align-items: center; justify-content: center; text-align: center">
-<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5C544C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M10 8.5l5 3.5-5 3.5z"></path></svg>
-<div style="font-size: 19px; line-height: 1.6; color: #5C544C">[עדות וידאו – 30-60 שניות]</div>
-</div>
-</div>
-</section>
 
 <section id="community" style="margin: 0 96px 96px; background: #24201D; color: #FAF6F0; border-radius: 32px; padding: 56px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: center; gap: 56px">
 <div style="display: flex; flex-direction: column; gap: 18px; align-items: flex-start; padding-right: 24px">
@@ -266,12 +261,12 @@ img{max-width:100%}
 <h2 style="margin: 0; font-family: Rubik, sans-serif; font-weight: 800; font-size: 60px; line-height: 1.05; color: #24201D; letter-spacing: -1px">מוכן לפתוח את העסק לקהל הרחב?</h2>
 <p style="margin: 0; font-size: 22px; color: #24201D">שיחה אחת, ונדע בדיוק מה הצעד הבא.</p>
 </div>
-<a href="#" style="flex-shrink: 0; background: #24201D; color: #FAF6F0; text-decoration: none; padding: 24px 44px; border-radius: 999px; font-size: 21px; font-weight: 700">לשיחת היכרות</a>
+<a href="#lead" data-lead="call" style="flex-shrink: 0; background: #24201D; color: #FAF6F0; text-decoration: none; padding: 24px 44px; border-radius: 999px; font-size: 21px; font-weight: 700">לשיחת היכרות</a>
 </section>
 
 <footer style="margin-top: auto; padding: 40px 96px; border-top: 1px solid #E5DDD2; display: flex; justify-content: space-between; font-size: 16px; color: #5C544C">
 <div>© תאוצה סטודיו · יובל לב</div>
-<div style="display: flex; gap: 32px"><a href="#" style="color: #5C544C">[וואטסאפ]</a><a href="#" style="color: #5C544C">[מייל]</a><a href="#" style="color: #5C544C">מדיניות פרטיות</a></div>
+<div style="display: flex; gap: 32px"><a href="#lead" data-lead="contact" style="color: #5C544C">צור קשר</a><a href="privacy.html" style="color: #5C544C">מדיניות פרטיות</a><a href="terms.html" style="color: #5C544C">תקנון</a><a href="accessibility.html" style="color: #5C544C">הצהרת נגישות</a></div>
 </footer>
 </div>
 </body>
