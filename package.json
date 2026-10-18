@@ -2,7 +2,7 @@
   "name": "teaocha-site",
   "version": "1.0.0",
   "private": true,
-  "description": "תאוצה סטודיו – teaocha.com",
+  "description": "תאוצה סטודיו – teocha.com",
   "scripts": {
     "start": "serve . -l tcp://0.0.0.0:${PORT:-3000}"
   },
