@@ -191,6 +191,19 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   body.lead-locked .float-cta{transform:translateY(150%)}
 }
 
+
+/* =========================================================
+   דסקטופ ≥ 901 – יותר אוויר בין סקשנים
+   ========================================================= */
+@media (min-width:901px){
+  section:not(.hero):not(.community-band):not(.final-cta):not(.join-band){padding-top:150px!important;padding-bottom:150px!important}
+  .engines{padding-top:170px!important;padding-bottom:170px!important}
+  .hero{padding-bottom:140px!important}
+  .community-band{margin-top:40px!important;margin-bottom:120px!important}
+  .final-cta{margin-bottom:150px!important}
+  .join-band{margin-top:40px!important;margin-bottom:40px!important}
+}
+
 /* ---------- כבוד להעדפת "הפחת תנועה" ---------- */
 @media (prefers-reduced-motion:reduce){
   .reveal{opacity:1!important;transform:none!important}
