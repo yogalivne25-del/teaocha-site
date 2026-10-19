@@ -199,7 +199,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
    דסקטופ ≥ 901 – יותר אוויר בין סקשנים
    ========================================================= */
 @media (min-width:901px){
-  section:not(.hero):not(.community-band):not(.final-cta):not(.join-band){padding-top:150px!important;padding-bottom:150px!important}
+  section:not(.hero):not(.community-band):not(.final-cta):not(.join-band):not(.photo-band){padding-top:150px!important;padding-bottom:150px!important}
   .engines{padding-top:170px!important;padding-bottom:170px!important}
   .hero{padding-bottom:140px!important}
   .community-band{margin-top:40px!important;margin-bottom:120px!important}
@@ -213,3 +213,21 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .hero::before,.hero::after,.float-chip,.float-chip>div,.zoom-card,.perks-card,.stamp,
   .btn-primary::after,.float-cta a::after{animation:none!important}
 }
+
+/* ---------- פס תמונה: כיתה מלאה ---------- */
+.photo-band img{transition:transform 1.8s cubic-bezier(.2,.7,.2,1)!important}
+.photo-band img.reveal{opacity:1;transform:scale(1.08)}
+.photo-band img.reveal.in{transform:scale(1)}
+.photo-band-shade.reveal{opacity:1;transform:none}
+@media (max-width:1100px){ .photo-band-text{left:32px!important;right:32px!important} }
+@media (min-width:901px){ section.photo-band{padding:0!important} .photo-band-text{max-width:680px!important} .photo-band h2{white-space:nowrap} }
+@media (max-width:760px){
+  section.photo-band{height:auto!important;aspect-ratio:1/1;padding:0!important;margin:12px 0}
+  .photo-band img{object-position:50% 30%!important}
+  .photo-band-shade{background:linear-gradient(to top,rgba(36,32,29,.92) 0%,rgba(36,32,29,.45) 40%,rgba(36,32,29,0) 65%)!important}
+  .photo-band-text{left:20px!important;right:20px!important;bottom:28px!important;max-width:none!important;gap:10px!important}
+  .photo-band-text>div:first-child{font-size:13px!important;padding:6px 12px!important}
+  .photo-band h2{font-size:34px!important}
+  .photo-band p{font-size:16px!important}
+}
+@media (prefers-reduced-motion:reduce){ .photo-band img{transform:none!important;transition:none!important} }
