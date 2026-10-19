@@ -59,7 +59,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   h2{font-size:31px!important;line-height:1.15!important;letter-spacing:-.5px!important}
   h3{font-size:23px!important;line-height:1.25!important}
   p{font-size:17px!important;line-height:1.65!important}
-  section{padding:64px 20px!important;gap:28px!important}
+  section{padding:84px 20px!important;gap:34px!important}
 
   /* --- הדר: דביק, זכוכית, קומפקטי --- */
   .site-header{position:sticky;top:0;z-index:60;padding:10px 16px!important;
@@ -73,7 +73,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .nav-cta{padding:0 16px!important;min-height:44px;display:inline-flex!important;align-items:center;font-size:14px!important;white-space:nowrap;line-height:1.2}
 
   /* --- פתיח --- */
-  .hero{position:relative;overflow:hidden;padding:40px 20px 72px!important;gap:44px!important}
+  .hero{position:relative;overflow:hidden;padding:40px 20px 92px!important;gap:48px!important}
   .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);z-index:0;pointer-events:none;animation:tz-drift 14s ease-in-out infinite}
   .hero::before{width:260px;height:260px;background:rgba(234,108,77,.28);top:-60px;left:-90px}
   .hero::after{width:220px;height:220px;background:rgba(20,184,166,.20);top:340px;right:-110px;animation-delay:-6s}
@@ -124,7 +124,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .compare-card.is-after>div:not(:first-child)::before{background:#EA6C4D}
 
   /* --- שני מנועים --- */
-  .engines{padding-top:72px!important;padding-bottom:72px!important}
+  .engines{padding-top:92px!important;padding-bottom:92px!important}
   .engines-chart{padding:18px!important;border-radius:24px!important;gap:12px!important}
   .engines-chart>div:first-child>div:first-child>div:last-child{font-size:21px!important}
   .engines-grid{gap:14px!important}
@@ -149,11 +149,11 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .how-photo{border-radius:24px!important}
 
   /* --- קהילה + CTA סופי --- */
-  .community-band{margin:0 14px 28px!important;padding:28px 22px!important;gap:24px!important;border-radius:28px!important}
+  .community-band{margin:24px 14px 40px!important;padding:28px 22px!important;gap:24px!important;border-radius:28px!important}
   .community-band>div{padding-right:0!important;gap:14px!important}
   .community-band a{align-self:stretch;text-align:center;padding:16px!important;font-size:18px!important}
   .community-photo{aspect-ratio:4/3!important;border-radius:18px!important}
-  .final-cta{margin:0 14px 32px!important;padding:36px 24px!important;gap:24px!important;border-radius:28px!important;position:relative;overflow:hidden}
+  .final-cta{margin:0 14px 48px!important;padding:36px 24px!important;gap:24px!important;border-radius:28px!important;position:relative;overflow:hidden}
   .final-cta::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.18);left:-70px;bottom:-90px;pointer-events:none}
   .final-cta a{align-self:stretch;text-align:center;padding:18px!important;font-size:18px!important;position:relative;z-index:1}
 
@@ -166,7 +166,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .inside>div:last-child>div{padding:24px!important;gap:10px!important;border-radius:22px!important}
   .fit>div:last-child{gap:12px!important}
   .fit>div:last-child>div{background:#FFFFFF;border-radius:16px;padding:14px 16px;font-size:16px!important;align-items:flex-start}
-  .join-band{margin:0 14px!important;padding:30px 22px!important;gap:24px!important;border-radius:28px!important}
+  .join-band{margin:24px 14px!important;padding:30px 22px!important;gap:24px!important;border-radius:28px!important}
   .join-band>div:last-child{padding:26px 22px!important;gap:12px!important;border-radius:22px!important}
   .join-band a{padding:18px!important;font-size:18px!important}
   .faq>div:last-child>div{padding:20px!important;border-radius:18px!important}
