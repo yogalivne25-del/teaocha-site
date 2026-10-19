@@ -30,7 +30,7 @@
       eyebrow: "קהילת מאיצים ונהנים",
       title: "לא צריך לעשות את זה לבד.",
       sub: "משאירים פרטים, ונשלח לך את כל מה שצריך כדי להצטרף.",
-      perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
+      perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "שיחת היכרות אישית עם יובל"],
       price: "₪50 לחודש · ביטול בכל עת",
       submit: "אני שייך/ת לקהילה הזו",
       doneTitle: "מעולה, את/ה כמעט בפנים!",
@@ -50,7 +50,7 @@
       eyebrow: "רגע, לפני שהולכים",
       title: "בואו לצמוח איתנו.",
       sub: "קהילת מאיצים ונהנים: שיעורים, מפגש שבועי ואנשים שהולכים באותו כיוון. משאירים פרטים, ונשלח לך את כל המידע.",
-      perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
+      perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "שיחת היכרות אישית עם יובל"],
       price: "₪50 לחודש · ביטול בכל עת",
       submit: "שלחו לי פרטים",
       doneTitle: "מעולה! הפרטים בדרך.",
@@ -122,7 +122,7 @@
     window.addEventListener("scroll", onScrollHeader, { passive: true }); onScrollHeader();
 
     /* הופעה עדינה של בלוקים בגלילה */
-    if (!reduce && "IntersectionObserver" in window) {
+    if (!reduce && "IntersectionObserver" in window && !document.body.hasAttribute("data-plain")) {
       var targets = document.querySelectorAll(
         "section:not(.hero) > *, .snap-card, .compare-card, .engine-card, .step-card, .engines-chart, .perks-card");
       var seen = new Set();
@@ -170,7 +170,8 @@
         : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>';
       var bar = document.createElement("div");
       bar.className = "float-cta kind-" + kind;
-      bar.innerHTML = '<a href="#lead" data-lead="' + kind + '">' + icon + "<span>" + label + "</span></a>";
+      var fhref = document.body.getAttribute("data-float-href");
+      bar.innerHTML = (fhref ? '<a href="' + fhref + '">' : '<a href="#lead" data-lead="' + kind + '">') + icon + "<span>" + label + "</span></a>";
       document.body.appendChild(bar);
       var hero = document.querySelector(".hero");
       var stopAt = document.querySelector(".final-cta, .join-band");
@@ -250,7 +251,7 @@
     var autoKind = isCommunityPage ? "exitCommunity" : "exit";
 
     function autoOpen(reason) {
-      if (CFG.AUTO_POPUPS === false) return;
+      if (CFG.AUTO_POPUPS === false || document.body.hasAttribute("data-plain")) return;
       if (store.get("localStorage", "tz_lead_done")) return;
       if (store.get("sessionStorage", "tz_popup_shown")) return;
       if (Date.now() - loadedAt < (CFG.MIN_SECONDS_BEFORE_AUTO || 8) * 1000) return;
@@ -364,6 +365,11 @@
       var v = VARIANTS[current];
       setText("lead-done-title", v.doneTitle); setText("lead-done-text", v.doneText);
       var actions = modal.querySelector(".lead-actions"); actions.innerHTML = "";
+      if (current === "community" || current === "exitCommunity") {
+        var q = document.createElement("a");
+        q.className = "lead-btn-primary"; q.href = "join.html"; q.textContent = "לשאלון ההצטרפות (2 דקות)";
+        actions.appendChild(q);
+      }
       if ((current === "community" || current === "exitCommunity") && CFG.COMMUNITY_PAYMENT_URL) {
         var pay = document.createElement("a");
         pay.className = "lead-btn-primary"; pay.href = CFG.COMMUNITY_PAYMENT_URL; pay.textContent = "להשלמת ההצטרפות · ₪50 לחודש";

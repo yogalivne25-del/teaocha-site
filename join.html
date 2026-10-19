@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>שאלון הצטרפות | קהילת מאיצים ונהנים</title>
+<meta name="description" content="שאלון קצר לפני ההצטרפות לקהילת מאיצים ונהנים ושיחת היכרות אישית.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#24201D">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&amp;family=Heebo:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/join.css">
+<script src="assets/config.js"></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/join.js" defer></script>
+</head>
+<body data-plain>
+<header class="join-header">
+  <a class="join-brand" href="community.html" aria-label="חזרה לעמוד הקהילה">
+    <img src="images/logo-mark.svg" alt="" width="36" height="36">
+    <span>תאוצה<b>.</b></span>
+  </a>
+  <div class="join-badge">קהילת מאיצים ונהנים · ₪50 לחודש</div>
+</header>
+
+<main id="main" class="join-main">
+  <div class="join-intro">
+    <p class="join-eyebrow">שאלון הצטרפות · 2 דקות</p>
+    <h1>בואו נכיר לפני שמתחילים.</h1>
+    <p class="join-lead">כמה שאלות קצרות, ואחריהן שיחת היכרות אישית איתי, יובל. ככה נדע בדיוק מאיפה להתחיל את/ה ואיך הקהילה תשרת אותך הכי טוב.</p>
+  </div>
+
+  <div class="join-progress" aria-hidden="true"><span id="join-bar"></span></div>
+  <p class="join-step-count" id="join-count" aria-live="polite"></p>
+
+  <form id="join-form" class="join-card" novalidate>
+    <!-- שלב 1 -->
+    <fieldset class="join-step" data-step="1">
+      <legend>קודם כל, איך קוראים לך?</legend>
+      <div class="jf"><label for="j-name">שם מלא</label><input id="j-name" name="name" autocomplete="name" required><span class="jf-err">איך קוראים לך?</span></div>
+      <div class="jf"><label for="j-phone">טלפון</label><input id="j-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required><span class="jf-err">צריך מספר טלפון תקין</span></div>
+      <div class="jf"><label for="j-email">אימייל</label><input id="j-email" name="email" type="email" autocomplete="email" dir="ltr" required><span class="jf-err">צריך כתובת אימייל תקינה</span></div>
+      <div class="hp" aria-hidden="true"><label for="j-web">אתר</label><input id="j-web" name="website" tabindex="-1" autocomplete="off"></div>
+    </fieldset>
+
+    <!-- שלב 2 -->
+    <fieldset class="join-step" data-step="2" hidden>
+      <legend>מה את/ה מלמד/ת?</legend>
+      <div class="choices" data-name="business" data-required="1">
+        <label><input type="radio" name="business" value="אקדמיה"><span>אקדמיה</span></label>
+        <label><input type="radio" name="business" value="קורס דיגיטלי"><span>קורס דיגיטלי</span></label>
+        <label><input type="radio" name="business" value="תוכנית העשרה"><span>תוכנית העשרה</span></label>
+        <label><input type="radio" name="business" value="הדרכה או אימון"><span>הדרכה או אימון</span></label>
+        <label><input type="radio" name="business" value="עוד לא התחלתי, רוצה לפתח קורס"><span>עוד לא התחלתי, רוצה לפתח קורס</span></label>
+      </div>
+      <span class="jf-err choices-err">בחר/י אפשרות אחת</span>
+      <div class="jf"><label for="j-field">באיזה תחום? <small>(במשפט אחד)</small></label><input id="j-field" name="field" placeholder="למשל: הדרכת הורים לגיל הרך"></div>
+    </fieldset>
+
+    <!-- שלב 3 -->
+    <fieldset class="join-step" data-step="3" hidden>
+      <legend>איפה העסק עומד היום?</legend>
+      <div class="choices" data-name="stage" data-required="1">
+        <label><input type="radio" name="stage" value="עוד לא מוכר/ת"><span>עוד לא מוכר/ת</span></label>
+        <label><input type="radio" name="stage" value="מוכר/ת מדי פעם"><span>מוכר/ת מדי פעם</span></label>
+        <label><input type="radio" name="stage" value="יש הכנסה קבועה, רוצה לגדול"><span>יש הכנסה קבועה, רוצה לגדול</span></label>
+        <label><input type="radio" name="stage" value="מלא/ה, רוצה להגדיל מחירים או קהל"><span>מלא/ה, רוצה להגדיל מחירים או קהל</span></label>
+      </div>
+      <span class="jf-err choices-err">בחר/י אפשרות אחת</span>
+    </fieldset>
+
+    <!-- שלב 4 -->
+    <fieldset class="join-step" data-step="4" hidden>
+      <legend>מה הכי תוקע אותך בשיווק כרגע?</legend>
+      <p class="hint">אפשר לבחור כמה</p>
+      <div class="choices multi" data-name="challenges" data-required="1">
+        <label><input type="checkbox" name="challenges" value="אין מספיק קהל"><span>אין מספיק קהל</span></label>
+        <label><input type="checkbox" name="challenges" value="קשה להפוך מתעניינים לתלמידים"><span>קשה להפוך מתעניינים לתלמידים</span></label>
+        <label><input type="checkbox" name="challenges" value="לא יודע/ת מה לפרסם"><span>לא יודע/ת מה לפרסם</span></label>
+        <label><input type="checkbox" name="challenges" value="אין זמן לשיווק"><span>אין זמן לשיווק</span></label>
+        <label><input type="checkbox" name="challenges" value="ניסיתי מודעות ולא עבד"><span>ניסיתי מודעות ולא עבד</span></label>
+        <label><input type="checkbox" name="challenges" value="קשה לי לתמחר"><span>קשה לי לתמחר</span></label>
+      </div>
+      <span class="jf-err choices-err">בחר/י לפחות אפשרות אחת</span>
+      <div class="jf"><label for="j-more">רוצה להוסיף משהו? <small>(לא חובה)</small></label><textarea id="j-more" name="challenge_more" rows="3"></textarea></div>
+    </fieldset>
+
+    <!-- שלב 5 -->
+    <fieldset class="join-step" data-step="5" hidden>
+      <legend>איפה הקהל שלך נמצא היום?</legend>
+      <p class="hint">אפשר לבחור כמה</p>
+      <div class="choices multi" data-name="channels">
+        <label><input type="checkbox" name="channels" value="אינסטגרם"><span>אינסטגרם</span></label>
+        <label><input type="checkbox" name="channels" value="פייסבוק"><span>פייסבוק</span></label>
+        <label><input type="checkbox" name="channels" value="טיקטוק"><span>טיקטוק</span></label>
+        <label><input type="checkbox" name="channels" value="יוטיוב"><span>יוטיוב</span></label>
+        <label><input type="checkbox" name="channels" value="לינקדאין"><span>לינקדאין</span></label>
+        <label><input type="checkbox" name="channels" value="וואטסאפ וקבוצות"><span>וואטסאפ וקבוצות</span></label>
+        <label><input type="checkbox" name="channels" value="רשימת תפוצה במייל"><span>רשימת תפוצה במייל</span></label>
+        <label><input type="checkbox" name="channels" value="עוד אין לי קהל"><span>עוד אין לי קהל</span></label>
+      </div>
+    </fieldset>
+
+    <!-- שלב 6 -->
+    <fieldset class="join-step" data-step="6" hidden>
+      <legend>מה הכי חשוב לך שיקרה ב-3 החודשים הקרובים?</legend>
+      <div class="jf"><label for="j-goal" class="sr-only">המטרה שלך</label><textarea id="j-goal" name="goal" rows="4" placeholder="למשל: למלא מחזור של 20 משתתפות, להשיק קורס דיגיטלי ראשון..." required></textarea><span class="jf-err">כמה מילים, שנבין לאן רוצים להגיע</span></div>
+      <p class="q-sub">כמה זמן בשבוע תוכל/י להקדיש לזה?</p>
+      <div class="choices" data-name="time">
+        <label><input type="radio" name="time" value="פחות משעה"><span>פחות משעה</span></label>
+        <label><input type="radio" name="time" value="1–3 שעות"><span>1 עד 3 שעות</span></label>
+        <label><input type="radio" name="time" value="יותר מ-3 שעות"><span>יותר מ-3 שעות</span></label>
+      </div>
+    </fieldset>
+
+    <!-- שלב 7 -->
+    <fieldset class="join-step" data-step="7" hidden>
+      <legend>מתי נוח לך לשיחת ההיכרות איתי?</legend>
+      <p class="hint">שיחה קצרה בזום או בטלפון. אפשר לבחור כמה</p>
+      <div class="choices multi" data-name="call_time" data-required="1">
+        <label><input type="checkbox" name="call_time" value="בוקר (9:00–12:00)"><span>בוקר <small>9:00–12:00</small></span></label>
+        <label><input type="checkbox" name="call_time" value="צהריים (12:00–16:00)"><span>צהריים <small>12:00–16:00</small></span></label>
+        <label><input type="checkbox" name="call_time" value="ערב (19:00–21:00)"><span>ערב <small>19:00–21:00</small></span></label>
+      </div>
+      <span class="jf-err choices-err">בחר/י לפחות זמן אחד</span>
+      <label class="consent"><input type="checkbox" name="marketing" value="כן"><span>אשמח לקבל מתאוצה תוכן, טיפים ועדכונים במייל ובוואטסאפ. אפשר להסיר בכל רגע.</span></label>
+      <p class="fine">השליחה כפופה ל<a href="privacy.html">מדיניות הפרטיות</a> ול<a href="terms.html">תקנון</a>.</p>
+    </fieldset>
+
+    <p class="join-error" id="join-error" role="alert" hidden>משהו השתבש בשליחה. נסו שוב בעוד רגע.</p>
+
+    <div class="join-nav">
+      <button type="button" class="btn-back" id="join-back">חזרה</button>
+      <button type="submit" class="btn-next" id="join-next">המשך</button>
+    </div>
+  </form>
+
+  <!-- סיום -->
+  <section class="join-card join-done" id="join-done" hidden tabindex="-1" aria-labelledby="done-title">
+    <div class="done-check" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h2 id="done-title">מעולה, <span id="done-name"></span>! קיבלתי את התשובות.</h2>
+    <p>השלב הבא הוא שיחת היכרות קצרה איתי, יובל. אחזור אליך תוך יום עסקים לתאם, ובשיחה נבנה לך יחד את הצעד הראשון בקהילה.</p>
+    <ol class="done-steps">
+      <li class="is-done"><b>שאלון</b><span>הושלם</span></li>
+      <li><b>שיחת היכרות</b><span>אחזור אליך לתיאום</span></li>
+      <li><b>הצטרפות</b><span>₪50 לחודש · ביטול בכל עת</span></li>
+    </ol>
+    <div class="done-actions" id="done-actions"></div>
+  </section>
+</main>
+
+<footer class="join-footer">
+  <span>© תאוצה סטודיו · יובל לב</span>
+  <a href="privacy.html">מדיניות פרטיות</a><a href="terms.html">תקנון</a><a href="accessibility.html">הצהרת נגישות</a>
+</footer>
+</body>
+</html>
