@@ -20,7 +20,7 @@
     call: {
       eyebrow: "שיחת היכרות",
       title: "בוא נדבר על הצעד הבא.",
-      sub: "משאירים פרטים – וחוזרים אליך תוך יום עסקים לשיחה של 20 דקות. בלי עלות ובלי התחייבות.",
+      sub: "משאירים פרטים, וחוזרים אליך תוך יום עסקים לשיחה של 20 דקות. בלי עלות ובלי התחייבות.",
       submit: "תחזרו אליי",
       doneTitle: "קיבלנו! נדבר בקרוב.",
       doneText: "נחזור אליך תוך יום עסקים כדי לתאם שיחת היכרות."
@@ -29,7 +29,7 @@
       theme: "community",
       eyebrow: "קהילת מאיצים ונהנים",
       title: "לא צריך לעשות את זה לבד.",
-      sub: "משאירים פרטים – ונשלח לך את כל מה שצריך כדי להצטרף.",
+      sub: "משאירים פרטים, ונשלח לך את כל מה שצריך כדי להצטרף.",
       perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
       price: "₪50 לחודש · ביטול בכל עת",
       submit: "אני שייך לקהילה הזו",
@@ -49,7 +49,7 @@
       theme: "community",
       eyebrow: "רגע לפני שאתה הולך",
       title: "בוא תצמח איתנו.",
-      sub: "קהילת מאיצים ונהנים – שיעורים, מפגש שבועי ואנשים שהולכים באותו כיוון. משאירים פרטים ונשלח לך את כל הפרטים.",
+      sub: "קהילת מאיצים ונהנים: שיעורים, מפגש שבועי ואנשים שהולכים באותו כיוון. משאירים פרטים, ונשלח לך את כל המידע.",
       perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
       price: "₪50 לחודש · ביטול בכל עת",
       submit: "שלחו לי פרטים",
@@ -93,7 +93,7 @@
               '<select id="lead-type" name="business">' +
                 '<option value="">בחירה…</option>' +
                 '<option>אקדמיה</option><option>קורס דיגיטלי</option><option>תוכנית העשרה</option>' +
-                '<option>מדריך/ה או מאמן/ת</option><option>עוד לא התחלתי – רוצה לפתח קורס</option><option>אחר</option>' +
+                '<option>מדריך/ה או מאמן/ת</option><option>עוד לא התחלתי, רוצה לפתח קורס</option><option>אחר</option>' +
               '</select></div>' +
             '<div class="lead-hp" aria-hidden="true"><label for="lead-website">אתר</label><input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
             '<label class="lead-consent"><input type="checkbox" name="marketing" value="yes">' +
@@ -334,12 +334,12 @@
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
           body: JSON.stringify({
-            _subject: "ליד חדש מתאוצה – " + lead.interest + " – " + lead.name,
+            _subject: "ליד חדש מתאוצה: " + lead.interest + " | " + lead.name,
             _template: "table", _captcha: "false",
-            "שם": lead.name, "טלפון": lead.phone, "אימייל": lead.email || "—",
-            "מה מלמד/ת": lead.business || "—", "מתעניין/ת ב": lead.interest,
+            "שם": lead.name, "טלפון": lead.phone, "אימייל": lead.email || "לא צוין",
+            "מה מלמד/ת": lead.business || "לא צוין", "מתעניין/ת ב": lead.interest,
             "הסכמה לדיוור": lead.marketing_consent, "כפתור / טריגר": lead.button,
-            "עמוד": lead.page, "UTM": lead.utm || "—", "הגיע/ה מ": lead.referrer || "—",
+            "עמוד": lead.page, "UTM": lead.utm || "לא צוין", "הגיע/ה מ": lead.referrer || "לא צוין",
             "זמן": new Date().toLocaleString("he-IL", { timeZone: "Asia/Jerusalem" })
           })
         }).then(function (r) { if (!r.ok) throw new Error("mail " + r.status); }));
@@ -366,13 +366,13 @@
       var actions = modal.querySelector(".lead-actions"); actions.innerHTML = "";
       if ((current === "community" || current === "exitCommunity") && CFG.COMMUNITY_PAYMENT_URL) {
         var pay = document.createElement("a");
-        pay.className = "lead-btn-primary"; pay.href = CFG.COMMUNITY_PAYMENT_URL; pay.textContent = "להשלמת ההצטרפות – ₪50 לחודש";
+        pay.className = "lead-btn-primary"; pay.href = CFG.COMMUNITY_PAYMENT_URL; pay.textContent = "להשלמת ההצטרפות · ₪50 לחודש";
         actions.appendChild(pay);
       }
       if (CFG.WHATSAPP) {
         var wa = document.createElement("a");
         wa.className = "lead-btn-wa"; wa.target = "_blank"; wa.rel = "noopener";
-        wa.href = "https://wa.me/" + CFG.WHATSAPP + "?text=" + encodeURIComponent("היי, זה " + lead.name + " מהאתר של תאוצה – " + VARIANTS[current].eyebrow);
+        wa.href = "https://wa.me/" + CFG.WHATSAPP + "?text=" + encodeURIComponent("היי, זה " + lead.name + " מהאתר של תאוצה, לגבי " + VARIANTS[current].eyebrow);
         wa.textContent = "להמשיך בוואטסאפ";
         actions.appendChild(wa);
       }
