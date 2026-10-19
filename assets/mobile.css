@@ -115,7 +115,7 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .snap-hint span.on{width:22px;border-radius:6px;background:#14B8A6}
 
   /* --- היום / עם תאוצה --- */
-  .compare-grid{gap:14px!important}
+  .compare-grid{gap:20px!important}
   .compare-card{padding:24px!important;gap:12px!important;border-radius:22px!important}
   .compare-card>div{font-size:17px!important}
   .compare-card>div:not(:first-child){padding-right:22px;position:relative}
@@ -124,10 +124,13 @@ a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)
   .compare-card.is-after>div:not(:first-child)::before{background:#EA6C4D}
 
   /* --- שני מנועים --- */
-  .engines{padding-top:92px!important;padding-bottom:92px!important}
+  .engines{padding-top:92px!important;padding-bottom:92px!important;gap:56px!important}
+  .engines-head{gap:44px!important}
+  .how,.compare,.band-dark{gap:44px!important}
+  .community-band{gap:30px!important}
   .engines-chart{padding:18px!important;border-radius:24px!important;gap:12px!important}
   .engines-chart>div:first-child>div:first-child>div:last-child{font-size:21px!important}
-  .engines-grid{gap:14px!important}
+  .engines-grid{gap:20px!important}
   .engine-card{padding:24px!important;gap:12px!important;border-radius:24px!important}
   .engine-card>div:first-child>div:first-child{width:50px!important;height:50px!important;border-radius:15px!important}
   .engine-card>div:first-child>div:first-child svg{width:26px;height:26px}
