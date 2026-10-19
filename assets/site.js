@@ -19,7 +19,7 @@
   var VARIANTS = {
     call: {
       eyebrow: "שיחת היכרות",
-      title: "בוא נדבר על הצעד הבא.",
+      title: "בואו נדבר על הצעד הבא.",
       sub: "משאירים פרטים, וחוזרים אליך תוך יום עסקים לשיחה של 20 דקות. בלי עלות ובלי התחייבות.",
       submit: "תחזרו אליי",
       doneTitle: "קיבלנו! נדבר בקרוב.",
@@ -32,23 +32,23 @@
       sub: "משאירים פרטים, ונשלח לך את כל מה שצריך כדי להצטרף.",
       perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
       price: "₪50 לחודש · ביטול בכל עת",
-      submit: "אני שייך לקהילה הזו",
-      doneTitle: "מעולה, אתה כמעט בפנים!",
+      submit: "אני שייך/ת לקהילה הזו",
+      doneTitle: "מעולה, את/ה כמעט בפנים!",
       doneText: "ניצור איתך קשר בהקדם עם פרטי ההצטרפות."
     },
     exit: {
       theme: "exit",
-      eyebrow: "רגע לפני שאתה הולך",
+      eyebrow: "רגע, לפני שהולכים",
       title: "20 דקות שיכולות למלא לך את הכיתה.",
-      sub: "שיחת היכרות קצרה, בלי עלות ובלי התחייבות: נבין איפה העסק שלך עומד, ותצא עם כיוון ברור לצעד הבא.",
+      sub: "שיחת היכרות קצרה, בלי עלות ובלי התחייבות: נבין איפה העסק שלך עומד, ותצא/י עם כיוון ברור לצעד הבא.",
       submit: "אני רוצה את השיחה",
       doneTitle: "סגרנו! נדבר בקרוב.",
       doneText: "נחזור אליך תוך יום עסקים לתאם את השיחה."
     },
     exitCommunity: {
       theme: "community",
-      eyebrow: "רגע לפני שאתה הולך",
-      title: "בוא תצמח איתנו.",
+      eyebrow: "רגע, לפני שהולכים",
+      title: "בואו לצמוח איתנו.",
       sub: "קהילת מאיצים ונהנים: שיעורים, מפגש שבועי ואנשים שהולכים באותו כיוון. משאירים פרטים, ונשלח לך את כל המידע.",
       perks: ["גישה לכל השיעורים", "מאסטרמיינד קבוצתי בזום, פעם בשבוע", "קהילה של אנשים שבונים עסק כמוך"],
       price: "₪50 לחודש · ביטול בכל עת",
@@ -89,7 +89,7 @@
             '<div class="lead-field"><label for="lead-email">אימייל <span style="font-weight:400;color:#5C544C">(לא חובה)</span></label>' +
               '<input id="lead-email" name="email" type="email" autocomplete="email" dir="ltr" style="text-align:right">' +
               '<span class="lead-err">כתובת האימייל לא נראית תקינה</span></div>' +
-            '<div class="lead-field"><label for="lead-type">מה אתה מלמד?</label>' +
+            '<div class="lead-field"><label for="lead-type">מה את/ה מלמד/ת?</label>' +
               '<select id="lead-type" name="business">' +
                 '<option value="">בחירה…</option>' +
                 '<option>אקדמיה</option><option>קורס דיגיטלי</option><option>תוכנית העשרה</option>' +
@@ -98,7 +98,7 @@
             '<div class="lead-hp" aria-hidden="true"><label for="lead-website">אתר</label><input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
             '<label class="lead-consent"><input type="checkbox" name="marketing" value="yes">' +
               '<span>אשמח לקבל מתאוצה תוכן, טיפים ועדכונים במייל ובוואטסאפ. אפשר להסיר בכל רגע.</span></label>' +
-            '<p class="lead-form-error" role="alert">משהו השתבש בשליחה. נסה שוב בעוד רגע.</p>' +
+            '<p class="lead-form-error" role="alert">משהו השתבש בשליחה. נסו שוב בעוד רגע.</p>' +
             '<button type="submit" class="lead-submit"></button>' +
             '<p class="lead-note">השליחה כפופה ל<a href="privacy.html">מדיניות הפרטיות</a>.</p>' +
           '</form>' +
@@ -164,7 +164,7 @@
     /* כפתור צף בתחתית (מוצג רק במובייל דרך CSS) */
     var kind = document.body.getAttribute("data-float-cta");
     if (kind) {
-      var label = kind === "community" ? "אני שייך לקהילה הזו · ₪50" : "לשיחת היכרות של 20 דק'";
+      var label = kind === "community" ? "אני שייך/ת לקהילה הזו · ₪50" : "לשיחת היכרות של 20 דק'";
       var icon = kind === "community"
         ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
         : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>';
