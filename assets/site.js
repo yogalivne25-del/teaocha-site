@@ -112,6 +112,80 @@
       '</div>' +
     '</div>';
 
+  /* ---------- חוויית גלילה: הדר, הופעה, כרטיסים, כפתור צף ---------- */
+  function enhanceMobile() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    /* צל להדר בגלילה */
+    var header = document.querySelector(".site-header");
+    function onScrollHeader() { if (header) header.classList.toggle("is-scrolled", window.scrollY > 8); }
+    window.addEventListener("scroll", onScrollHeader, { passive: true }); onScrollHeader();
+
+    /* הופעה עדינה של בלוקים בגלילה */
+    if (!reduce && "IntersectionObserver" in window) {
+      var targets = document.querySelectorAll(
+        "section:not(.hero) > *, .snap-card, .compare-card, .engine-card, .step-card, .engines-chart, .perks-card");
+      var seen = new Set();
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+        });
+      }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+      Array.prototype.forEach.call(targets, function (el, i) {
+        if (seen.has(el) || el.closest(".snap-row") && !el.classList.contains("snap-card")) return;
+        seen.add(el);
+        el.classList.add("reveal");
+        el.style.transitionDelay = (el.classList.contains("snap-card") || el.classList.contains("step-card") || el.classList.contains("compare-card") || el.classList.contains("engine-card"))
+          ? (Array.prototype.indexOf.call(el.parentNode.children, el) * 90) + "ms" : "0ms";
+        io.observe(el);
+      });
+    }
+
+    /* נקודות לכרטיסים בגלילה אופקית */
+    Array.prototype.forEach.call(document.querySelectorAll(".snap-row"), function (row) {
+      var cards = row.querySelectorAll(".snap-card");
+      if (cards.length < 2) return;
+      var hint = document.createElement("div");
+      hint.className = "snap-hint"; hint.setAttribute("aria-hidden", "true");
+      for (var i = 0; i < cards.length; i++) hint.appendChild(document.createElement("span"));
+      row.parentNode.insertBefore(hint, row.nextSibling);
+      function mark() {
+        var mid = row.getBoundingClientRect().left + row.clientWidth / 2, best = 0, bestD = 1e9;
+        Array.prototype.forEach.call(cards, function (c, i) {
+          var r = c.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid);
+          if (d < bestD) { bestD = d; best = i; }
+        });
+        Array.prototype.forEach.call(hint.children, function (s, i) { s.classList.toggle("on", i === best); });
+      }
+      row.addEventListener("scroll", function () { window.requestAnimationFrame(mark); }, { passive: true });
+      mark();
+    });
+
+    /* כפתור צף בתחתית (מוצג רק במובייל דרך CSS) */
+    var kind = document.body.getAttribute("data-float-cta");
+    if (kind) {
+      var label = kind === "community" ? "אני שייך לקהילה הזו · ₪50" : "לשיחת היכרות של 20 דק'";
+      var icon = kind === "community"
+        ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
+        : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>';
+      var bar = document.createElement("div");
+      bar.className = "float-cta kind-" + kind;
+      bar.innerHTML = '<a href="#lead" data-lead="' + kind + '">' + icon + "<span>" + label + "</span></a>";
+      document.body.appendChild(bar);
+      var hero = document.querySelector(".hero");
+      var stopAt = document.querySelector(".final-cta, .join-band");
+      function onScrollCta() {
+        var pastHero = hero ? hero.getBoundingClientRect().bottom < 80 : window.scrollY > 500;
+        var atEnd = false;
+        if (stopAt) { var r = stopAt.getBoundingClientRect(); atEnd = r.top < window.innerHeight && r.bottom > 0; }
+        bar.classList.toggle("is-visible", pastHero && !atEnd);
+      }
+      window.addEventListener("scroll", onScrollCta, { passive: true });
+      window.addEventListener("resize", onScrollCta);
+      onScrollCta();
+    }
+  }
+
   function ready(fn) { if (document.readyState !== "loading") fn(); else document.addEventListener("DOMContentLoaded", fn); }
 
   ready(function () {
@@ -124,6 +198,7 @@
       document.body.insertBefore(skip, document.body.firstChild);
     }
 
+    enhanceMobile();
     document.body.insertAdjacentHTML("beforeend", html);
     var overlay = document.getElementById("lead-overlay");
     var modal = overlay.querySelector(".lead-modal");

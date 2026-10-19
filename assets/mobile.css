@@ -1,0 +1,199 @@
+/* =========================================================
+   תאוצה – רספונסיב + חוויית מובייל
+   (העיצוב בדסקטופ יושב inline בעמודים; כאן רק התאמות)
+   ========================================================= */
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{overflow-x:hidden;margin:0;background:#FAF6F0}
+.page{width:100%!important;max-width:1440px;margin:0 auto;min-height:100vh;height:auto!important;position:relative}
+img{max-width:100%}
+
+/* ---------- אנימציות משותפות ---------- */
+@keyframes tz-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes tz-float-tilt{0%,100%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-6px)}}
+@keyframes tz-drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-22px) scale(1.08)}}
+@keyframes tz-pulse{0%{box-shadow:0 0 0 0 rgba(20,184,166,.55)}100%{box-shadow:0 0 0 12px rgba(20,184,166,0)}}
+@keyframes tz-shine{0%{transform:translateX(120%)}60%,100%{transform:translateX(-220%)}}
+@keyframes tz-stamp{0%{transform:translate(-50%,-50%) rotate(-10deg) scale(1.6);opacity:0}70%{transform:translate(-50%,-50%) rotate(-10deg) scale(.94);opacity:1}100%{transform:translate(-50%,-50%) rotate(-10deg) scale(1)}}
+
+/* הופעה בגלילה (JS מוסיף .reveal / .in) */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- לחיצות נעימות ---------- */
+a,button{-webkit-tap-highlight-color:transparent}
+a[data-lead],.btn-primary,.nav-cta,.float-cta a{transition:transform .15s ease,box-shadow .2s ease,background-color .2s ease}
+a[data-lead]:active,.btn-primary:active,.float-cta a:active{transform:scale(.97)}
+
+/* ---------- כפתור צף (מובייל בלבד; JS יוצר אותו) ---------- */
+.float-cta{display:none}
+
+/* =========================================================
+   טאבלט ≤ 1100
+   ========================================================= */
+@media (max-width:1100px){
+  .site-header,section,.site-footer{padding-left:32px!important;padding-right:32px!important}
+  .community-band,.final-cta,.join-band{margin-left:24px!important;margin-right:24px!important}
+  .site-nav{gap:24px!important}
+}
+
+/* =========================================================
+   ≤ 900 – פריסה בטור אחד
+   ========================================================= */
+@media (max-width:900px){
+  [style*="grid-template-columns"]:not(.zoom-grid){grid-template-columns:1fr!important}
+  .site-nav a:not(.nav-cta){display:none}
+  .engines-head{flex-direction:column!important;align-items:stretch!important;gap:32px!important}
+  .engines-chart{width:100%!important}
+  .engines-chart svg{width:100%!important;height:auto!important}
+  .final-cta{flex-direction:column!important;align-items:flex-start!important}
+}
+
+/* =========================================================
+   מובייל ≤ 760 – העיצוב המלא
+   ========================================================= */
+@media (max-width:760px){
+
+  /* --- טיפוגרפיה ומרווחים --- */
+  h1{font-size:40px!important;line-height:1.08!important;letter-spacing:-1px!important}
+  h2{font-size:31px!important;line-height:1.15!important;letter-spacing:-.5px!important}
+  h3{font-size:23px!important;line-height:1.25!important}
+  p{font-size:17px!important;line-height:1.65!important}
+  section{padding:64px 20px!important;gap:28px!important}
+
+  /* --- הדר: דביק, זכוכית, קומפקטי --- */
+  .site-header{position:sticky;top:0;z-index:60;padding:10px 16px!important;
+    background:rgba(250,246,240,.82);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);
+    border-bottom:1px solid rgba(36,32,29,.06);transition:box-shadow .25s ease}
+  .site-header.is-scrolled{box-shadow:0 6px 24px rgba(36,32,29,.08)}
+  .brand{font-size:22px!important;white-space:nowrap;min-height:44px}
+  .brand img{width:34px!important;height:34px!important;margin-left:8px!important}
+  .brand span:last-child{font-size:15px!important;margin-right:5px!important}
+  .site-nav{gap:0!important}
+  .nav-cta{padding:0 16px!important;min-height:44px;display:inline-flex!important;align-items:center;font-size:14px!important;white-space:nowrap;line-height:1.2}
+
+  /* --- פתיח --- */
+  .hero{position:relative;overflow:hidden;padding:40px 20px 72px!important;gap:44px!important}
+  .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);z-index:0;pointer-events:none;animation:tz-drift 14s ease-in-out infinite}
+  .hero::before{width:260px;height:260px;background:rgba(234,108,77,.28);top:-60px;left:-90px}
+  .hero::after{width:220px;height:220px;background:rgba(20,184,166,.20);top:340px;right:-110px;animation-delay:-6s}
+  .hero>*{position:relative;z-index:1}
+  .hero-copy{gap:20px!important;align-items:stretch!important}
+  .eyebrow{align-self:flex-start;font-size:13px!important;padding:7px 14px!important;line-height:1.35!important}
+  .eyebrow-plain{padding:0!important}
+  .hero-ctas{flex-direction:column!important;align-items:stretch!important;gap:6px!important;margin-top:6px}
+  .hero-ctas .btn-primary{text-align:center;padding:18px 24px!important;font-size:18px!important;
+    box-shadow:0 14px 30px rgba(196,80,47,.28);position:relative;overflow:hidden}
+  .hero-ctas .btn-primary::after{content:"";position:absolute;inset:0;width:40%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);animation:tz-shine 4.5s ease-in-out infinite 1.2s}
+  .btn-link{text-align:center;padding:12px!important;font-size:16px!important}
+  .hero-ctas>div{text-align:center;font-size:15px!important}
+
+  /* תמונה + כרטיסים צפים */
+  .hero-visual{height:auto!important;display:flex;flex-direction:column;align-items:center}
+  .hero-photo{position:relative!important;inset:auto!important;width:100%!important;height:auto!important;aspect-ratio:4/4.4;border-radius:30px!important}
+  .float-chip{position:absolute!important;top:18px!important;right:14px!important;left:auto!important;
+    padding:10px 16px!important;font-size:14px!important;animation:tz-float 5s ease-in-out infinite}
+  .float-chip>div:first-child{animation:tz-pulse 1.8s ease-out infinite}
+  .zoom-card{position:relative!important;inset:auto!important;width:88%!important;margin-top:-86px;padding:16px!important;gap:10px!important;
+    border-radius:24px!important;animation:tz-float-tilt 7s ease-in-out infinite}
+  .zoom-grid{gap:6px!important}
+  .zoom-grid>div{height:44px!important;border-radius:8px!important}
+  .zoom-grid svg{width:36px;height:30px}
+  .zoom-card>div:first-child,.zoom-card>div:nth-child(3){font-size:12px!important}
+  .stamp{font-size:28px!important;padding:5px 16px!important;border-width:4px!important;border-radius:10px!important;
+    animation:tz-stamp .9s cubic-bezier(.3,1.4,.5,1) .5s both}
+
+  /* --- כרטיסים בגלילה אופקית (למי זה) --- */
+  .snap-row{display:flex!important;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px!important;
+    margin:0 -20px;padding:4px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .snap-row::-webkit-scrollbar{display:none}
+  .snap-card{flex:0 0 78%;scroll-snap-align:center;padding:26px!important;gap:10px!important;border-radius:22px!important}
+  .snap-card>div:first-child{font-size:34px!important}
+  .snap-hint{display:flex;justify-content:center;gap:6px;margin-top:-8px}
+  .snap-hint span{width:7px;height:7px;border-radius:50%;background:#5C544C;transition:all .25s ease}
+  .snap-hint span.on{width:22px;border-radius:6px;background:#14B8A6}
+
+  /* --- היום / עם תאוצה --- */
+  .compare-grid{gap:14px!important}
+  .compare-card{padding:24px!important;gap:12px!important;border-radius:22px!important}
+  .compare-card>div{font-size:17px!important}
+  .compare-card>div:not(:first-child){padding-right:22px;position:relative}
+  .compare-card>div:not(:first-child)::before{content:"";position:absolute;right:0;top:.62em;width:10px;height:10px;border-radius:50%;background:#D8CFC4}
+  .compare-card.is-after{box-shadow:0 18px 40px rgba(234,108,77,.16);transform:rotate(-1deg)}
+  .compare-card.is-after>div:not(:first-child)::before{background:#EA6C4D}
+
+  /* --- שני מנועים --- */
+  .engines{padding-top:72px!important;padding-bottom:72px!important}
+  .engines-chart{padding:18px!important;border-radius:24px!important;gap:12px!important}
+  .engines-chart>div:first-child>div:first-child>div:last-child{font-size:21px!important}
+  .engines-grid{gap:14px!important}
+  .engine-card{padding:24px!important;gap:12px!important;border-radius:24px!important}
+  .engine-card>div:first-child>div:first-child{width:50px!important;height:50px!important;border-radius:15px!important}
+  .engine-card>div:first-child>div:first-child svg{width:26px;height:26px}
+  .engine-card>div:first-child>div:last-child{font-size:17px!important}
+  .engine-card [style*="border-radius: 999px"]{font-size:14px!important;padding:7px 13px!important}
+  .engines>div:last-child{font-size:18px!important;line-height:1.5}
+
+  /* --- איך עובדים: ציר זמן --- */
+  .how-grid{gap:24px!important}
+  .how-grid>div:first-child{gap:0!important;position:relative;padding-right:30px}
+  .how-grid>div:first-child::before{content:"";position:absolute;right:9px;top:26px;bottom:26px;width:2px;
+    background:linear-gradient(#EA6C4D,#14B8A6);border-radius:2px}
+  .step-card{position:relative;border-top:0!important;border-radius:20px!important;padding:20px 22px!important;gap:8px!important;margin-bottom:14px;
+    box-shadow:0 8px 24px rgba(36,32,29,.06)}
+  .step-card::before{content:"";position:absolute;right:-28px;top:24px;width:16px;height:16px;border-radius:50%;
+    background:#FAF6F0;border:4px solid #EA6C4D;box-sizing:border-box}
+  .step-card:last-child{margin-bottom:0}
+  .step-card:last-child::before{border-color:#14B8A6}
+  .how-photo{border-radius:24px!important}
+
+  /* --- קהילה + CTA סופי --- */
+  .community-band{margin:0 14px 28px!important;padding:28px 22px!important;gap:24px!important;border-radius:28px!important}
+  .community-band>div{padding-right:0!important;gap:14px!important}
+  .community-band a{align-self:stretch;text-align:center;padding:16px!important;font-size:18px!important}
+  .community-photo{aspect-ratio:4/3!important;border-radius:18px!important}
+  .final-cta{margin:0 14px 32px!important;padding:36px 24px!important;gap:24px!important;border-radius:28px!important;position:relative;overflow:hidden}
+  .final-cta::after{content:"";position:absolute;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.18);left:-70px;bottom:-90px;pointer-events:none}
+  .final-cta a{align-self:stretch;text-align:center;padding:18px!important;font-size:18px!important;position:relative;z-index:1}
+
+  /* --- עמוד הקהילה --- */
+  .perks-card{padding:22px!important;gap:12px!important;border-radius:26px!important;animation:tz-float 7s ease-in-out infinite}
+  .perks-card>div:not(:first-child){padding:14px 16px!important;gap:12px!important}
+  .perks-card>div:not(:first-child)>div:first-child{font-size:22px!important}
+  .perks-card>div:not(:first-child)>div:last-child{font-size:16px!important}
+  .inside>div:last-child,.fit>div:last-child{gap:14px!important}
+  .inside>div:last-child>div{padding:24px!important;gap:10px!important;border-radius:22px!important}
+  .fit>div:last-child{gap:12px!important}
+  .fit>div:last-child>div{background:#FFFFFF;border-radius:16px;padding:14px 16px;font-size:16px!important;align-items:flex-start}
+  .join-band{margin:0 14px!important;padding:30px 22px!important;gap:24px!important;border-radius:28px!important}
+  .join-band>div:last-child{padding:26px 22px!important;gap:12px!important;border-radius:22px!important}
+  .join-band a{padding:18px!important;font-size:18px!important}
+  .faq>div:last-child>div{padding:20px!important;border-radius:18px!important}
+  .faq h3{font-size:19px!important}
+
+  /* --- פוטר --- */
+  .site-footer{flex-direction:column;gap:14px;padding:28px 20px 120px!important;font-size:15px!important;text-align:center;align-items:center}
+  .site-footer>div:last-child{flex-wrap:wrap;justify-content:center;gap:4px 18px!important}
+  .site-footer a{display:inline-block;padding:12px 4px}
+
+  /* --- כפתור צף בתחתית --- */
+  .float-cta{display:flex;position:fixed;z-index:70;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));
+    transform:translateY(150%);transition:transform .45s cubic-bezier(.2,1.2,.4,1);pointer-events:none}
+  .float-cta.is-visible{transform:none;pointer-events:auto}
+  .float-cta a{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:999px;
+    font:700 17px Heebo,sans-serif;text-decoration:none;position:relative;overflow:hidden;
+    box-shadow:0 16px 36px rgba(36,32,29,.28),0 0 0 6px rgba(250,246,240,.7)}
+  .float-cta a::after{content:"";position:absolute;inset:0;width:35%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);
+    animation:tz-shine 5s ease-in-out infinite 2s}
+  .float-cta.kind-call a{background:#C4502F;color:#FFFFFF}
+  .float-cta.kind-community a{background:#14B8A6;color:#24201D}
+  body.lead-locked .float-cta{transform:translateY(150%)}
+}
+
+/* ---------- כבוד להעדפת "הפחת תנועה" ---------- */
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  .hero::before,.hero::after,.float-chip,.float-chip>div,.zoom-card,.perks-card,.stamp,
+  .btn-primary::after,.float-cta a::after{animation:none!important}
+}
