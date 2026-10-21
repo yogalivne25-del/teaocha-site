@@ -99,12 +99,22 @@
       }).then(function (r) { if (!r.ok) throw new Error("mail " + r.status); }));
     }
     if (CFG.LEAD_ENDPOINT) {
-      d.interest = "שאלון הצטרפות לקהילה"; d.page = location.pathname; d.submitted_at = new Date().toISOString();
-      jobs.push(fetch(CFG.LEAD_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(d) }));
+      var lead = {};
+      Object.keys(d).forEach(function (k) { lead[k] = d[k]; });
+      lead.marketing_consent = d.marketing; lead.track = "questionnaire"; lead.button = "שאלון";
+      lead.interest = "שאלון הצטרפות לקהילה"; lead.page = location.pathname; lead.utm = location.search;
+      lead.submitted_at = new Date().toISOString();
+      jobs.push(fetch(CFG.LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) })
+        .then(function (r) { if (!r.ok) throw new Error("lead " + r.status); }));
     }
 
     next.disabled = true; errBox.hidden = true;
-    Promise.all(jobs).then(function () {
+    /* מספיק שאחד היעדים קיבל את התשובות */
+    var sent = new Promise(function (resolve, reject) {
+      var left = jobs.length; if (!left) return resolve();
+      jobs.forEach(function (j) { j.then(resolve, function () { if (--left === 0) reject(); }); });
+    });
+    sent.then(function () {
       try { if (window.fbq) window.fbq("track", "CompleteRegistration", { content_name: "community_questionnaire" }); } catch (x) {}
       try { localStorage.setItem("tz_lead_done", "1"); } catch (x) {}
       done(d);
@@ -117,7 +127,7 @@
     count.hidden = true;
     document.getElementById("done-name").textContent = d.name.split(" ")[0];
     var actions = document.getElementById("done-actions");
-    if (CFG.CALENDAR_URL) actions.insertAdjacentHTML("beforeend", '<a class="a-dark" href="' + CFG.CALENDAR_URL + '" target="_blank" rel="noopener">לקבוע את השיחה ביומן עכשיו</a>');
+    if (CFG.CALENDAR_URL) actions.insertAdjacentHTML("beforeend", '<a class="a-dark" href="' + (window.TZ_calLink ? window.TZ_calLink(d) : CFG.CALENDAR_URL).replace(/"/g, "&quot;") + '" target="_blank" rel="noopener">לקבוע את השיחה ביומן עכשיו</a>');
     if (CFG.COMMUNITY_PAYMENT_URL) actions.insertAdjacentHTML("beforeend", '<a class="a-primary" href="' + CFG.COMMUNITY_PAYMENT_URL + '">להצטרפות עכשיו · ₪50 לחודש</a>');
     if (CFG.WHATSAPP) actions.insertAdjacentHTML("beforeend", '<a class="a-ghost" target="_blank" rel="noopener" href="https://wa.me/' + CFG.WHATSAPP + "?text=" + encodeURIComponent("היי יובל, זה " + d.name + ". מילאתי את שאלון ההצטרפות לקהילה.") + '">לכתוב לי בוואטסאפ</a>');
     actions.insertAdjacentHTML("beforeend", '<a class="a-ghost" href="community.html">חזרה לעמוד הקהילה</a>');

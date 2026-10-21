@@ -19,3 +19,16 @@
 
 ## עמודים משפטיים
 טיוטות – להשלים את הפרטים בסוגריים `[...]` ולהעביר לעורך/ת דין.
+
+## מחבר סמוב (server.js)
+
+האתר רץ עכשיו על `node server.js`: מגיש את הקבצים (לפי serve.json) ומוסיף:
+
+- `POST /api/lead`: טפסי האתר → איש קשר ברשימה בסמוב (שיחה / קהילה / שאלון)
+- `POST /api/cal`: Webhook מ-Cal.com → "נקבעה שיחה", יציאה מרצפי הנדנוד
+- `GET /api/health`: מה מוגדר
+
+משתני סביבה ב-Railway: `SMOOVE_API_KEY`, `SMOOVE_LIST_CALL`, `SMOOVE_LIST_COMMUNITY`,
+`SMOOVE_LIST_QUESTIONNAIRE`, `SMOOVE_LIST_BOOKED`, `SMOOVE_LIST_CANCELLED` (לא חובה),
+`SMOOVE_FIELDS` (לא חובה, JSON של שדות מותאמים), `CAL_WEBHOOK_SECRET`.
+בלי מפתח סמוב האתר ממשיך לעבוד והלידים ממשיכים להגיע למייל.

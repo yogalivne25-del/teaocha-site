@@ -14,6 +14,16 @@
     window.fbq('track', 'PageView');
   }
   function track(event, data) { try { if (window.fbq) window.fbq('track', event, data || {}); } catch (e) {} }
+  /* לינק ליומן Cal עם שם ומייל ממולאים מראש */
+  function calLink(lead) {
+    try {
+      var u = new URL(CFG.CALENDAR_URL);
+      if (lead.name) u.searchParams.set("name", lead.name);
+      if (lead.email) u.searchParams.set("email", lead.email);
+      return u.toString();
+    } catch (e) { return CFG.CALENDAR_URL; }
+  }
+  window.TZ_calLink = calLink;
 
   /* ---------- תוכן הפופ-אפ לפי סוג הכפתור ---------- */
   var VARIANTS = {
@@ -324,6 +334,7 @@
         business: form.elements.business.value,
         marketing_consent: form.elements.marketing.checked ? "כן" : "לא",
         interest: VARIANTS[current].eyebrow, button: source,
+        track: (current === "community" || current === "exitCommunity") ? "community" : "call",
         page: location.pathname, referrer: document.referrer,
         utm: location.search, submitted_at: new Date().toISOString()
       };
@@ -346,11 +357,16 @@
           })
         }).then(function (r) { if (!r.ok) throw new Error("mail " + r.status); }));
       }
-      /* ליד ל-Google Sheet (אופציונלי) */
+      /* ליד לסמוב דרך המחבר באתר (/api/lead) */
       if (CFG.LEAD_ENDPOINT) {
-        jobs.push(fetch(CFG.LEAD_ENDPOINT, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(lead) }));
+        jobs.push(fetch(CFG.LEAD_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) })
+          .then(function (r) { if (!r.ok) throw new Error("lead " + r.status); }));
       }
-      var send = Promise.all(jobs);
+      /* מספיק שאחד היעדים קיבל את הליד */
+      var send = new Promise(function (resolve, reject) {
+        var left = jobs.length; if (!left) return resolve();
+        jobs.forEach(function (j) { j.then(resolve, function () { if (--left === 0) reject(); }); });
+      });
 
       send.then(function () {
         track("Lead", { content_name: current });
@@ -370,6 +386,12 @@
         var q = document.createElement("a");
         q.className = "lead-btn-primary"; q.href = "join.html"; q.textContent = "לשאלון ההצטרפות (2 דקות)";
         actions.appendChild(q);
+      }
+      if (current !== "community" && current !== "exitCommunity" && CFG.CALENDAR_URL) {
+        var cal = document.createElement("a");
+        cal.className = "lead-btn-primary"; cal.target = "_blank"; cal.rel = "noopener";
+        cal.href = calLink(lead); cal.textContent = "לבחור זמן לשיחה עכשיו";
+        actions.appendChild(cal);
       }
       if ((current === "community" || current === "exitCommunity") && CFG.COMMUNITY_PAYMENT_URL) {
         var pay = document.createElement("a");
