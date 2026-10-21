@@ -96,8 +96,8 @@
                 '<option>מדריך/ה או מאמן/ת</option><option>עוד לא התחלתי, רוצה לפתח קורס</option><option>אחר</option>' +
               '</select></div>' +
             '<div class="lead-hp" aria-hidden="true"><label for="lead-website">אתר</label><input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>' +
-            '<label class="lead-consent"><input type="checkbox" name="marketing" value="yes">' +
-              '<span>אשמח לקבל מתאוצה תוכן, טיפים ועדכונים במייל ובוואטסאפ. אפשר להסיר בכל רגע.</span></label>' +
+            '<div class="lead-field lead-consent-wrap"><label class="lead-consent"><input type="checkbox" name="marketing" value="yes" required>' +
+              '<span>אני מאשר/ת לקבל מתאוצה פניות, תוכן ועדכונים במייל, בוואטסאפ ובהודעות. אפשר להסיר בכל רגע.</span></label><span class="lead-err">צריך לאשר כדי שנוכל לחזור אליך</span></div>' +
             '<p class="lead-form-error" role="alert">משהו השתבש בשליחה. נסו שוב בעוד רגע.</p>' +
             '<button type="submit" class="lead-submit"></button>' +
             '<p class="lead-note">השליחה כפופה ל<a href="privacy.html">מדיניות הפרטיות</a>.</p>' +
@@ -315,8 +315,9 @@
       var email = form.elements.email.value.trim();
       var ok = fieldOk("name", name.length > 1);
       ok = fieldOk("phone", /^(\+?972|0)\d{8,9}$/.test(phone)) && ok;
+      ok = (function(){ var el=form.elements.marketing, w=el.closest(".lead-field"); w.classList.toggle("has-error", !el.checked); el.setAttribute("aria-invalid", el.checked?"false":"true"); return el.checked; })() && ok;
       ok = fieldOk("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) && ok;
-      if (!ok) { var bad = form.querySelector(".has-error input,.has-error select"); if (bad) bad.focus(); return; }
+      if (!ok) { var bad = form.querySelector(".has-error input:not([type=checkbox]),.has-error select") || form.querySelector(".has-error input"); if (bad) bad.focus(); return; }
 
       var lead = {
         name: name, phone: phone, email: email,

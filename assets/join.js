@@ -34,11 +34,14 @@
 
   function validate(step) {
     var ok = true, firstBad = null;
-    Array.prototype.forEach.call(step.querySelectorAll("input[required],textarea[required]"), function (el) {
+    Array.prototype.forEach.call(step.querySelectorAll("input[required]:not([type=checkbox]),textarea[required]"), function (el) {
       var v = el.value.trim(), good = v.length > 1;
       if (el.name === "phone") good = /^(\+?972|0)\d{8,9}$/.test(v.replace(/[^\d+]/g, ""));
       if (el.type === "email") good = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
       if (!fieldOk(el, good)) { ok = false; firstBad = firstBad || el; }
+    });
+    Array.prototype.forEach.call(step.querySelectorAll("input[type=checkbox][required]"), function (el) {
+      if (!fieldOk(el, el.checked)) { ok = false; firstBad = firstBad || el; }
     });
     Array.prototype.forEach.call(step.querySelectorAll(".choices[data-required]"), function (g) {
       var picked = g.querySelector("input:checked");

@@ -101,3 +101,7 @@ body::after{width:380px;height:380px;background:rgba(234,108,77,.16);bottom:-140
   .join-done h2{font-size:25px}
 }
 @media (prefers-reduced-motion:reduce){.join-step,.join-done,.done-check{animation:none}.join-progress span{transition:none}}
+
+.consent-wrap{margin-top:22px;margin-bottom:0}
+.consent-wrap .consent{margin-top:0}
+.consent-wrap .jf-err{margin-right:30px}

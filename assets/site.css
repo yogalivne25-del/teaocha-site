@@ -22,6 +22,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .lead-field .lead-err{display:none;font-size:14px;color:#B3261E}
 .lead-field.has-error input,.lead-field.has-error select{border-color:#B3261E}
 .lead-field.has-error .lead-err{display:block}
+.lead-consent-wrap .lead-err{margin-right:30px}
 .lead-consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:#4A433D}
 .lead-consent input{width:20px;height:20px;margin:2px 0 0;flex-shrink:0;accent-color:#C4502F}
 .lead-consent a{color:#4A433D}
