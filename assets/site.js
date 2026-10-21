@@ -86,9 +86,9 @@
             '<div class="lead-field"><label for="lead-phone">טלפון</label>' +
               '<input id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" required>' +
               '<span class="lead-err">צריך מספר טלפון תקין</span></div>' +
-            '<div class="lead-field"><label for="lead-email">אימייל <span style="font-weight:400;color:#5C544C">(לא חובה)</span></label>' +
-              '<input id="lead-email" name="email" type="email" autocomplete="email" dir="ltr" style="text-align:right">' +
-              '<span class="lead-err">כתובת האימייל לא נראית תקינה</span></div>' +
+            '<div class="lead-field"><label for="lead-email">אימייל</label>' +
+              '<input id="lead-email" name="email" type="email" autocomplete="email" dir="ltr" style="text-align:right" required>' +
+              '<span class="lead-err">צריך כתובת אימייל תקינה</span></div>' +
             '<div class="lead-field"><label for="lead-type">מה את/ה מלמד/ת?</label>' +
               '<select id="lead-type" name="business">' +
                 '<option value="">בחירה…</option>' +
@@ -315,7 +315,7 @@
       var email = form.elements.email.value.trim();
       var ok = fieldOk("name", name.length > 1);
       ok = fieldOk("phone", /^(\+?972|0)\d{8,9}$/.test(phone)) && ok;
-      ok = fieldOk("email", !email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) && ok;
+      ok = fieldOk("email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) && ok;
       if (!ok) { var bad = form.querySelector(".has-error input,.has-error select"); if (bad) bad.focus(); return; }
 
       var lead = {
