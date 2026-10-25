@@ -380,7 +380,13 @@
 
     function showDone(lead) {
       var v = VARIANTS[current];
-      setText("lead-done-title", v.doneTitle); setText("lead-done-text", v.doneText);
+      var isCommunity = current === "community" || current === "exitCommunity";
+      if (!isCommunity && CFG.CALENDAR_URL) {
+        setText("lead-done-title", "קיבלנו! עוד צעד אחד.");
+        setText("lead-done-text", "בחר/י עכשיו זמן שנוח לך לשיחת ההיכרות (20 דקות, בווידאו). השם והמייל כבר ממולאים.");
+      } else {
+        setText("lead-done-title", v.doneTitle); setText("lead-done-text", v.doneText);
+      }
       var actions = modal.querySelector(".lead-actions"); actions.innerHTML = "";
       if (current === "community" || current === "exitCommunity") {
         var q = document.createElement("a");
