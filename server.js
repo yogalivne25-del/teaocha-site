@@ -255,7 +255,7 @@ const server = http.createServer(async (req, res) => {
       return json(res, 404, { ok: false });
     }
     if (req.method !== "GET" && req.method !== "HEAD") { res.writeHead(405); return res.end(); }
-    if (/^\/(server\.js|serve\.json|package(-lock)?\.json|README\.md|\.git|\.env|node_modules|tools)(\/|$)/i.test(decodeURIComponent(url))) {
+    if (/^\/(server\.js|railway\.json|serve\.json|package(-lock)?\.json|README\.md|\.git|\.env|node_modules|tools)(\/|$)/i.test(decodeURIComponent(url))) {
       res.writeHead(404, { "Content-Type": "text/plain" }); return res.end("Not found");
     }
     return await handler(req, res, Object.assign({ public: ROOT }, SERVE_CONFIG));
