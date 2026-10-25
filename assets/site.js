@@ -382,8 +382,8 @@
       var v = VARIANTS[current];
       var isCommunity = current === "community" || current === "exitCommunity";
       if (!isCommunity && CFG.CALENDAR_URL) {
-        setText("lead-done-title", "קיבלנו! עוד צעד אחד.");
-        setText("lead-done-text", "מעבירים אותך ליומן לבחור זמן לשיחת ההיכרות (20 דקות, בווידאו). השם והמייל כבר ממולאים.");
+        setText("lead-done-title", "יאללה, נותנים גז!");
+        setText("lead-done-text", "בחר/י ביומן את היום ואת השעה, וניפגש לשיחת התנעה.");
         /* מעבר אוטומטי ליומן אחרי רגע קצר, כדי שהפיקסל יספיק להישלח */
         var go = calLink(lead);
         setTimeout(function () { window.location.href = go; }, 1800);
