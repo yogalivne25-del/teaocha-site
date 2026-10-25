@@ -21,7 +21,7 @@ window.TAUTZA_CONFIG = {
   COMMUNITY_PAYMENT_URL: "",
 
   // לינק לאירוע ב-Cal.com, למשל "https://cal.com/yuval/intro". מופיע אחרי פופ-אפ שיחה ובסוף השאלון, עם שם ומייל ממולאים
-  CALENDAR_URL: "",
+  CALENDAR_URL: "https://cal.com/yuval-livne-ynztcn/20min",
 
   // ----- פופ-אפים אוטומטיים (פעם אחת לביקור, לא מוצג למי שכבר השאיר פרטים) -----
   AUTO_POPUPS: true,            // false = מכבה את כל הטריגרים האוטומטיים
