@@ -383,7 +383,7 @@
       var isCommunity = current === "community" || current === "exitCommunity";
       if (!isCommunity && CFG.CALENDAR_URL) {
         setText("lead-done-title", "יאללה, נותנים גז!");
-        setText("lead-done-text", "בחר/י ביומן את היום ואת השעה, וניפגש לשיחת התנעה.");
+        setText("lead-done-text", "בחר/י ביומן את היום ואת השעה, וניפגש לשיחת היכרות.");
         /* מעבר אוטומטי ליומן אחרי רגע קצר, כדי שהפיקסל יספיק להישלח */
         var go = calLink(lead);
         setTimeout(function () { window.location.href = go; }, 1800);
