@@ -383,7 +383,10 @@
       var isCommunity = current === "community" || current === "exitCommunity";
       if (!isCommunity && CFG.CALENDAR_URL) {
         setText("lead-done-title", "קיבלנו! עוד צעד אחד.");
-        setText("lead-done-text", "בחר/י עכשיו זמן שנוח לך לשיחת ההיכרות (20 דקות, בווידאו). השם והמייל כבר ממולאים.");
+        setText("lead-done-text", "מעבירים אותך ליומן לבחור זמן לשיחת ההיכרות (20 דקות, בווידאו). השם והמייל כבר ממולאים.");
+        /* מעבר אוטומטי ליומן אחרי רגע קצר, כדי שהפיקסל יספיק להישלח */
+        var go = calLink(lead);
+        setTimeout(function () { window.location.href = go; }, 1800);
       } else {
         setText("lead-done-title", v.doneTitle); setText("lead-done-text", v.doneText);
       }
@@ -395,8 +398,8 @@
       }
       if (current !== "community" && current !== "exitCommunity" && CFG.CALENDAR_URL) {
         var cal = document.createElement("a");
-        cal.className = "lead-btn-primary"; cal.target = "_blank"; cal.rel = "noopener";
-        cal.href = calLink(lead); cal.textContent = "לבחור זמן לשיחה עכשיו";
+        cal.className = "lead-btn-primary";
+        cal.href = calLink(lead); cal.textContent = "לא עברת? לחץ/י כאן ליומן";
         actions.appendChild(cal);
       }
       if ((current === "community" || current === "exitCommunity") && CFG.COMMUNITY_PAYMENT_URL) {
