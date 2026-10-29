@@ -130,14 +130,14 @@
     if (CFG.CALENDAR_URL) {
       var go = window.TZ_calLink ? window.TZ_calLink(d) : CFG.CALENDAR_URL;
       var p = document.querySelector("#join-done > p");
-      if (p) p.textContent = "השלב הבא הוא שיחת היכרות קצרה איתי, יובל. מעבירים אותך עכשיו ליומן לבחור זמן שנוח לך.";
+      if (p) p.textContent = "השלב הבא הוא שיחת היכרות קצרה איתנו. מעבירים אותך עכשיו ליומן לבחור זמן שנוח לך.";
       var li = document.querySelector(".done-steps li:nth-child(2) span");
       if (li) li.textContent = "בוחרים זמן ביומן";
       actions.insertAdjacentHTML("beforeend", '<a class="a-dark" href="' + go.replace(/"/g, "&quot;") + '">לא עברת? לחץ/י כאן ליומן</a>');
       setTimeout(function () { window.location.href = go; }, 2500);
     }
     if (CFG.COMMUNITY_PAYMENT_URL) actions.insertAdjacentHTML("beforeend", '<a class="a-primary" href="' + CFG.COMMUNITY_PAYMENT_URL + '">להצטרפות עכשיו · ₪50 לחודש</a>');
-    if (CFG.WHATSAPP) actions.insertAdjacentHTML("beforeend", '<a class="a-ghost" target="_blank" rel="noopener" href="https://wa.me/' + CFG.WHATSAPP + "?text=" + encodeURIComponent("היי יובל, זה " + d.name + ". מילאתי את שאלון ההצטרפות לקהילה.") + '">לכתוב לי בוואטסאפ</a>');
+    if (CFG.WHATSAPP) actions.insertAdjacentHTML("beforeend", '<a class="a-ghost" target="_blank" rel="noopener" href="https://wa.me/' + CFG.WHATSAPP + "?text=" + encodeURIComponent("היי, זה " + d.name + ". מילאתי את שאלון ההצטרפות לקהילה.") + '">לכתוב לי בוואטסאפ</a>');
     actions.insertAdjacentHTML("beforeend", '<a class="a-ghost" href="community.html">חזרה לעמוד הקהילה</a>');
     var box = document.getElementById("join-done"); box.hidden = false; box.focus();
     window.scrollTo({ top: 0, behavior: "smooth" });
