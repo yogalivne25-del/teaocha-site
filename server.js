@@ -217,6 +217,21 @@ async function paypalSubscriptionStatus(id) {
   return { status: sub.status || "UNKNOWN", plan: sub.plan_id || "" };
 }
 
+async function paypalOrderStatus(id) {
+  const cid = env("PAYPAL_CLIENT_ID"), sec = env("PAYPAL_SECRET");
+  if (!cid || !sec) return null;
+  const base = env("PAYPAL_API") || "https://api-m.paypal.com";
+  const tok = await fetch(base + "/v1/oauth2/token", {
+    method: "POST",
+    headers: { Authorization: "Basic " + Buffer.from(cid + ":" + sec).toString("base64"), "Content-Type": "application/x-www-form-urlencoded" },
+    body: "grant_type=client_credentials"
+  }).then((r) => r.json());
+  if (!tok.access_token) throw new Error("paypal auth failed");
+  const o = await fetch(base + "/v2/checkout/orders/" + encodeURIComponent(id), { headers: { Authorization: "Bearer " + tok.access_token } }).then((r) => r.json());
+  const amt = (o.purchase_units && o.purchase_units[0] && o.purchase_units[0].amount) || {};
+  return { status: o.status || "UNKNOWN", currency: amt.currency_code || "", value: parseFloat(amt.value || "0") };
+}
+
 async function handleMomentumPaid(req, res) {
   if (!sameOrigin(req)) return json(res, 403, { ok: false });
   if (rateLimited(clientIp(req))) return json(res, 429, { ok: false });
@@ -224,24 +239,34 @@ async function handleMomentumPaid(req, res) {
   try { d = JSON.parse((await readBody(req)).toString("utf8")); } catch (e) { return json(res, e.status || 400, { ok: false }); }
   const email = clean(d && d.email, 200);
   const subId = clean(d && d.subscriptionID, 60);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !/^I-[A-Z0-9]{6,40}$/.test(subId)) return json(res, 400, { ok: false });
+  const orderId = clean(d && d.orderID, 60);
+  const isSub = /^I-[A-Z0-9]{6,40}$/.test(subId);
+  const isOrder = !isSub && /^[A-Z0-9]{10,30}$/.test(orderId);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || (!isSub && !isOrder)) return json(res, 400, { ok: false });
 
   let verified = "unverified";
   try {
-    const st = await paypalSubscriptionStatus(subId);
-    if (st) {
-      const okPlan = !env("PAYPAL_PLAN_ID") || st.plan === env("PAYPAL_PLAN_ID");
-      verified = (st.status === "ACTIVE" || st.status === "APPROVED") && okPlan ? "verified" : "FAILED " + st.status;
+    if (isSub) {
+      const st = await paypalSubscriptionStatus(subId);
+      if (st) {
+        const okPlan = !env("PAYPAL_PLAN_ID") || st.plan === env("PAYPAL_PLAN_ID");
+        verified = (st.status === "ACTIVE" || st.status === "APPROVED") && okPlan ? "verified" : "FAILED " + st.status;
+      }
+    } else {
+      const st = await paypalOrderStatus(orderId);
+      if (st) verified = st.status === "COMPLETED" && st.currency === "EUR" && st.value >= 200 ? "verified" : "FAILED " + st.status;
     }
   } catch (e) { log("paypal verify error:", e.message); verified = "verify error"; }
-  log("momentum paid:", email, subId, verified);
+  const payRef = isSub ? subId : orderId;
+  const plan = isSub ? "monthly" : "full";
+  log("momentum paid:", email, plan, payRef, verified);
   if (verified.startsWith("FAILED")) return json(res, 402, { ok: false });
 
   try {
     await smooveUpsert({
       email, name: clean(d.name, 120),
       subscribe: ids("SMOOVE_LIST_MOMENTUM_PAID"), unsubscribe: ids("SMOOVE_LIST_MOMENTUM"),
-      fields: { status: "Momentum: paid (" + verified + ")", paypal_subscription: subId },
+      fields: { status: "Momentum: paid " + plan + " (" + verified + ")", paypal_subscription: payRef },
       consent: true
     });
     return json(res, 200, { ok: true });

@@ -400,8 +400,8 @@ footer a{color:var(--muted)}
 <span class="pay-badge">Best value · Save €15</span>
 <p class="pay-name">Pay in full</p>
 <p class="pay-price">€222 <s>€237</s></p>
-<p class="pay-note">One payment by card, no account needed. Then you're all set for the 3 months.</p>
-<a class="btn" id="payFullBtn" href="#" rel="noopener">Pay €222 by card</a>
+<p class="pay-note">One payment, by card or PayPal. No account needed. Then you're all set for the 3 months.</p>
+<div id="paypalFull" style="margin-top:14px;min-height:110px"></div>
 </div>
 
 <div class="pay-opt">
@@ -503,11 +503,6 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
     document.getElementById("payTitle").textContent = "Thank you, " + lead.name.split(" ")[0] + ". How would you like to pay?";
     step.scrollIntoView({ behavior: "smooth", block: "start" });
     var link = document.getElementById("payLink"); link.href = C.MOMENTUM_PAYMENT_URL || "#";
-    if (C.MOMENTUM_FULL_PAY_URL) {
-      var fullBtn = document.getElementById("payFullBtn");
-      fullBtn.href = C.MOMENTUM_FULL_PAY_URL; document.getElementById("payFull").hidden = false;
-      fullBtn.addEventListener("click", function () { track("AddPaymentInfo", { content_name: "Momentum full", value: 222, currency: "EUR" }); });
-    }
     var fallback = function () { document.getElementById("payFallback").hidden = false; document.getElementById("paypalButtons").style.minHeight = "0"; };
     if (!C.MOMENTUM_PAYPAL_CLIENT_ID || !C.MOMENTUM_PAYPAL_PLAN_ID) { if (C.MOMENTUM_PAYMENT_URL) location.href = C.MOMENTUM_PAYMENT_URL; else fallback(); return; }
     var sc = document.createElement("script");
@@ -533,6 +528,40 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
       } catch (e) { fallback(); }
     };
     document.head.appendChild(sc);
+
+    /* One-time full payment (separate PayPal SDK instance, namespace paypalOnce) */
+    var price = Number(C.MOMENTUM_FULL_PRICE_EUR) || 0;
+    if (price > 0 && C.MOMENTUM_PAYPAL_CLIENT_ID) {
+      document.getElementById("payFull").hidden = false;
+      var so = document.createElement("script");
+      so.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(C.MOMENTUM_PAYPAL_CLIENT_ID) + "&currency=EUR&intent=capture";
+      so.setAttribute("data-namespace", "paypalOnce");
+      so.onerror = function () { document.getElementById("payFull").hidden = true; };
+      so.onload = function () {
+        try {
+          window.paypalOnce.Buttons({
+            style: { shape: "pill", color: "gold", layout: "vertical", label: "pay" },
+            createOrder: function (data, actions) {
+              return actions.order.create({
+                intent: "CAPTURE",
+                purchase_units: [{ description: "Momentum: Marketing for Therapists (full program)", custom_id: lead.email.slice(0, 120), amount: { currency_code: "EUR", value: price.toFixed(2) } }],
+                application_context: { shipping_preference: "NO_SHIPPING", brand_name: "Momentum Studio" }
+              });
+            },
+            onApprove: function (data, actions) {
+              return actions.order.capture().then(function (det) {
+                track("Purchase", { content_name: "Momentum full", value: price, currency: "EUR" });
+                var body = JSON.stringify({ email: lead.email, name: lead.name, orderID: det.id || data.orderID });
+                var doneW = false; var go = function () { if (!doneW) { doneW = true; goWelcome(det.id || data.orderID); } };
+                try { fetch("/api/momentum-paid", { method: "POST", headers: { "Content-Type": "application/json" }, body: body, keepalive: true }).then(go, go); } catch (e) { go(); }
+                setTimeout(go, 3000);
+              });
+            }
+          }).render("#paypalFull").catch(function () { document.getElementById("payFull").hidden = true; });
+        } catch (e) { document.getElementById("payFull").hidden = true; }
+      };
+      document.head.appendChild(so);
+    }
   }
 
   /* ---------- Registration → payment ---------- */
