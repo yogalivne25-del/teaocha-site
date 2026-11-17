@@ -59,7 +59,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 .cal svg{width:100%;height:auto;display:block}
 .cal-badge{position:absolute;left:-28px;bottom:-26px;background:var(--teal);color:var(--ink);border-radius:20px;padding:16px 22px;font:700 17px Heebo,sans-serif;box-shadow:0 14px 30px rgba(36,32,29,.18)}
 .hero-art{position:relative}
-.hero-ill{width:100%;height:auto;display:block}
+.hero-photo{width:100%;height:auto;display:block;border-radius:30px;box-shadow:0 24px 60px rgba(36,32,29,.18)}
+.hero-tag{position:absolute;left:-24px;bottom:-22px;display:flex;align-items:center;gap:10px;background:#14B8A6;color:#24201D;border-radius:18px;padding:14px 20px;font:700 17px Heebo,sans-serif;box-shadow:0 14px 30px rgba(36,32,29,.18)}
+@media (max-width:980px){.hero-tag{left:12px}}
 /* sections */
 section{padding:104px 0}
 .alt{background:#fff}
@@ -222,51 +224,8 @@ footer a{color:var(--muted)}
 </div>
 </div>
 <div class="hero-art">
-<svg class="hero-ill" viewBox="0 0 600 520" role="img" aria-label="A happy therapist next to her fully booked calendar">
-<circle cx="300" cy="270" r="240" fill="#FDE7E0"/>
-<circle cx="520" cy="80" r="46" fill="#D6F3EF"/>
-<g transform="translate(286 70)">
-<rect width="300" height="330" rx="26" fill="#FFFFFF"/>
-<rect width="300" height="64" rx="26" fill="#24201D"/>
-<rect y="40" width="300" height="24" fill="#24201D"/>
-<text x="24" y="41" font-family="Rubik, Arial, sans-serif" font-weight="800" font-size="22" fill="#FAF6F0">This week</text>
-<text x="276" y="41" text-anchor="end" font-family="Heebo, Arial, sans-serif" font-weight="700" font-size="15" fill="#14B8A6">FULLY BOOKED</text>
-<g font-family="Heebo, Arial, sans-serif" font-size="14" fill="#5C534C" text-anchor="middle"><text x="48" y="92">Mon</text><text x="102" y="92">Tue</text><text x="156" y="92">Wed</text><text x="210" y="92">Thu</text><text x="264" y="92">Fri</text></g>
-<g fill="#EA6C4D">
-<rect x="26" y="104" width="44" height="44" rx="10"/><rect x="80" y="104" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="134" y="104" width="44" height="44" rx="10"/><rect x="188" y="104" width="44" height="44" rx="10"/><rect x="242" y="104" width="44" height="44" rx="10" fill="#14B8A6"/>
-<rect x="26" y="158" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="80" y="158" width="44" height="44" rx="10"/><rect x="134" y="158" width="44" height="44" rx="10"/><rect x="188" y="158" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="242" y="158" width="44" height="44" rx="10"/>
-<rect x="26" y="212" width="44" height="44" rx="10"/><rect x="80" y="212" width="44" height="44" rx="10"/><rect x="134" y="212" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="188" y="212" width="44" height="44" rx="10"/><rect x="242" y="212" width="44" height="44" rx="10"/>
-<rect x="26" y="266" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="80" y="266" width="44" height="44" rx="10"/><rect x="134" y="266" width="44" height="44" rx="10"/><rect x="188" y="266" width="44" height="44" rx="10" fill="#14B8A6"/><rect x="242" y="266" width="44" height="44" rx="10"/>
-</g>
-<g fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-<path d="M37 126l7 7 14-15"/><path d="M91 126l7 7 14-15"/><path d="M145 126l7 7 14-15"/><path d="M199 126l7 7 14-15"/><path d="M253 126l7 7 14-15"/>
-<path d="M37 180l7 7 14-15"/><path d="M91 180l7 7 14-15"/><path d="M145 180l7 7 14-15"/><path d="M199 180l7 7 14-15"/><path d="M253 180l7 7 14-15"/>
-<path d="M37 234l7 7 14-15"/><path d="M91 234l7 7 14-15"/><path d="M145 234l7 7 14-15"/><path d="M199 234l7 7 14-15"/><path d="M253 234l7 7 14-15"/>
-<path d="M37 288l7 7 14-15"/><path d="M91 288l7 7 14-15"/><path d="M145 288l7 7 14-15"/><path d="M199 288l7 7 14-15"/><path d="M253 288l7 7 14-15"/>
-</g>
-</g>
-<g>
-<path d="M124 196C100 262 112 322 146 348L236 348C270 322 282 262 258 196Z" fill="#4A2E24"/>
-<path d="M70 520c0-110 40-170 120-170s120 60 120 170z" fill="#14B8A6"/>
-<path d="M160 352l30 64 30-64z" fill="#FAF6F0"/>
-<path d="M258 384c22-40 34-90 44-148" stroke="#14B8A6" stroke-width="44" stroke-linecap="round" fill="none"/>
-<circle cx="304" cy="220" r="23" fill="#E9B08A"/>
-<path d="M292 202c0-14 6-24 14-28" stroke="#E9B08A" stroke-width="12" stroke-linecap="round" fill="none"/>
-<rect x="172" y="300" width="36" height="56" rx="14" fill="#E9B08A"/>
-<ellipse cx="190" cy="250" rx="62" ry="70" fill="#F2C4A0"/>
-<path d="M126 252c-6-62 30-104 70-104s70 30 64 92c-20-30-50-44-84-46-16 14-34 34-50 58z" fill="#4A2E24"/>
-<circle cx="214" cy="150" r="30" fill="#4A2E24"/>
-<path d="M160 254q10-10 20 0" stroke="#24201D" stroke-width="5" stroke-linecap="round" fill="none"/>
-<path d="M204 254q10-10 20 0" stroke="#24201D" stroke-width="5" stroke-linecap="round" fill="none"/>
-<path d="M168 282q24 26 48 0z" fill="#9E3E22"/>
-<path d="M174 284q18 8 36 0" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" fill="none"/>
-<circle cx="154" cy="276" r="11" fill="#EA6C4D" opacity=".35"/>
-<circle cx="230" cy="276" r="11" fill="#EA6C4D" opacity=".35"/>
-<circle cx="128" cy="266" r="7" fill="#14B8A6"/>
-</g>
-<g fill="#EA6C4D"><path d="M392 30l6 16 16 6-16 6-6 16-6-16-16-6 16-6z"/><circle cx="250" cy="66" r="7"/></g>
-<g fill="#14B8A6"><path d="M90 120l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/><circle cx="580" cy="430" r="8"/></g>
-</svg>
+<img class="hero-photo" src="../images/momentum-hero.jpg" alt="A smiling therapist booking a new appointment in her clinic calendar on her laptop" width="1152" height="928" fetchpriority="high">
+<div class="hero-tag"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>This week: fully booked</div>
 </div>
 </div>
 </div>
