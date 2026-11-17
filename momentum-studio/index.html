@@ -116,6 +116,7 @@ section{padding:104px 0}
 .price s{font-size:30px;font-weight:500;color:#A89C90;margin-left:10px}
 .price-card ul{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:12px}
 .price-card li{display:flex;gap:12px;font-size:18px}
+.full-offer{margin-top:14px;display:inline-block;background:#14B8A6;color:#24201D;border-radius:999px;padding:8px 16px;font-size:16px}
 .guarantee{margin-top:28px;padding:20px 22px;border-radius:18px;background:#332D29;font-size:16px;color:#E8DED3}
 .form{background:#fff;border-radius:30px;padding:44px;box-shadow:0 24px 60px rgba(36,32,29,.1)}
 .form h3{font-size:32px;margin-bottom:8px}
@@ -131,6 +132,15 @@ section{padding:104px 0}
 .check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--coral-d);flex-shrink:0}
 .form .btn{width:100%;margin-top:14px}
 .form .small{font-size:14px;color:var(--muted);text-align:center;margin-top:14px}
+.pay-opt{border:1.5px solid var(--line);border-radius:22px;padding:24px;margin-top:18px;position:relative}
+.pay-best{border:2px solid var(--coral-d);background:#FFF8F5}
+.pay-badge{position:absolute;top:-14px;left:20px;background:var(--coral-d);color:#fff;font:700 14px Heebo,sans-serif;padding:6px 14px;border-radius:999px}
+.pay-name{font:700 18px Rubik,sans-serif;margin-top:4px}
+.pay-price{font:900 44px/1.1 Rubik,sans-serif;margin:6px 0}
+.pay-price s{font-size:22px;font-weight:500;color:var(--muted)}
+.pay-per{font-size:20px;font-weight:700}
+.pay-note{font-size:16px;color:var(--ink2)}
+.pay-best .btn{width:100%;margin-top:14px}
 .pay-step h3{margin-top:6px}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .form-msg{display:none;margin-top:14px;padding:14px 16px;border-radius:12px;font-size:16px}
@@ -348,6 +358,7 @@ footer a{color:var(--muted)}
 <p class="eyebrow" style="color:#14B8A6">Early-bird price</p>
 <p class="price">€79<small>/month</small><s>€127</s></p>
 <p style="color:#D9CFC4">Monthly payment, for 3 months. Then it stops, automatically.</p>
+<p class="full-offer">Or pay in full: <b>€222</b> and save €15</p>
 <ul>
 <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>12 live Zoom sessions + recordings</li>
 <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Personal mentoring in weeks 7 to 12</li>
@@ -376,17 +387,32 @@ footer a{color:var(--muted)}
 </div>
 <label class="check"><input type="checkbox" name="news"><span>Send me occasional marketing tips for therapists (you can unsubscribe anytime).</span></label>
 <button class="btn" type="submit" id="joinBtn">Continue to secure payment</button>
-<p class="small">€79/month for 3 months · Card or PayPal · 14-day full refund</p>
+<p class="small">€79/month × 3, or €222 in full · 14-day full refund</p>
 <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
 </form>
 
 <div class="form pay-step" id="payStep" hidden>
 <p class="eyebrow">Step 2 of 2</p>
-<h3 id="payTitle">Secure payment</h3>
-<p>€79/month for 3 months. Pay with PayPal or any debit or credit card. The payment stops automatically after the third month.</p>
-<div id="paypalButtons" style="margin-top:20px;min-height:150px"></div>
+<h3 id="payTitle">Choose how you'd like to pay</h3>
+<p>Both options include the full program and the 14-day full refund.</p>
+
+<div class="pay-opt pay-best" id="payFull" hidden>
+<span class="pay-badge">Best value · Save €15</span>
+<p class="pay-name">Pay in full</p>
+<p class="pay-price">€222 <s>€237</s></p>
+<p class="pay-note">One payment by card, no account needed. Then you're all set for the 3 months.</p>
+<a class="btn" id="payFullBtn" href="#" rel="noopener">Pay €222 by card</a>
+</div>
+
+<div class="pay-opt">
+<p class="pay-name">Monthly</p>
+<p class="pay-price">€79 <span class="pay-per">/month × 3</span></p>
+<p class="pay-note">With PayPal or card. Stops automatically after the third month.</p>
+<div id="paypalButtons" style="margin-top:14px;min-height:150px"></div>
 <p class="small" id="payFallback" hidden>The payment button did not load. <a id="payLink" href="#" target="_blank" rel="noopener">Open the secure PayPal page</a></p>
-<p class="small">14-day full refund · Questions? <a href="mailto:contact@teocha.com">contact@teocha.com</a></p>
+</div>
+
+<p class="small">Questions? <a href="mailto:contact@teocha.com">contact@teocha.com</a></p>
 </div>
 </div>
 </section>
@@ -400,7 +426,7 @@ footer a{color:var(--muted)}
 <details><summary>How much ad budget do I need?</summary><p>You can start small. We set a test budget that fits you and only grow what works. Ad budget is paid directly to Meta or Google and is not included in the price.</p></details>
 <details><summary>When are the sessions?</summary><p>Once a week, live on Zoom, at a time that works for Central European Time. The exact day and time is confirmed by email before we start.</p></details>
 <details><summary>What if I miss a session?</summary><p>Every session is recorded. Watch it when it suits you and bring your questions to the next live session.</p></details>
-<details><summary>How does payment work?</summary><p>€79 per month, for 3 months (€237 in total). The payment stops automatically after the third month. Nothing to cancel.</p></details>
+<details><summary>How does payment work?</summary><p>Two options: €79 per month for 3 months (€237 in total), which stops automatically after the third month, or one payment of €222 for the full program, saving €15.</p></details>
 <details><summary>What if it is not for me?</summary><p>You have 14 days for a full refund, no questions asked. Just reply to any of our emails.</p></details>
 <details><summary>When does it start?</summary><p>As soon as 10 therapists have joined. You will receive the start date and your Zoom link by email. If the group does not open, you are fully refunded.</p></details>
 <details><summary>Is it ethical to market therapy?</summary><p>Yes, when it is done with care. We include clear guidelines for marketing with integrity: no false promises, no pressure, full respect for client privacy.</p></details>
@@ -474,9 +500,14 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
   function showPay(lead) {
     var step = document.getElementById("payStep");
     form.hidden = true; step.hidden = false;
-    document.getElementById("payTitle").textContent = "Thank you, " + lead.name.split(" ")[0] + ". One last step.";
+    document.getElementById("payTitle").textContent = "Thank you, " + lead.name.split(" ")[0] + ". How would you like to pay?";
     step.scrollIntoView({ behavior: "smooth", block: "start" });
     var link = document.getElementById("payLink"); link.href = C.MOMENTUM_PAYMENT_URL || "#";
+    if (C.MOMENTUM_FULL_PAY_URL) {
+      var fullBtn = document.getElementById("payFullBtn");
+      fullBtn.href = C.MOMENTUM_FULL_PAY_URL; document.getElementById("payFull").hidden = false;
+      fullBtn.addEventListener("click", function () { track("AddPaymentInfo", { content_name: "Momentum full", value: 222, currency: "EUR" }); });
+    }
     var fallback = function () { document.getElementById("payFallback").hidden = false; document.getElementById("paypalButtons").style.minHeight = "0"; };
     if (!C.MOMENTUM_PAYPAL_CLIENT_ID || !C.MOMENTUM_PAYPAL_PLAN_ID) { if (C.MOMENTUM_PAYMENT_URL) location.href = C.MOMENTUM_PAYMENT_URL; else fallback(); return; }
     var sc = document.createElement("script");

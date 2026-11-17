@@ -26,6 +26,8 @@ window.TAUTZA_CONFIG = {
   // כפתור המנוי של PayPal שמוצג בדף אחרי ההרשמה (€79 × 3). ה-Client ID ציבורי, זה בסדר שהוא כאן.
   MOMENTUM_PAYPAL_CLIENT_ID: "BAAJK6YNlz0zL--byEGBaeVgOFvnXP8hdQKnJabx5qikq6lpD6TmDMaJg9lXrPUdD0ISbACdJ4bWkeMHQo",
   MOMENTUM_PAYPAL_PLAN_ID: "P-0UR84934S3235554VNL6EHPY",
+  // תשלום מלא בכרטיס (€222 במקום €237) – לינק תשלום מ-Payoneer. ריק = האפשרות לא מוצגת.
+  MOMENTUM_FULL_PAY_URL: "",
   // וואטסאפ אישי לעמוד Momentum בלבד (לא משפיע על שאר האתר)
   MOMENTUM_WHATSAPP: "972556884767",
 
