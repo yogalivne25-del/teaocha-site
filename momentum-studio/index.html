@@ -453,8 +453,8 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
   document.getElementById("ckNo").onclick = function () { decide("no"); };
   document.getElementById("cookieLink").onclick = function (e) { e.preventDefault(); banner.classList.add("show"); };
 
-  /* ---------- WhatsApp (number in config.js → WHATSAPP) ---------- */
-  var wa = (C.WHATSAPP || "").replace(/\D/g, "");
+  /* ---------- WhatsApp (number in config.js → MOMENTUM_WHATSAPP) ---------- */
+  var wa = (C.MOMENTUM_WHATSAPP || "").replace(/\D/g, "");
   if (wa) {
     var waUrl = "https://wa.me/" + wa + "?text=" + encodeURIComponent("Hello! I have a question about the Momentum program for therapists.");
     document.querySelectorAll(".js-wa, .js-wa-float").forEach(function (a) { a.href = waUrl; a.hidden = false; });
