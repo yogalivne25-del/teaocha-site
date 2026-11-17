@@ -531,6 +531,9 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
 
     /* One-time full payment (separate PayPal SDK instance, namespace paypalOnce) */
     var price = Number(C.MOMENTUM_FULL_PRICE_EUR) || 0;
+    /* Test mode: add ?testpay=1 to the URL -> full payment is €1 and is NOT marked as paid in Smoove */
+    var testPay = /[?&]testpay=1\b/.test(location.search);
+    if (testPay && price > 0) { price = 1; var pp = document.querySelector("#payFull .pay-price"); if (pp) pp.textContent = "€1 (test)"; }
     if (price > 0 && C.MOMENTUM_PAYPAL_CLIENT_ID) {
       document.getElementById("payFull").hidden = false;
       var so = document.createElement("script");
@@ -551,6 +554,7 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
             onApprove: function (data, actions) {
               return actions.order.capture().then(function (det) {
                 track("Purchase", { content_name: "Momentum full", value: price, currency: "EUR" });
+                if (testPay) { goWelcome("TEST-" + (det.id || data.orderID)); return; }
                 var body = JSON.stringify({ email: lead.email, name: lead.name, orderID: det.id || data.orderID });
                 var doneW = false; var go = function () { if (!doneW) { doneW = true; goWelcome(det.id || data.orderID); } };
                 try { fetch("/api/momentum-paid", { method: "POST", headers: { "Content-Type": "application/json" }, body: body, keepalive: true }).then(go, go); } catch (e) { go(); }
