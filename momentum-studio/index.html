@@ -108,6 +108,7 @@ section{padding:104px 0}
 .stat{background:var(--cream);border-radius:20px;padding:18px 24px}
 .stat b{display:block;font:900 32px Rubik,sans-serif;color:var(--coral-d);line-height:1.1}
 .stat span{font-size:13px;color:var(--ink2)}
+.fun{margin-top:18px;font-size:15px;color:var(--muted);font-style:italic}
 /* pricing + form */
 .join{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 .price-card{background:var(--ink);color:var(--cream);border-radius:30px;padding:44px}
@@ -191,7 +192,7 @@ footer a{color:var(--muted)}
   .final h2{font-size:40px}
   .quote{font-size:24px}
   section{padding:72px 0}
-  .about img{max-width:360px}
+  .about img{max-width:324px;height:auto;aspect-ratio:4/5;object-position:50% 30%}
   .incl{grid-template-columns:1fr}
   .cal-badge{left:12px;bottom:-22px}
   .bonus{flex-direction:column;align-items:flex-start}
@@ -343,11 +344,13 @@ footer a{color:var(--muted)}
 <h2>Hi, I'm Yuval.</h2>
 <p class="lede">I've spent over a decade in marketing and sales. I headed marketing for a Nasdaq-listed company with over $100M in sales, and today I teach marketing to more than 150 students at an online academy.</p>
 <p class="lede">Along the way I kept seeing the same thing: the most gifted therapists often had the emptiest calendars. Not because they weren't good, but because no one ever taught them how to be found. Momentum is my answer to that, done with care, and with love.</p>
+<p class="lede">I chose to focus on people who influence others. When I help a therapist grow, the good doesn't stop with her practice: it reaches every client she helps.</p>
 <div class="stats">
 <div class="stat"><b>10+</b><span>years in marketing and sales</span></div>
 <div class="stat"><b>$100M+</b><span>in sales, Nasdaq-listed company</span></div>
 <div class="stat"><b>150+</b><span>students learning with me</span></div>
 </div>
+<p class="fun">Fun fact: Tamara is my best student. Please don't tell the other 149.</p>
 </div>
 </div>
 </section>
@@ -433,7 +436,7 @@ footer a{color:var(--muted)}
 <div class="contact">
 <p>Still have a question? Talk to us:</p>
 <a class="chip" href="mailto:contact@teocha.com"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>contact@teocha.com</a>
-<a class="chip wa js-wa" href="#" target="_blank" rel="noopener" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.1L2 22l5-1.3A11 11 0 1 0 20.5 3.5ZM12 20.1a9 9 0 0 1-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A9.1 9.1 0 1 1 12 20.1Zm5-6.8c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.9 1.1c-.2.2-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.6.1-.2 0-.3 0-.5l-.9-2c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg>WhatsApp</a>
+<a class="chip wa js-wa" href="#" target="_blank" rel="noopener" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path transform="translate(7.2 7.2) scale(0.4)" fill="currentColor" stroke="none" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>WhatsApp</a>
 </div>
 </div>
 </div>
@@ -455,7 +458,7 @@ footer a{color:var(--muted)}
 </div>
 </footer>
 
-<a class="wa-float js-wa-float" href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.2 17.1L2 22l5-1.3A11 11 0 1 0 20.5 3.5ZM12 20.1a9 9 0 0 1-4.6-1.3l-.3-.2-3 .8.8-2.9-.2-.3A9.1 9.1 0 1 1 12 20.1Zm5-6.8c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.9 1.1c-.2.2-.3.2-.6.1a7.4 7.4 0 0 1-3.7-3.2c-.3-.5.3-.5.8-1.6.1-.2 0-.3 0-.5l-.9-2c-.2-.5-.4-.5-.6-.5h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.6-.3Z"/></svg></a>
+<a class="wa-float js-wa-float" href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path transform="translate(7.2 7.2) scale(0.4)" fill="#fff" stroke="none" d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
 <div class="sticky"><a class="btn" href="#join">Reserve my place · €79/month</a></div>
 
 <div class="cookie" id="cookie" role="dialog" aria-label="Cookie preferences">
