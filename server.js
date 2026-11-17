@@ -136,6 +136,7 @@ async function handleLead(req, res) {
   try { d = JSON.parse((await readBody(req)).toString("utf8")); } catch (e) { return json(res, e.status || 400, { ok: false }); }
   if (!d || typeof d !== "object") return json(res, 400, { ok: false });
   if (d.website) return json(res, 200, { ok: true }); /* בוט */
+  if (d.track === "momentum") return handleMomentum(d, res);
 
   const email = clean(d.email, 200);
   const phone = normalizePhone(d.phone);
@@ -165,6 +166,34 @@ async function handleLead(req, res) {
     return json(res, 200, { ok: true, skipped: !!r.skipped });
   } catch (e) {
     log("lead error:", e.message);
+    return json(res, 502, { ok: false });
+  }
+}
+
+/* ---------- Momentum (קורס באנגלית, לקוחות מאירופה) ----------
+ * טלפון בינלאומי ולא חובה, הסכמה לתנאים חובה, הסכמה לדיוור שיווקי בנפרד.
+ * רשימה בסמוב: SMOOVE_LIST_MOMENTUM */
+async function handleMomentum(d, res) {
+  const email = clean(d.email, 200);
+  const name = clean(d.name, 120);
+  const phone = clean(d.phone, 30).replace(/[^\d+]/g, "");
+  if (name.length < 2 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json(res, 400, { ok: false, error: "invalid" });
+  if (d.terms !== "yes") return json(res, 400, { ok: false, error: "terms" });
+  const utm = new URLSearchParams(clean(d.utm, 400).replace(/^\?/, ""));
+  const fields = {
+    country: clean(d.country, 60),
+    source: ["momentum", clean(d.page, 80)].filter(Boolean).join(" · "),
+    utm_source: utm.get("utm_source"), utm_campaign: utm.get("utm_campaign"), utm_medium: utm.get("utm_medium"),
+    status: "Momentum: registered, payment pending"
+  };
+  try {
+    const r = await smooveUpsert({
+      email, phone, name, subscribe: ids("SMOOVE_LIST_MOMENTUM"), fields,
+      consent: d.marketing_consent === "yes"
+    });
+    return json(res, 200, { ok: true, skipped: !!r.skipped });
+  } catch (e) {
+    log("momentum lead error:", e.message);
     return json(res, 502, { ok: false });
   }
 }
@@ -247,7 +276,7 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, {
           ok: true,
           smoove: !!env("SMOOVE_API_KEY"),
-          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED") },
+          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM") },
           fields: Object.keys(fieldMap()),
           calSecret: !!env("CAL_WEBHOOK_SECRET")
         });

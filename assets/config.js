@@ -20,6 +20,10 @@ window.TAUTZA_CONFIG = {
   // לינק לדף התשלום של הקהילה (₪50 לחודש). אם מוגדר – אחרי השארת פרטים בקהילה יופיע כפתור תשלום
   COMMUNITY_PAYMENT_URL: "",
 
+  // Momentum (עמוד /momentum-studio): לינק לתשלום המנוי ב-PayPal (€79 לחודש × 3).
+  // אם ריק – אחרי ההרשמה מופיעה הודעה שלינק התשלום יישלח במייל.
+  MOMENTUM_PAYMENT_URL: "",
+
   // לינק לאירוע ב-Cal.com, למשל "https://cal.com/yuval/intro". מופיע אחרי פופ-אפ שיחה ובסוף השאלון, עם שם ומייל ממולאים
   CALENDAR_URL: "https://cal.com/yuval-livne-ynztcn/20min",
 

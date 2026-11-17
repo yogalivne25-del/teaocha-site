@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Momentum: Marketing for Therapists | Momentum Studio</title>
+<meta name="description" content="A 3-month program for therapists in Europe: fill your practice, market with ease, and do it without an agency. Weekly live Zoom, personal mentoring. €79/month.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800;900&amp;family=Heebo:wght@400;500;700&amp;display=swap">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="icon" href="../favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<meta name="theme-color" content="#24201D">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_GB">
+<meta property="og:site_name" content="Momentum Studio">
+<meta property="og:title" content="A full practice, without handing it to an agency">
+<meta property="og:description" content="Momentum: a 3-month marketing program for therapists in Europe. Weekly live Zoom, personal mentoring, €79/month.">
+<meta property="og:url" content="https://www.teocha.com/momentum-studio/">
+<meta property="og:image" content="https://www.teocha.com/images/og.jpg">
+<script src="../assets/config.js"></script>
+<style>
+:root{--cream:#FAF6F0;--ink:#24201D;--ink2:#4A433D;--muted:#5C544C;--coral:#EA6C4D;--coral-d:#C4502F;--teal:#14B8A6;--teal-d:#0F766E;--line:#E7DED3;--white:#FFFFFF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Heebo,'Segoe UI',sans-serif;font-size:19px;line-height:1.6}
+a{color:var(--coral-d)}a:hover{color:#9E3E22}
+h1,h2,h3{font-family:Rubik,sans-serif;margin:0;letter-spacing:-.5px;line-height:1.08}
+p{margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+.skip{position:absolute;top:-60px;left:16px;background:var(--ink);color:var(--cream);padding:12px 18px;border-radius:12px;z-index:50}
+.skip:focus{top:16px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--coral-d);color:#fff;text-decoration:none;border:0;border-radius:999px;padding:20px 36px;font:700 19px Heebo,sans-serif;cursor:pointer;transition:background .15s}
+.btn:hover{background:#A9432A;color:#fff}
+.btn-dark{background:var(--ink)}.btn-dark:hover{background:#000}
+.eyebrow{font-size:15px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-d)}
+.lede{font-size:21px;color:var(--ink2)}
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;padding:24px 0}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink)}
+.brand img{width:44px;height:44px}
+.brand b{font:800 24px Rubik,sans-serif;display:block;line-height:1}
+.brand small{font-size:13px;color:var(--muted);letter-spacing:.08em}
+.top .btn{padding:14px 24px;font-size:16px}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding:64px 0 96px}
+.hero h1{font-size:68px;font-weight:900;margin:18px 0 24px}
+.hero h1 span{color:var(--coral)}
+.hero .lede+.lede{margin-top:14px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:18px;align-items:center;margin-top:32px}
+.price-note{font-size:16px;color:var(--muted)}
+.price-note b{color:var(--ink)}
+.cal{background:#fff;border-radius:30px;box-shadow:0 24px 60px rgba(36,32,29,.14);padding:28px 30px 32px;position:relative}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.cal-head b{font:800 22px Rubik,sans-serif}
+.cal-head span{font-size:15px;color:var(--muted)}
+.cal svg{width:100%;height:auto;display:block}
+.cal-badge{position:absolute;left:-28px;bottom:-26px;background:var(--teal);color:var(--ink);border-radius:20px;padding:16px 22px;font:700 17px Heebo,sans-serif;box-shadow:0 14px 30px rgba(36,32,29,.18)}
+/* sections */
+section{padding:104px 0}
+.alt{background:#fff}
+.dark{background:var(--ink);color:var(--cream)}
+.dark .lede{color:#D9CFC4}
+.sec-head{max-width:760px;display:flex;flex-direction:column;gap:16px;margin-bottom:52px}
+.sec-head h2{font-size:52px;font-weight:800}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{background:var(--cream);border-radius:24px;padding:36px;display:flex;flex-direction:column;gap:12px}
+.alt .card{background:var(--cream)}
+.card .num{font:900 40px Rubik,sans-serif;color:var(--coral)}
+.card h3{font-size:26px;font-weight:700}
+.card p{color:var(--ink2);font-size:18px}
+/* agency */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.vs-col{border-radius:26px;padding:40px}
+.vs-col.them{background:#332D29}
+.vs-col.you{background:var(--coral);color:var(--ink)}
+.vs-col h3{font-size:28px;margin-bottom:20px}
+.vs-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+.vs-col li{display:flex;gap:12px;font-size:18px;line-height:1.5}
+.vs-col li svg{flex-shrink:0;margin-top:3px}
+.quote{margin-top:48px;font:700 30px/1.3 Rubik,sans-serif;max-width:900px}
+.quote span{color:var(--coral)}
+/* program */
+.parts{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.part{background:#fff;border-radius:26px;padding:40px;box-shadow:0 10px 30px rgba(36,32,29,.06)}
+.part .tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 14px;border-radius:999px;margin-bottom:16px}
+.part h3{font-size:30px;margin-bottom:22px}
+.weeks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px}
+.weeks li{display:grid;grid-template-columns:76px 1fr;gap:12px;font-size:18px;line-height:1.45}
+.weeks li b{font:700 15px Rubik,sans-serif;color:var(--muted);padding-top:2px}
+.bonus{margin-top:24px;background:var(--teal);border-radius:26px;padding:32px 40px;display:flex;gap:24px;align-items:center}
+.bonus h3{font-size:28px}
+.bonus p{font-size:18px}
+.incl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 40px;margin-top:48px}
+.incl div{display:flex;gap:12px;font-size:19px}
+/* about */
+.about{display:grid;grid-template-columns:420px 1fr;gap:64px;align-items:center}
+.about img{width:100%;border-radius:30px;display:block;aspect-ratio:1/1;object-fit:cover}
+.about h2{font-size:48px;margin:12px 0 22px}
+.about p+p{margin-top:16px}
+.stats{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px}
+.stat{background:var(--cream);border-radius:20px;padding:18px 24px}
+.stat b{display:block;font:900 36px Rubik,sans-serif;color:var(--coral-d);line-height:1.1}
+.stat span{font-size:15px;color:var(--ink2)}
+/* pricing + form */
+.join{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.price-card{background:var(--ink);color:var(--cream);border-radius:30px;padding:44px}
+.price{font:900 88px/1 Rubik,sans-serif;margin:14px 0 6px}
+.price small{font-size:30px;font-weight:700}
+.price s{font-size:30px;font-weight:500;color:#A89C90;margin-left:10px}
+.price-card ul{list-style:none;padding:0;margin:28px 0 0;display:flex;flex-direction:column;gap:12px}
+.price-card li{display:flex;gap:12px;font-size:18px}
+.guarantee{margin-top:28px;padding:20px 22px;border-radius:18px;background:#332D29;font-size:16px;color:#E8DED3}
+.form{background:#fff;border-radius:30px;padding:44px;box-shadow:0 24px 60px rgba(36,32,29,.1)}
+.form h3{font-size:32px;margin-bottom:8px}
+.form>p{color:var(--ink2);font-size:17px;margin-bottom:24px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:15px;font-weight:700}
+.field input,.field select{height:54px;border:1.5px solid #D8CFC4;border-radius:14px;padding:0 16px;font:400 17px Heebo,sans-serif;color:var(--ink);background:#fff}
+.field input:focus,.field select:focus{border-color:var(--coral-d);outline:none;box-shadow:0 0 0 3px rgba(234,108,77,.2)}
+.field .err{display:none;font-size:14px;color:#B3261E}
+.field.bad input,.field.bad select{border-color:#B3261E}
+.field.bad .err{display:block}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.5;color:var(--ink2);margin:6px 0 4px}
+.check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--coral-d);flex-shrink:0}
+.form .btn{width:100%;margin-top:14px}
+.form .small{font-size:14px;color:var(--muted);text-align:center;margin-top:14px}
+.hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
+.form-msg{display:none;margin-top:14px;padding:14px 16px;border-radius:12px;font-size:16px}
+.form-msg.show{display:block}
+.form-msg.ok{background:#DDF4F0;color:#0B5E57}
+.form-msg.no{background:#FBE3DC;color:#8A2E17}
+/* faq */
+.faq{max-width:860px}
+.faq details{background:var(--cream);border-radius:18px;padding:22px 26px;margin-bottom:12px}
+.faq summary{font:700 20px Rubik,sans-serif;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--coral-d);font-size:26px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq details p{margin-top:12px;color:var(--ink2);font-size:18px}
+/* final */
+.final{text-align:center}
+.final h2{font-size:56px;font-weight:900;max-width:880px;margin:0 auto 20px}
+.final h2 span{color:var(--coral)}
+.final .lede{max-width:680px;margin:0 auto 32px}
+footer{padding:40px 0;border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center}
+footer a{color:var(--muted)}
+/* sticky mobile cta */
+.sticky{display:none}
+/* cookie */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;max-width:560px;margin:0 auto;background:var(--ink);color:var(--cream);border-radius:20px;padding:20px 22px;z-index:60;display:none;box-shadow:0 20px 50px rgba(0,0,0,.3);font-size:15px}
+.cookie.show{display:block}
+.cookie a{color:#F2957E}
+.cookie div{display:flex;gap:10px;margin-top:14px}
+.cookie button{border:0;border-radius:999px;padding:12px 20px;font:700 15px Heebo,sans-serif;cursor:pointer}
+.cookie .yes{background:var(--coral);color:var(--ink)}
+.cookie .no{background:#3A332D;color:var(--cream)}
+@media (max-width:980px){
+  .hero,.join,.about,.vs,.parts{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .hero{gap:56px;padding:32px 0 72px}
+  .hero h1{font-size:46px}
+  .sec-head h2,.about h2{font-size:38px}
+  .final h2{font-size:40px}
+  .quote{font-size:24px}
+  section{padding:72px 0}
+  .about img{max-width:360px}
+  .incl{grid-template-columns:1fr}
+  .cal-badge{left:12px;bottom:-22px}
+  .bonus{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .wrap{padding:0 20px}
+  body{font-size:17px}
+  .top .btn{display:none}
+  .hero h1{font-size:38px}
+  .lede{font-size:18px}
+  .price{font-size:68px}
+  .form,.price-card,.vs-col,.part{padding:28px}
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;padding:12px 16px;background:rgba(250,246,240,.96);border-top:1px solid var(--line);z-index:40}
+  .sticky .btn{width:100%;padding:16px}
+  footer{padding-bottom:96px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="wrap">
+<header class="top">
+<a class="brand" href="./"><img src="../images/logo-mark.svg" alt="" width="44" height="44"><span><b>Momentum Studio</b><small>BY TA'UTZA STUDIO</small></span></a>
+<a class="btn" href="#join">Reserve my place</a>
+</header>
+</div>
+
+<main id="main">
+<div class="wrap">
+<div class="hero">
+<div>
+<p class="eyebrow">A 3-month program for therapists in Europe</p>
+<h1>A full practice. <span>Without handing it to an agency.</span></h1>
+<p class="lede">Today, more than ever, you can bring clients to your practice yourself. Simply, elegantly, in your own voice.</p>
+<p class="lede">And here is the little secret of therapy practices: once your marketing is set up properly, it keeps working, with far less effort than you imagine.</p>
+<div class="hero-cta">
+<a class="btn" href="#join">Reserve my place</a>
+<p class="price-note"><b>€79/month</b> for 3 months · 14-day full refund</p>
+</div>
+</div>
+<div class="cal" aria-label="Illustration: a calendar filling up with sessions over 12 weeks">
+<div class="cal-head"><b>Your calendar</b><span>Week 1 → Week 12</span></div>
+<svg viewBox="0 0 496 312" aria-hidden="true">
+<g font-family="Heebo, sans-serif" font-size="17" fill="#5C534C"><text x="22" y="16">M</text><text x="92" y="16">T</text><text x="162" y="16">W</text><text x="232" y="16">T</text><text x="302" y="16">F</text><text x="372" y="16">S</text><text x="442" y="16">S</text></g>
+<g>
+<rect x="0" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="70" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="140" y="32" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="210" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="280" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="350" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="420" y="32" width="62" height="62" rx="12" fill="#F1EAE1"/>
+<rect x="0" y="102" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="70" y="102" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="140" y="102" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="210" y="102" width="62" height="62" rx="12" fill="#14B8A6"/><rect x="280" y="102" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="350" y="102" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="420" y="102" width="62" height="62" rx="12" fill="#F1EAE1"/>
+<rect x="0" y="172" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="70" y="172" width="62" height="62" rx="12" fill="#14B8A6"/><rect x="140" y="172" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="210" y="172" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="280" y="172" width="62" height="62" rx="12" fill="#14B8A6"/><rect x="350" y="172" width="62" height="62" rx="12" fill="#F1EAE1"/><rect x="420" y="172" width="62" height="62" rx="12" fill="#F1EAE1"/>
+<rect x="0" y="242" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="70" y="242" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="140" y="242" width="62" height="62" rx="12" fill="#14B8A6"/><rect x="210" y="242" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="280" y="242" width="62" height="62" rx="12" fill="#EA6C4D"/><rect x="350" y="242" width="62" height="62" rx="12" fill="#14B8A6"/><rect x="420" y="242" width="62" height="62" rx="12" fill="#F1EAE1"/>
+</g>
+</svg>
+<div class="cal-badge">From empty slots to a full calendar</div>
+</div>
+</div>
+</div>
+
+<section class="alt" id="why">
+<div class="wrap">
+<div class="sec-head">
+<p class="eyebrow">The question nobody asks</p>
+<h2>Why does marketing work for some therapists, and not for others?</h2>
+<p class="lede">Two therapists. Same training, same talent. One has a waiting list, the other an empty Tuesday. The difference is rarely the therapy. It is almost always these three things.</p>
+</div>
+<div class="grid3">
+<div class="card"><span class="num">01</span><h3>They know exactly who they serve</h3><p>Not "everyone who needs help". One person, one struggle, described so clearly that the right client thinks: "this is for me".</p></div>
+<div class="card"><span class="num">02</span><h3>They show up, consistently</h3><p>Not more content. A calm, steady rhythm that keeps them present when someone is finally ready to book.</p></div>
+<div class="card"><span class="num">03</span><h3>They make the next step easy</h3><p>One clear path from "I saw you" to "I booked a session". No guessing, no friction, no pressure.</p></div>
+</div>
+</div>
+</section>
+
+<section class="dark" id="agency">
+<div class="wrap">
+<div class="sec-head">
+<p class="eyebrow" style="color:#14B8A6">The truth about agencies</p>
+<h2>You no longer need an agency to fill your practice.</h2>
+<p class="lede">A practice does not need thousands of clients. It needs a few right ones, every month. Today, the tools to reach them are in your hands, and they are simpler than ever.</p>
+</div>
+<div class="vs">
+<div class="vs-col them">
+<h3>With an agency</h3>
+<ul>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A89C90" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>A monthly retainer that never ends</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A89C90" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>Someone else tries to tell your story</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A89C90" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>When you stop paying, everything stops</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A89C90" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>You never really understand what works</li>
+</ul>
+</div>
+<div class="vs-col you">
+<h3>With Momentum</h3>
+<ul>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>3 months, then it is yours, forever</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Your voice, your values, your clients</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Set it up once, then simply maintain it</li>
+<li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>You understand every euro you spend</li>
+</ul>
+</div>
+</div>
+<p class="quote">Marketing a practice is a bit like a good garden. <span>The work is in the planting.</span> After that, it mostly asks for a little attention.</p>
+</div>
+</section>
+
+<section id="program">
+<div class="wrap">
+<div class="sec-head">
+<p class="eyebrow">The program</p>
+<h2>12 weeks. Half learning, half doing.</h2>
+<p class="lede">One live Zoom session a week, all recorded. First we learn the method together. Then you launch your own marketing, with personal mentoring on every step.</p>
+</div>
+<div class="parts">
+<div class="part">
+<span class="tag" style="background:#FDE7E0;color:#9E3E22">Part 1 · Weeks 1 to 6</span>
+<h3>Learn</h3>
+<ul class="weeks">
+<li><b>Week 1</b><span>Why marketing works for some therapists, and not for others</span></li>
+<li><b>Week 2</b><span>Your ideal client and the message that speaks to them</span></li>
+<li><b>Week 3</b><span>Packaging your offer so people can say yes</span></li>
+<li><b>Week 4</b><span>Organic content you can actually keep up</span></li>
+<li><b>Week 5</b><span>Meta Ads: your first Facebook and Instagram campaign</span></li>
+<li><b>Week 6</b><span>Google Ads and Google Business Profile: be found by people searching right now</span></li>
+</ul>
+</div>
+<div class="part">
+<span class="tag" style="background:#D6F3EF;color:#0B5E57">Part 2 · Weeks 7 to 12</span>
+<h3>Do, with mentoring</h3>
+<ul class="weeks">
+<li><b>Week 7</b><span>Launch: landing page, lead form and intro call go live</span></li>
+<li><b>Week 8</b><span>Reading the numbers: what works, what to cut</span></li>
+<li><b>Week 9</b><span>Improving ads, keywords and creative from real results</span></li>
+<li><b>Week 10</b><span>From inquiry to client, with integrity</span></li>
+<li><b>Week 11</b><span>Retention and referrals</span></li>
+<li><b>Week 12</b><span>Your Fully Booked Game Plan: a 12-month rhythm that feels like a game, not a chore</span></li>
+</ul>
+</div>
+</div>
+<div class="bonus">
+<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>
+<div><p class="eyebrow" style="color:#24201D">Bonus session</p><h3>Sales communication that feels good</h3><p>Why selling is actually fun once you stop pitching and start leading, and a simple way to lead any conversation in life.</p></div>
+</div>
+<div class="incl">
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>12 live weekly Zoom sessions, all recorded</div>
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Personal feedback on your campaigns and content</div>
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Templates: ad copy, keywords, content calendar, intro-call script</div>
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Your Fully Booked Game Plan template</div>
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Ethical marketing guidelines for therapists</div>
+<div><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0F766E" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>A small group of therapists growing together</div>
+</div>
+</div>
+</section>
+
+<section class="alt" id="about">
+<div class="wrap about">
+<img src="../images/yuval.jpg" alt="Yuval Lev" width="720" height="720">
+<div>
+<p class="eyebrow">Your guide</p>
+<h2>Hi, I'm Yuval.</h2>
+<p class="lede">I've spent over a decade in marketing and sales. I headed marketing for a Nasdaq-listed company with over $100M in sales, and today I teach marketing to more than 150 students at an online academy.</p>
+<p class="lede">Along the way I kept seeing the same thing: the most gifted therapists often had the emptiest calendars. Not because they weren't good, but because no one ever taught them how to be found. Momentum is my answer to that, done with care, and with love.</p>
+<div class="stats">
+<div class="stat"><b>10+</b><span>years in marketing and sales</span></div>
+<div class="stat"><b>$100M+</b><span>in sales, Nasdaq-listed company</span></div>
+<div class="stat"><b>150+</b><span>students learning with me</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="join">
+<div class="wrap join">
+<div class="price-card">
+<p class="eyebrow" style="color:#14B8A6">Early-bird price</p>
+<p class="price">€79<small>/month</small><s>€127</s></p>
+<p style="color:#D9CFC4">Monthly payment, for 3 months. Then it stops, automatically.</p>
+<ul>
+<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>12 live Zoom sessions + recordings</li>
+<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Personal mentoring in weeks 7 to 12</li>
+<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Bonus session: sales communication</li>
+<li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#14B8A6" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>All templates and the Game Plan</li>
+</ul>
+<div class="guarantee"><b>14-day full refund.</b> If it is not for you, you get every euro back, no questions asked. The group opens once 10 therapists join; if it does not open, you are fully refunded.</div>
+</div>
+
+<form class="form" id="joinForm" novalidate>
+<h3>Reserve your place</h3>
+<p>Two short steps: your details, then secure payment. Your Zoom link arrives by email.</p>
+<div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required><span class="err">Please enter your name.</span></div>
+<div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err">Please enter a valid email.</span></div>
+<div class="field"><label for="f-country">Country</label>
+<select id="f-country" name="country" required>
+<option value="">Choose your country</option>
+<option>France</option><option>Belgium</option><option>Switzerland</option><option>Luxembourg</option><option>Germany</option><option>Netherlands</option><option>Spain</option><option>Italy</option><option>Portugal</option><option>Austria</option><option>Ireland</option><option>United Kingdom</option><option>Other</option>
+</select><span class="err">Please choose your country.</span></div>
+<div class="field"><label for="f-phone">WhatsApp number <span style="font-weight:400;color:#5C544C">(optional, for session reminders)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+33 6 12 34 56 78"></div>
+<div class="hp" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div>
+<div class="field" id="consentField">
+<label class="check"><input type="checkbox" name="terms" required><span>I agree to the <a href="terms.html" target="_blank" rel="noopener">terms and refund policy</a> and the <a href="terms.html#privacy" target="_blank" rel="noopener">privacy notice</a>.</span></label>
+<span class="err">Please accept the terms to continue.</span>
+</div>
+<label class="check"><input type="checkbox" name="news"><span>Send me occasional marketing tips for therapists (you can unsubscribe anytime).</span></label>
+<button class="btn" type="submit" id="joinBtn">Continue to secure payment</button>
+<p class="small">€79/month for 3 months · Card or PayPal · 14-day full refund</p>
+<div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+</form>
+</div>
+</section>
+
+<section class="alt" id="faq">
+<div class="wrap">
+<div class="sec-head"><p class="eyebrow">Questions</p><h2>Before you join</h2></div>
+<div class="faq">
+<details><summary>Do I need to be good with technology?</summary><p>Not at all. We build everything step by step, together, and every session is recorded so you can go back to it.</p></details>
+<details><summary>How much ad budget do I need?</summary><p>You can start small. We set a test budget that fits you and only grow what works. Ad budget is paid directly to Meta or Google and is not included in the price.</p></details>
+<details><summary>When are the sessions?</summary><p>Once a week, live on Zoom, at a time that works for Central European Time. The exact day and time is confirmed by email before we start.</p></details>
+<details><summary>What if I miss a session?</summary><p>Every session is recorded. Watch it when it suits you and bring your questions to the next live session.</p></details>
+<details><summary>How does payment work?</summary><p>€79 per month, for 3 months (€237 in total). The payment stops automatically after the third month. Nothing to cancel.</p></details>
+<details><summary>What if it is not for me?</summary><p>You have 14 days for a full refund, no questions asked. Just reply to any of our emails.</p></details>
+<details><summary>When does it start?</summary><p>As soon as 10 therapists have joined. You will receive the start date and your Zoom link by email. If the group does not open, you are fully refunded.</p></details>
+<details><summary>Is it ethical to market therapy?</summary><p>Yes, when it is done with care. We include clear guidelines for marketing with integrity: no false promises, no pressure, full respect for client privacy.</p></details>
+</div>
+</div>
+</section>
+
+<section class="final">
+<div class="wrap">
+<h2>Your future clients are already looking for you. <span>Let's help them find you.</span></h2>
+<p class="lede">3 months. A method that stays with you. And a practice that fills, gently.</p>
+<a class="btn" href="#join">Reserve my place</a>
+</div>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<span>© Momentum Studio, by Ta'utza Studio · Yuval Lev</span>
+<span><a href="terms.html">Terms &amp; refunds</a> · <a href="terms.html#privacy">Privacy</a> · <a href="mailto:lev.yuval@outlook.com">Contact</a> · <a href="#" id="cookieLink">Cookie settings</a></span>
+</div>
+</footer>
+
+<div class="sticky"><a class="btn" href="#join">Reserve my place · €79/month</a></div>
+
+<div class="cookie" id="cookie" role="dialog" aria-label="Cookie preferences">
+We use a small analytics cookie (Meta Pixel) to understand which ads bring therapists here. Only with your permission. <a href="terms.html#privacy">Privacy</a>
+<div><button class="yes" type="button" id="ckYes">Accept</button><button class="no" type="button" id="ckNo">No, thank you</button></div>
+</div>
+
+<script>
+(function () {
+  var C = window.TAUTZA_CONFIG || {};
+  var KEY = "momentum_cookie";
+
+  /* ---------- Meta Pixel only after consent (GDPR) ---------- */
+  function loadPixel() {
+    if (!C.META_PIXEL_ID || window.fbq) return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq('init', C.META_PIXEL_ID);
+    window.fbq('track', 'PageView');
+  }
+  function track(ev, data) { try { if (window.fbq) window.fbq('track', ev, data || {}); } catch (e) {} }
+  var banner = document.getElementById("cookie");
+  var choice = null;
+  try { choice = localStorage.getItem(KEY); } catch (e) {}
+  if (choice === "yes") loadPixel(); else if (!choice) banner.classList.add("show");
+  function decide(v) { try { localStorage.setItem(KEY, v); } catch (e) {} banner.classList.remove("show"); if (v === "yes") loadPixel(); }
+  document.getElementById("ckYes").onclick = function () { decide("yes"); };
+  document.getElementById("ckNo").onclick = function () { decide("no"); };
+  document.getElementById("cookieLink").onclick = function (e) { e.preventDefault(); banner.classList.add("show"); };
+
+  /* ---------- Registration → payment ---------- */
+  var form = document.getElementById("joinForm");
+  var btn = document.getElementById("joinBtn");
+  var msg = document.getElementById("formMsg");
+  function setBad(el, bad) { var f = el.closest(".field"); if (f) f.classList.toggle("bad", bad); }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var el = form.elements, ok = true;
+    var name = el.name.value.trim(), email = el.email.value.trim(), country = el.country.value;
+    setBad(el.name, name.length < 2); ok = ok && name.length >= 2;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); setBad(el.email, !emailOk); ok = ok && emailOk;
+    setBad(el.country, !country); ok = ok && !!country;
+    var termsOk = el.terms.checked; document.getElementById("consentField").classList.toggle("bad", !termsOk); ok = ok && termsOk;
+    if (!ok) { var first = form.querySelector(".bad input, .bad select"); if (first) first.focus(); return; }
+
+    btn.disabled = true; btn.textContent = "One moment…";
+    var lead = {
+      track: "momentum", name: name, email: email, country: country, phone: el.phone.value.trim(),
+      terms: "yes", marketing_consent: el.news.checked ? "yes" : "no", website: el.website.value,
+      page: "momentum-studio", utm: location.search
+    };
+    var done = false;
+    function next() {
+      if (done) return; done = true;
+      track("InitiateCheckout", { content_name: "Momentum", value: 79, currency: "EUR" });
+      var pay = C.MOMENTUM_PAYMENT_URL;
+      if (pay) { location.href = pay; return; }
+      msg.className = "form-msg show ok";
+      msg.textContent = "Thank you, " + name.split(" ")[0] + "! Your place is noted. We will email you the secure payment link shortly.";
+      btn.textContent = "Registered ✓";
+    }
+    try {
+      fetch(C.LEAD_ENDPOINT || "/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) })
+        .then(function () { next(); }, function () { next(); });
+    } catch (err) { next(); }
+    setTimeout(next, 4000); /* never block the payment on a slow network */
+    track("Lead", { content_name: "Momentum" });
+  });
+})();
+</script>
+</body>
+</html>

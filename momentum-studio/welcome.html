@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Welcome to Momentum | Momentum Studio</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@700;800;900&amp;family=Heebo:wght@400;500;700&amp;display=swap">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<script src="../assets/config.js"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#FAF6F0;color:#24201D;font-family:Heebo,'Segoe UI',sans-serif;font-size:19px;line-height:1.6}
+.box{max-width:720px;margin:0 auto;padding:64px 24px 96px;text-align:center}
+.mark{width:64px;height:64px}
+.ok{width:84px;height:84px;margin:32px auto 24px;border-radius:999px;background:#14B8A6;display:flex;align-items:center;justify-content:center}
+h1{font:900 52px/1.05 Rubik,sans-serif;margin:0 0 16px;letter-spacing:-.5px}
+h1 span{color:#EA6C4D}
+.lede{color:#4A433D;font-size:21px;margin:0 0 40px}
+ol{list-style:none;padding:0;margin:0 0 40px;text-align:left;display:flex;flex-direction:column;gap:14px}
+ol li{background:#fff;border-radius:20px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start}
+ol b{font:900 28px Rubik,sans-serif;color:#EA6C4D;line-height:1.1;min-width:28px}
+ol strong{display:block;font-family:Rubik,sans-serif}
+.note{font-size:16px;color:#5C544C}
+a{color:#C4502F}
+@media (max-width:640px){h1{font-size:38px}}
+</style>
+</head>
+<body>
+<main class="box">
+<img class="mark" src="../images/logo-mark.svg" alt="Momentum Studio">
+<div class="ok"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#24201D" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></div>
+<h1>Bienvenue. <span>You're in.</span></h1>
+<p class="lede">Thank you for trusting us with your practice. Here is what happens next.</p>
+<ol>
+<li><b>1</b><span><strong>Check your inbox</strong>Your payment receipt is on its way. Within 24 hours you will also receive a welcome email with your Zoom link and the session schedule.</span></li>
+<li><b>2</b><span><strong>Save the date</strong>We open once 10 therapists have joined. The start date and a calendar invite come by email, in Central European Time.</span></li>
+<li><b>3</b><span><strong>Bring one question</strong>Before the first session, think about this: who is the one client you would love to see more of? We start right there.</span></li>
+</ol>
+<p class="note">Nothing in your inbox? Check the promotions or spam folder, or write to <a href="mailto:lev.yuval@outlook.com">lev.yuval@outlook.com</a>.<br>Remember: you have 14 days for a full refund, no questions asked.</p>
+</main>
+<script>
+(function () {
+  var C = window.TAUTZA_CONFIG || {};
+  var consent = null; try { consent = localStorage.getItem("momentum_cookie"); } catch (e) {}
+  if (consent !== "yes" || !C.META_PIXEL_ID) return;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', C.META_PIXEL_ID); fbq('track', 'PageView');
+  fbq('track', 'Purchase', { value: 79, currency: 'EUR', content_name: 'Momentum' });
+})();
+</script>
+</body>
+</html>
