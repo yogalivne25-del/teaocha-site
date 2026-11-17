@@ -22,7 +22,10 @@ window.TAUTZA_CONFIG = {
 
   // Momentum (עמוד /momentum-studio): לינק לתשלום המנוי ב-PayPal (€79 לחודש × 3).
   // אם ריק – אחרי ההרשמה מופיעה הודעה שלינק התשלום יישלח במייל.
-  MOMENTUM_PAYMENT_URL: "",
+  MOMENTUM_PAYMENT_URL: "https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-0UR84934S3235554VNL6EHPY",
+  // כפתור המנוי של PayPal שמוצג בדף אחרי ההרשמה (€79 × 3). ה-Client ID ציבורי, זה בסדר שהוא כאן.
+  MOMENTUM_PAYPAL_CLIENT_ID: "BAAJK6YNlz0zL--byEGBaeVgOFvnXP8hdQKnJabx5qikq6lpD6TmDMaJg9lXrPUdD0ISbACdJ4bWkeMHQo",
+  MOMENTUM_PAYPAL_PLAN_ID: "P-0UR84934S3235554VNL6EHPY",
   // וואטסאפ אישי לעמוד Momentum בלבד (לא משפיע על שאר האתר)
   MOMENTUM_WHATSAPP: "972556884767",
 

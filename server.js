@@ -198,6 +198,59 @@ async function handleMomentum(d, res) {
   }
 }
 
+/* ---------- Momentum: תשלום אושר ב-PayPal ----------
+ * הדף שולח את מזהה המנוי אחרי אישור התשלום.
+ * אם מוגדרים PAYPAL_CLIENT_ID + PAYPAL_SECRET ב-Railway – מאמתים מול PayPal שהמנוי באמת פעיל.
+ * משייך לרשימה SMOOVE_LIST_MOMENTUM_PAID ומוציא מרשימת "נרשמו, ממתינים לתשלום" (SMOOVE_LIST_MOMENTUM).
+ * ברשימת המשלמים בסמוב מגדירים את מייל הברוכים הבאים עם לינק הזום. */
+async function paypalSubscriptionStatus(id) {
+  const cid = env("PAYPAL_CLIENT_ID"), sec = env("PAYPAL_SECRET");
+  if (!cid || !sec) return null;
+  const base = env("PAYPAL_API") || "https://api-m.paypal.com";
+  const tok = await fetch(base + "/v1/oauth2/token", {
+    method: "POST",
+    headers: { Authorization: "Basic " + Buffer.from(cid + ":" + sec).toString("base64"), "Content-Type": "application/x-www-form-urlencoded" },
+    body: "grant_type=client_credentials"
+  }).then((r) => r.json());
+  if (!tok.access_token) throw new Error("paypal auth failed");
+  const sub = await fetch(base + "/v1/billing/subscriptions/" + encodeURIComponent(id), { headers: { Authorization: "Bearer " + tok.access_token } }).then((r) => r.json());
+  return { status: sub.status || "UNKNOWN", plan: sub.plan_id || "" };
+}
+
+async function handleMomentumPaid(req, res) {
+  if (!sameOrigin(req)) return json(res, 403, { ok: false });
+  if (rateLimited(clientIp(req))) return json(res, 429, { ok: false });
+  let d;
+  try { d = JSON.parse((await readBody(req)).toString("utf8")); } catch (e) { return json(res, e.status || 400, { ok: false }); }
+  const email = clean(d && d.email, 200);
+  const subId = clean(d && d.subscriptionID, 60);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !/^I-[A-Z0-9]{6,40}$/.test(subId)) return json(res, 400, { ok: false });
+
+  let verified = "unverified";
+  try {
+    const st = await paypalSubscriptionStatus(subId);
+    if (st) {
+      const okPlan = !env("PAYPAL_PLAN_ID") || st.plan === env("PAYPAL_PLAN_ID");
+      verified = (st.status === "ACTIVE" || st.status === "APPROVED") && okPlan ? "verified" : "FAILED " + st.status;
+    }
+  } catch (e) { log("paypal verify error:", e.message); verified = "verify error"; }
+  log("momentum paid:", email, subId, verified);
+  if (verified.startsWith("FAILED")) return json(res, 402, { ok: false });
+
+  try {
+    await smooveUpsert({
+      email, name: clean(d.name, 120),
+      subscribe: ids("SMOOVE_LIST_MOMENTUM_PAID"), unsubscribe: ids("SMOOVE_LIST_MOMENTUM"),
+      fields: { status: "Momentum: paid (" + verified + ")", paypal_subscription: subId },
+      consent: true
+    });
+    return json(res, 200, { ok: true });
+  } catch (e) {
+    log("momentum paid smoove error:", e.message);
+    return json(res, 502, { ok: false });
+  }
+}
+
 /* ---------- /api/cal ---------- */
 function validCalSignature(raw, header) {
   const secret = env("CAL_WEBHOOK_SECRET");
@@ -272,11 +325,13 @@ const server = http.createServer(async (req, res) => {
     if (url.startsWith("/api/")) {
       if (url === "/api/lead" && req.method === "POST") return await handleLead(req, res);
       if (url === "/api/cal" && req.method === "POST") return await handleCal(req, res);
+      if (url === "/api/momentum-paid" && req.method === "POST") return await handleMomentumPaid(req, res);
       if (url === "/api/health" && req.method === "GET") {
         return json(res, 200, {
           ok: true,
           smoove: !!env("SMOOVE_API_KEY"),
-          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM") },
+          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM"), momentumPaid: listId("SMOOVE_LIST_MOMENTUM_PAID") },
+          paypalVerify: !!(env("PAYPAL_CLIENT_ID") && env("PAYPAL_SECRET")),
           fields: Object.keys(fieldMap()),
           calSecret: !!env("CAL_WEBHOOK_SECRET")
         });

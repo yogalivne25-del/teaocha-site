@@ -131,6 +131,7 @@ section{padding:104px 0}
 .check input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--coral-d);flex-shrink:0}
 .form .btn{width:100%;margin-top:14px}
 .form .small{font-size:14px;color:var(--muted);text-align:center;margin-top:14px}
+.pay-step h3{margin-top:6px}
 .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;overflow:hidden}
 .form-msg{display:none;margin-top:14px;padding:14px 16px;border-radius:12px;font-size:16px}
 .form-msg.show{display:block}
@@ -358,6 +359,7 @@ footer a{color:var(--muted)}
 
 <form class="form" id="joinForm" novalidate>
 <h3>Reserve your place</h3>
+<p class="eyebrow" style="margin-bottom:8px">Step 1 of 2</p>
 <p>Two short steps: your details, then secure payment. Your Zoom link arrives by email.</p>
 <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required><span class="err">Please enter your name.</span></div>
 <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err">Please enter a valid email.</span></div>
@@ -377,6 +379,15 @@ footer a{color:var(--muted)}
 <p class="small">€79/month for 3 months · Card or PayPal · 14-day full refund</p>
 <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
 </form>
+
+<div class="form pay-step" id="payStep" hidden>
+<p class="eyebrow">Step 2 of 2</p>
+<h3 id="payTitle">Secure payment</h3>
+<p>€79/month for 3 months. Pay with PayPal or any debit or credit card. The payment stops automatically after the third month.</p>
+<div id="paypalButtons" style="margin-top:20px;min-height:150px"></div>
+<p class="small" id="payFallback" hidden>The payment button did not load. <a id="payLink" href="#" target="_blank" rel="noopener">Open the secure PayPal page</a></p>
+<p class="small">14-day full refund · Questions? <a href="mailto:contact@teocha.com">contact@teocha.com</a></p>
+</div>
 </div>
 </section>
 
@@ -458,6 +469,41 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
     document.querySelectorAll(".js-wa, .js-wa-float").forEach(function (a) { a.addEventListener("click", function () { track("Contact", { content_name: "Momentum WhatsApp" }); }); });
   }
 
+  /* ---------- Step 2: PayPal subscription ---------- */
+  function goWelcome(id) { location.href = "welcome" + (id ? "?sub=" + encodeURIComponent(id) : ""); }
+  function showPay(lead) {
+    var step = document.getElementById("payStep");
+    form.hidden = true; step.hidden = false;
+    document.getElementById("payTitle").textContent = "Thank you, " + lead.name.split(" ")[0] + ". One last step.";
+    step.scrollIntoView({ behavior: "smooth", block: "start" });
+    var link = document.getElementById("payLink"); link.href = C.MOMENTUM_PAYMENT_URL || "#";
+    var fallback = function () { document.getElementById("payFallback").hidden = false; document.getElementById("paypalButtons").style.minHeight = "0"; };
+    if (!C.MOMENTUM_PAYPAL_CLIENT_ID || !C.MOMENTUM_PAYPAL_PLAN_ID) { if (C.MOMENTUM_PAYMENT_URL) location.href = C.MOMENTUM_PAYMENT_URL; else fallback(); return; }
+    var sc = document.createElement("script");
+    sc.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(C.MOMENTUM_PAYPAL_CLIENT_ID) + "&vault=true&intent=subscription&currency=EUR";
+    sc.setAttribute("data-sdk-integration-source", "button-factory");
+    sc.onerror = fallback;
+    sc.onload = function () {
+      try {
+        window.paypal.Buttons({
+          style: { shape: "pill", color: "gold", layout: "vertical", label: "subscribe" },
+          createSubscription: function (data, actions) {
+            return actions.subscription.create({ plan_id: C.MOMENTUM_PAYPAL_PLAN_ID, custom_id: lead.email.slice(0, 120) });
+          },
+          onApprove: function (data) {
+            track("Subscribe", { content_name: "Momentum", value: 79, currency: "EUR" });
+            var body = JSON.stringify({ email: lead.email, name: lead.name, subscriptionID: data.subscriptionID });
+            var doneW = false; var go = function () { if (!doneW) { doneW = true; goWelcome(data.subscriptionID); } };
+            try { fetch("/api/momentum-paid", { method: "POST", headers: { "Content-Type": "application/json" }, body: body, keepalive: true }).then(go, go); } catch (e) { go(); }
+            setTimeout(go, 3000);
+          },
+          onError: function () { fallback(); }
+        }).render("#paypalButtons").catch(fallback);
+      } catch (e) { fallback(); }
+    };
+    document.head.appendChild(sc);
+  }
+
   /* ---------- Registration → payment ---------- */
   var form = document.getElementById("joinForm");
   var btn = document.getElementById("joinBtn");
@@ -484,11 +530,7 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
     function next() {
       if (done) return; done = true;
       track("InitiateCheckout", { content_name: "Momentum", value: 79, currency: "EUR" });
-      var pay = C.MOMENTUM_PAYMENT_URL;
-      if (pay) { location.href = pay; return; }
-      msg.className = "form-msg show ok";
-      msg.textContent = "Thank you, " + name.split(" ")[0] + "! Your place is noted. We will email you the secure payment link shortly.";
-      btn.textContent = "Registered ✓";
+      showPay(lead);
     }
     try {
       fetch(C.LEAD_ENDPOINT || "/api/lead", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) })
