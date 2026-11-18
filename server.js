@@ -184,11 +184,11 @@ async function handleMomentum(d, res) {
     country: clean(d.country, 60),
     source: ["momentum", clean(d.page, 80)].filter(Boolean).join(" · "),
     utm_source: utm.get("utm_source"), utm_campaign: utm.get("utm_campaign"), utm_medium: utm.get("utm_medium"),
-    status: "Momentum: registered, payment pending"
+    status: d.page === "momentum-webinar" ? "Momentum: webinar registered" : "Momentum: registered, payment pending"
   };
   try {
     const r = await smooveUpsert({
-      email, phone, name, subscribe: ids("SMOOVE_LIST_MOMENTUM"), fields,
+      email, phone, name, subscribe: ids(d.page === "momentum-webinar" ? "SMOOVE_LIST_MOMENTUM_WEBINAR" : "SMOOVE_LIST_MOMENTUM"), fields,
       consent: d.marketing_consent === "yes"
     });
     return json(res, 200, { ok: true, skipped: !!r.skipped });
@@ -355,7 +355,7 @@ const server = http.createServer(async (req, res) => {
         return json(res, 200, {
           ok: true,
           smoove: !!env("SMOOVE_API_KEY"),
-          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM"), momentumPaid: listId("SMOOVE_LIST_MOMENTUM_PAID") },
+          lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM"), momentumPaid: listId("SMOOVE_LIST_MOMENTUM_PAID"), momentumWebinar: listId("SMOOVE_LIST_MOMENTUM_WEBINAR") },
           paypalVerify: !!(env("PAYPAL_CLIENT_ID") && env("PAYPAL_SECRET")),
           fields: Object.keys(fieldMap()),
           calSecret: !!env("CAL_WEBHOOK_SECRET")

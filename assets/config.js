@@ -28,6 +28,13 @@ window.TAUTZA_CONFIG = {
   MOMENTUM_PAYPAL_PLAN_ID: "P-0UR84934S3235554VNL6EHPY",
   // תשלום מלא חד-פעמי ב-PayPal (כולל כרטיס בלי חשבון). 0 = האפשרות לא מוצגת.
   MOMENTUM_FULL_PRICE_EUR: 222,
+  // וובינר Momentum (עמוד /momentum-studio/webinar)
+  // DATE בפורמט ISO עם אזור זמן (שעון מרכז אירופה: +01:00 בחורף). ריק = "Date announced soon".
+  MOMENTUM_WEBINAR: {
+    DATE: "",              // לדוגמה: "2026-12-03T19:00:00+01:00"
+    MINUTES: 60,
+    ZOOM_URL: ""           // לינק הזום – מוצג רק בעמוד התודה אחרי הרשמה
+  },
   // וואטסאפ אישי לעמוד Momentum בלבד (לא משפיע על שאר האתר)
   MOMENTUM_WHATSAPP: "972556884767",
 
