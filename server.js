@@ -23,6 +23,7 @@ const crypto = require("crypto");
 const path = require("path");
 const fs = require("fs");
 const handler = require("serve-handler");
+const momentumMail = require("./momentum-mail");
 
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
@@ -191,6 +192,7 @@ async function handleMomentum(d, res) {
       email, phone, name, subscribe: ids(d.page === "momentum-webinar" ? "SMOOVE_LIST_MOMENTUM_WEBINAR" : "SMOOVE_LIST_MOMENTUM"), fields,
       consent: d.marketing_consent === "yes"
     });
+    if (d.page === "momentum-webinar") momentumMail.sendWebinarEmails({ email, name }).catch((e) => log("webinar mail error:", e.message));
     return json(res, 200, { ok: true, skipped: !!r.skipped });
   } catch (e) {
     log("momentum lead error:", e.message);
@@ -269,11 +271,9 @@ async function handleMomentumPaid(req, res) {
       fields: { status: "Momentum: paid " + plan + " (" + verified + ")", paypal_subscription: payRef },
       consent: true
     });
-    return json(res, 200, { ok: true });
-  } catch (e) {
-    log("momentum paid smoove error:", e.message);
-    return json(res, 502, { ok: false });
-  }
+  } catch (e) { log("momentum paid smoove error:", e.message); }
+  momentumMail.sendCourseWelcome({ email, name: clean(d.name, 120), plan }).catch((e) => log("welcome mail error:", e.message));
+  return json(res, 200, { ok: true });
 }
 
 /* ---------- /api/cal ---------- */
@@ -358,7 +358,8 @@ const server = http.createServer(async (req, res) => {
           lists: { call: listId("SMOOVE_LIST_CALL"), community: listId("SMOOVE_LIST_COMMUNITY"), questionnaire: listId("SMOOVE_LIST_QUESTIONNAIRE"), booked: listId("SMOOVE_LIST_BOOKED"), cancelled: listId("SMOOVE_LIST_CANCELLED"), momentum: listId("SMOOVE_LIST_MOMENTUM"), momentumPaid: listId("SMOOVE_LIST_MOMENTUM_PAID"), momentumWebinar: listId("SMOOVE_LIST_MOMENTUM_WEBINAR") },
           paypalVerify: !!(env("PAYPAL_CLIENT_ID") && env("PAYPAL_SECRET")),
           fields: Object.keys(fieldMap()),
-          calSecret: !!env("CAL_WEBHOOK_SECRET")
+          calSecret: !!env("CAL_WEBHOOK_SECRET"),
+          brevo: !!env("BREVO_API_KEY"), brevoWebinarList: Number(env("BREVO_LIST_WEBINAR")) || null
         });
       }
       return json(res, 404, { ok: false });
@@ -374,4 +375,4 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, "0.0.0.0", () => log("teocha listening on", PORT));
+server.listen(PORT, "0.0.0.0", () => { log("teocha listening on", PORT); momentumMail.startReminderLoop(); });

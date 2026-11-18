@@ -31,7 +31,7 @@ window.TAUTZA_CONFIG = {
   // וובינר Momentum (עמוד /momentum-studio/webinar)
   // DATE בפורמט ISO עם אזור זמן (שעון מרכז אירופה: +01:00 בחורף). ריק = "Date announced soon".
   MOMENTUM_WEBINAR: {
-    DATE: "",              // לדוגמה: "2026-12-03T19:00:00+01:00"
+    DATE: "2026-11-23T13:00:00+01:00",   // יום שני 23.11, 13:00 צרפת = 14:00 ישראל
     MINUTES: 60,
     ZOOM_URL: ""           // לינק הזום – מוצג רק בעמוד התודה אחרי הרשמה
   },
