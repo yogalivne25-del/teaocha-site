@@ -215,6 +215,9 @@ footer a{color:var(--muted)}
 .when span{font-size:14px;color:var(--muted)}
 .host{background:var(--ink);color:var(--cream);border-radius:30px;overflow:hidden;box-shadow:0 24px 60px rgba(36,32,29,.18)}
 .host img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%}
+.wb-mail{display:flex;gap:12px;align-items:flex-start;background:#FDE8E1;border:2px solid var(--coral);border-radius:18px;padding:16px 18px;margin:18px 0;text-align:left}
+.wb-mail p{margin:0;font-size:16px;color:var(--ink)}
+.wb-mail-ico{font-size:24px;line-height:1.2}
 .wb-side{display:grid;gap:16px;align-content:start}
 .wb-photo{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%;border-radius:30px;box-shadow:0 24px 60px rgba(36,32,29,.18)}
 .wb-step{display:flex;gap:14px;align-items:center;background:#FDE8E1;border:2px solid var(--coral);border-radius:20px;padding:16px 20px;margin:22px 0 4px}
@@ -279,7 +282,7 @@ footer a{color:var(--muted)}
 <div class="wrap">
 <form class="form wb-form" id="wbForm" novalidate>
 <h3>Save your free seat</h3>
-<p>The Zoom link is shown right after you register.</p>
+<p>Your confirmation and Zoom link arrive by email.</p>
 <div class="field"><label for="w-name">Full name</label><input id="w-name" name="name" autocomplete="name" required><span class="err">Please enter your name.</span></div>
 <div class="field"><label for="w-email">Email</label><input id="w-email" name="email" type="email" autocomplete="email" required><span class="err">Please enter a valid email.</span></div>
 <div class="field"><label for="w-country">Country</label>
@@ -301,6 +304,7 @@ footer a{color:var(--muted)}
 <p class="eyebrow">You're in</p>
 <h3 id="wDoneTitle">See you there!</h3>
 <p id="wDoneDate">We'll email you the date, time and Zoom link.</p>
+<div class="wb-mail"><span class="wb-mail-ico" aria-hidden="true">✉️</span><p><b>Check your inbox now.</b> We just sent a confirmation to <b id="wDoneEmail">your email</b>. Not there in 2 minutes? Please look in your <b>Spam</b> or <b>Promotions</b> folder and mark it "Not spam", so you don't miss the Zoom link on Sunday.</p></div>
 <a class="btn" id="wCal" href="#" target="_blank" rel="noopener" hidden>Add to Google Calendar</a>
 <p id="wZoomWrap" hidden style="margin-top:14px">Zoom link: <a id="wZoom" href="#" target="_blank" rel="noopener"></a></p>
 <p class="small" style="margin-top:18px">Want to secure your place in the full program now? <a href="./#join">See Momentum</a></p>
@@ -393,8 +397,9 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
       track("CompleteRegistration", { content_name: "Momentum webinar" });
       form.hidden = true; var box = document.getElementById("wDone"); box.hidden = false;
       document.getElementById("wDoneTitle").textContent = "You're in, " + name.split(" ")[0] + "!";
+      document.getElementById("wDoneEmail").textContent = email;
       if (start && !isNaN(start)) {
-        document.getElementById("wDoneDate").textContent = document.querySelector(".js-wb-date").textContent + ", " + document.querySelector(".js-wb-tz").textContent.replace(" · Live on Zoom", "") + ". A reminder will follow by email.";
+        document.getElementById("wDoneDate").textContent = document.querySelector(".js-wb-date").textContent + ", " + document.querySelector(".js-wb-tz").textContent.replace(" · Live on Zoom", "") + ". Your Zoom link arrives by email on Sunday.";
         var cal = document.getElementById("wCal"); cal.href = gcal(); cal.hidden = false;
       }
       if (W.ZOOM_URL) { var z = document.getElementById("wZoom"); z.href = W.ZOOM_URL; z.textContent = W.ZOOM_URL; document.getElementById("wZoomWrap").hidden = false; }
