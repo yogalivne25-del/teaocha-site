@@ -215,6 +215,12 @@ footer a{color:var(--muted)}
 .when span{font-size:14px;color:var(--muted)}
 .host{background:var(--ink);color:var(--cream);border-radius:30px;overflow:hidden;box-shadow:0 24px 60px rgba(36,32,29,.18)}
 .host img{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%}
+.wb-side{display:grid;gap:16px;align-content:start}
+.wb-photo{width:100%;height:auto;display:block;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%;border-radius:30px;box-shadow:0 24px 60px rgba(36,32,29,.18)}
+.wb-step{display:flex;gap:14px;align-items:center;background:#FDE8E1;border:2px solid var(--coral);border-radius:20px;padding:16px 20px;margin:22px 0 4px}
+.wb-step p{margin:0;font-size:17px;color:var(--ink)}
+.wb-step-tag{flex:none;background:var(--coral-d);color:#fff;font:800 13px Rubik,sans-serif;text-transform:uppercase;letter-spacing:.06em;border-radius:999px;padding:8px 12px}
+.card-hi{background:#FDE8E1;outline:2px solid var(--coral)}
 .host div{padding:22px 26px}
 .host b{font:800 20px Rubik,sans-serif;display:block}
 .host span{font-size:15px;color:#D9CFC4}
@@ -243,6 +249,7 @@ footer a{color:var(--muted)}
 <p class="eyebrow">Free live masterclass for therapists <span class="free-tag">Free</span></p>
 <h1>Why marketing works for some therapists, <span>and not for others.</span></h1>
 <p class="lede">Two therapists. Same training, same talent. One has a waiting list, the other an empty Tuesday. In one hour, you'll see what really makes the difference, and how to start using it this week.</p>
+<div class="wb-step"><span class="wb-step-tag">This week</span><p><b>You'll leave with one clear step to bring in new clients, starting this week.</b> No ad budget needed.</p></div>
 <div class="when">
 <div><b class="js-wb-date">Monday 23 November, 13:00 Paris time</b><span class="js-wb-tz">14:00 Israel · 60 min live on Zoom</span></div>
 <div><b class="js-wb-len">60 minutes</b><span>Including live Q&amp;A</span></div>
@@ -250,9 +257,9 @@ footer a{color:var(--muted)}
 </div>
 <a class="btn" href="#register">Save my free seat</a>
 </div>
-<div class="host">
-<img src="../images/momentum-hero.jpg" alt="A therapist booking a new client in her practice calendar" width="1200" height="900">
-<div><b>With Yuval Lev</b><span>10+ years in marketing and sales · Former Head of Marketing, Nasdaq-listed company · In partnership with Tamara's community</span></div>
+<div class="wb-side">
+<img class="wb-photo" src="../images/momentum-hero.jpg" alt="A therapist booking a new client in her practice calendar" width="1200" height="900">
+<div class="host"><div><b>With Yuval Lev</b><span>10+ years in marketing and sales · Former Head of Marketing, Nasdaq-listed company · In partnership with Tamara's community</span></div></div>
 </div>
 </div>
 </div>
@@ -263,7 +270,7 @@ footer a{color:var(--muted)}
 <div class="learn">
 <div class="card"><span class="num">01</span><h3>The 3 differences</h3><p>What fully booked therapists do that others don't. It is rarely what you think, and never about being "salesy".</p></div>
 <div class="card"><span class="num">02</span><h3>Where your clients look</h3><p>How people actually search for a therapist today, on Google and Instagram, and how to make sure they find you.</p></div>
-<div class="card"><span class="num">03</span><h3>A simple first step</h3><p>One clear action you can take this week to bring in your next inquiries, even with zero ad budget.</p></div>
+<div class="card card-hi"><span class="num">03</span><h3>One clear step to new clients this week</h3><p>A simple action you can take right after the session to bring in your next inquiries, even with zero ad budget.</p></div>
 </div>
 </div>
 </section>
