@@ -78,9 +78,11 @@ async function brevoApi(method, url, body) {
 
 function webinarInfo() {
   const W = siteConfig().MOMENTUM_WEBINAR || {};
-  const start = W.DATE ? new Date(W.DATE) : null;
-  const ok = start && !isNaN(start);
-  return { start: ok ? start : null, mins: Number(W.MINUTES) || 60, zoom: W.ZOOM_URL || "", w: ok ? whenText(start) : null };
+  const mins = Number(W.MINUTES) || 60;
+  const list = (W.DATES || (W.DATE ? [W.DATE] : [])).map((d) => new Date(d)).filter((d) => !isNaN(d)).sort((a, b) => a - b);
+  const start = list.find((d) => d.getTime() + mins * 60000 > Date.now()) || null;
+  const ok = !!start;
+  return { start: ok ? start : null, mins, zoom: W.ZOOM_URL || "", w: ok ? whenText(start) : null };
 }
 function zoomBlockFor(zoom) {
   return zoom

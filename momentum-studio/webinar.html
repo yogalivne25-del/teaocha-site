@@ -361,7 +361,13 @@ We use a small analytics cookie (Meta Pixel) to understand which ads bring thera
   }
 
   /* Date (shown in the visitor's own time zone) */
-  var mins = Number(W.MINUTES) || 60, start = W.DATE ? new Date(W.DATE) : null;
+  var mins = Number(W.MINUTES) || 60;
+  var start = (function () {
+    var list = (W.DATES || (W.DATE ? [W.DATE] : [])).map(function (d) { return new Date(d); }).filter(function (d) { return !isNaN(d); }).sort(function (a, b) { return a - b; });
+    var now = Date.now();
+    for (var i = 0; i < list.length; i++) if (list[i].getTime() + mins * 60000 > now) return list[i];
+    return null;
+  })();
   document.querySelector(".js-wb-len").textContent = mins + " minutes";
   if (start && !isNaN(start)) {
     var dFmt = new Intl.DateTimeFormat("en-GB", { weekday: "long", day: "numeric", month: "long" });
