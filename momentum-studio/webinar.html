@@ -144,6 +144,16 @@ section{padding:104px 0}
 .form-msg.show{display:block}
 .form-msg.ok{background:#DDF4F0;color:#0B5E57}
 .form-msg.no{background:#FBE3DC;color:#8A2E17}
+/* fit */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fit .card{background:#fff;box-shadow:0 10px 30px rgba(36,32,29,.06)}
+.fit .no{opacity:.92}
+.fit .card ul{margin:14px 0 0;padding:0;list-style:none}
+.fit .card li{position:relative;padding:0 0 10px 30px;font-size:16px;color:var(--ink2);line-height:1.5}
+.fit .card li::before{position:absolute;left:0;top:0;font-weight:700}
+.fit .yes li::before{content:"✓";color:#0F766E}
+.fit .no li::before{content:"✕";color:var(--coral-d)}
+@media (max-width:760px){.fit{grid-template-columns:1fr}}
 /* faq */
 .faq{max-width:860px}
 .faq details{background:var(--cream);border-radius:18px;padding:22px 26px;margin-bottom:12px}
@@ -278,6 +288,25 @@ footer a{color:var(--muted)}
 </div>
 </section>
 
+<section>
+<div class="wrap">
+<div class="sec-head"><p class="eyebrow">Is this for you?</p><h2>Made for therapists in private practice</h2></div>
+<div class="fit">
+<div class="card yes"><h3>This is for you if</h3><ul>
+<li>You have a private practice, or you're about to open one</li>
+<li>Your work changes lives, but your calendar doesn't show it yet</li>
+<li>Marketing feels confusing, uncomfortable or "not for you"</li>
+<li>You want more of the clients you love working with</li>
+</ul></div>
+<div class="card no"><h3>This is not for you if</h3><ul>
+<li>You're looking for a magic trick that works overnight</li>
+<li>Your calendar is already full, with a waiting list</li>
+<li>You want aggressive sales tactics. We don't do that here</li>
+</ul></div>
+</div>
+</div>
+</section>
+
 <section id="register">
 <div class="wrap">
 <form class="form wb-form" id="wbForm" novalidate>
@@ -318,6 +347,17 @@ footer a{color:var(--muted)}
 </div>
 </section>
 </main>
+
+<section class="alt">
+<div class="wrap faq">
+<div class="sec-head"><p class="eyebrow">Questions</p><h2>Before you save your seat</h2></div>
+<details><summary>Is it really free?</summary><p>Yes. One hour, live on Zoom, at no cost. You only need to register so we can send you the link.</p></details>
+<details><summary>Will there be a recording?</summary><p>We can't promise one. The masterclass is built to be live, with time for your questions, so the best way to get the most out of it is to join us live.</p></details>
+<details><summary>Do I need to be good with social media?</summary><p>Not at all. Most of what we cover works even if you barely post. You'll leave with one simple step, not a list of platforms to master.</p></details>
+<details><summary>Will you try to sell me something?</summary><p>The hour is pure value. At the very end, I'll briefly share how you can keep working on this with me in the Momentum program, for those who want it. No pressure, ever.</p></details>
+<details><summary>What language is it in?</summary><p>English, simple and friendly. You don't need perfect English to follow along and ask questions.</p></details>
+</div>
+</section>
 
 <footer>
 <div class="wrap">
