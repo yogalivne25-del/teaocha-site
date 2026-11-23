@@ -35,7 +35,7 @@ function gcal(start, mins, zoom) {
   const end = new Date(start.getTime() + mins * 60000);
   const f = (d) => d.toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
   return "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" +
-    encodeURIComponent("Free masterclass: Why marketing works for some therapists") +
+    encodeURIComponent("Free masterclass: How to make marketing work for you") +
     "&dates=" + f(start) + "/" + f(end) + "&details=" + encodeURIComponent("Live on Zoom with Yuval Lev." + (zoom ? "\nZoom: " + zoom : ""));
 }
 
@@ -101,7 +101,7 @@ async function sendWebinarEmails({ email, name }) {
   }
   const { start, mins, zoom, w } = webinarInfo();
   const html = layout(`<p>Hi ${first(name)},</p>
-<p><b>You're in!</b> Your free seat for the masterclass <b>"Why marketing works for some therapists, and not for others"</b> is saved.</p>
+<p><b>You're in!</b> Your free seat for the masterclass <b>"How to make marketing work for you"</b> is saved.</p>
 ${w ? `<p style="background:#FAF6F0;border-radius:12px;padding:14px 16px"><b>${esc(w.day)}</b><br>${esc(w.fr)} Paris time · ${esc(w.il)} Israel time · ${mins} minutes, live on Zoom</p>` : ""}
 ${zoomBlockFor(zoom)}
 ${start ? `<p><a href="${esc(gcal(start, mins, zoom))}">Add it to your Google Calendar</a></p>` : ""}
